@@ -4209,11 +4209,11 @@ body.dark-theme .comment-bubble {
         font-size: 0.8rem;
     }
     #pro-network-view.active {
-        display: flex;
-        flex-direction: column;
-        height: 100vh;
-        height: -webkit-fill-available;
-        overflow: hidden;
+        display: flex !important;
+        flex-direction: column !important;
+        height: 100vh !important;
+        height: -webkit-fill-available !important;
+        overflow: hidden !important;
     }
     #pro-main-stage, #pro-login-stage {
         flex: 1;
