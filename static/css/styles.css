@@ -4173,6 +4173,26 @@ body.dark-theme .comment-bubble {
         border-radius: 20px;
     }
 
+    /* GramConnect Mobile Refinements */
+    .insta-search {
+        display: none !important;
+    }
+    .insta-body {
+        margin: 12px auto;
+        padding: 0 12px;
+    }
+    .insta-stories {
+        margin-bottom: 16px;
+        padding: 12px;
+        border-radius: 0;
+        border-left: none;
+        border-right: none;
+    }
+    .insta-card {
+        margin-bottom: 16px;
+        border-radius: 12px !important;
+    }
+
     /* Top Mobile Navbar */
     .pro-header-inner {
         padding: 0 12px;
