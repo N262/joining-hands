@@ -4208,11 +4208,26 @@ body.dark-theme .comment-bubble {
         padding: 6px 12px 6px 30px;
         font-size: 0.8rem;
     }
+    #pro-network-view.active {
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        height: -webkit-fill-available;
+        overflow: hidden;
+    }
+    #pro-main-stage, #pro-login-stage {
+        flex: 1;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 72px;
+    }
     .pro-mobile-bottom-nav {
         display: flex !important;
-    }
-    .pro-main-stage {
-        padding-bottom: 72px;
+        position: fixed !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        z-index: 99999 !important;
     }
     .pro-body {
         padding: 0 10px;
