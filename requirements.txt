@@ -4,3 +4,7 @@
 
 # External libraries used by utility scripts (e.g. presentation deck generator)
 python-pptx>=0.6.21
+
+# Google OAuth 2.0 Backend Verification libraries
+google-auth>=2.20.0
+requests>=2.31.0
