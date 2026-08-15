@@ -1,0 +1,37 @@
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+google_credentials.json
+
+# Byte-compiled / optimized files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Database & Runtime Output
+database/backups/*.db
+*.db-shm
+*.db-wal
+test_*.db
+test_*.db-shm
+test_*.db-wal
+logs/
+*.log
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Large presentation decks
+*.pptx
+
+# Dynamic media uploads and logs
+static/uploads/*
+!static/uploads/.gitkeep
+logs/*
+!logs/.gitkeep
+
+# Local IDE/Agent settings
+.agents/
+.gemini/
