@@ -291,6 +291,24 @@
         </footer>
     </div>
 
+    <!-- LOCKED APPS STAGE OVERLAY -->
+    <div id="locked-view" class="app-view" style="display:none; background: #ffffff; min-height: 100vh;">
+        <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; padding: 20px; text-align: center; font-family: var(--font-body);">
+            <div style="font-size: 5rem; color: #7c3aed; margin-bottom: 24px; animation: gentleFloat 6s ease-in-out infinite alternate;">
+                <i class="fa-solid fa-lock"></i>
+            </div>
+            <h2 style="font-family: var(--font-heading); font-size: 2.2rem; font-weight: 800; color: #1e293b; margin-bottom: 12px; max-width: 600px;">
+                Platform Locked
+            </h2>
+            <p style="font-size: 1.15rem; color: #64748b; margin-bottom: 32px; max-width: 500px; line-height: 1.6;">
+                For now the website has been locked, soon opening.
+            </p>
+            <button onclick="returnToLanding()" class="hero-pill-btn hero-pill-btn--menu" style="min-height: 44px; padding: 10px 24px;">
+                <i class="fa-solid fa-arrow-left"></i> Go Back
+            </button>
+        </div>
+    </div>
+
     <!-- LINKEDIN CLONE APP VIEW (No mention of "LinkedIn" in text) -->
     <div id="pro-network-view" class="app-view">
         
@@ -1807,6 +1825,6 @@
     <!-- TOAST NOTIFICATION CONTAINER -->
     <div id="toastContainer"></div>
 
-    <script src="script.js?v=13"></script>
+    <script src="script.js?v=14"></script>
 </body>
 </html>

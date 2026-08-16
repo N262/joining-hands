@@ -1,3 +1,15 @@
+// Global App Access Controller
+// SET "IS_WEBSITE_LOCKED = true" to lock ecosystem apps, and "false" to unlock.
+const IS_WEBSITE_LOCKED = true;
+
+function checkAppLock() {
+    if (typeof IS_WEBSITE_LOCKED !== 'undefined' && IS_WEBSITE_LOCKED) {
+        showView("locked-view");
+        return true;
+    }
+    return false;
+}
+
 // Global State & Data Store
 let isProLoggedIn = false;
 let selectedImageFile = null;
@@ -368,6 +380,7 @@ function returnToLanding() {
 }
 
 function openLinkedinClone() {
+    if (checkAppLock()) return;
     showView("pro-network-view");
     if (isProLoggedIn) {
         showProStage("pro-main-stage");
@@ -377,6 +390,7 @@ function openLinkedinClone() {
 }
 
 function openInstagramClone() {
+    if (checkAppLock()) return;
     showView("insta-view");
 }
 
@@ -3335,6 +3349,7 @@ function playSingleBeep(freq, gainVal, duration) {
 
 // Show view controller trigger
 async function openRapidoClone() {
+    if (checkAppLock()) return;
     showView("rapido-view");
     
     const token = localStorage.getItem("pro_auth_token");
