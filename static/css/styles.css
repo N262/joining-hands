@@ -67,7 +67,7 @@ body {
 }
 
 #landing-view {
-    background-color: #ffffff !important;
+    background-color: #fafafa !important;
     position: relative;
 }
 
@@ -6270,66 +6270,59 @@ input:checked + .slider:before {
     }
 }
 
-/* Water Drops Lake Ripple Effect */
-.water-ripples-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    pointer-events: none;
-    z-index: 1;
-}
-
-.water-ripple {
-    position: absolute;
+/* Water Drops Lake Ripple Effect (Automatic Commuting Waves) */
+.lake-waves-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
     transform: translate(-50%, -50%);
+    width: 100vw;
+    height: 100vh;
     pointer-events: none;
-    z-index: 1;
+    z-index: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: visible;
 }
 
-.ripple-ring {
+.lake-wave-ring {
     position: absolute;
     border-radius: 50%;
-    border: 1.5px solid rgba(124, 58, 237, 0.22); /* Violet saffron theme blend */
-    box-shadow: 0 0 8px rgba(124, 58, 237, 0.08),
-                inset 0 0 8px rgba(124, 58, 237, 0.04);
-    transform: translate(-50%, -50%) scale(0);
+    border: 1.5px solid rgba(124, 58, 237, 0.08); /* Extremely subtle violet */
+    box-shadow: 0 0 20px rgba(124, 58, 237, 0.03),
+                inset 0 0 20px rgba(255, 119, 0, 0.03); /* Extremely subtle saffron */
+    width: 0;
+    height: 0;
     opacity: 0;
-    animation: rippleRingExpand 3.8s cubic-bezier(0.1, 0.45, 0.1, 1) forwards;
+    animation: lakeWavePulse 12s cubic-bezier(0.1, 0.45, 0.1, 1) infinite;
 }
 
-.ripple-ring:nth-child(2) {
-    border-color: rgba(255, 119, 0, 0.16); /* Kesari Saffron second ring */
-    animation-delay: 0.35s;
-    animation-duration: 3.45s;
-}
+.lake-wave-ring:nth-child(1) { animation-delay: 0s; }
+.lake-wave-ring:nth-child(2) { animation-delay: 3s; }
+.lake-wave-ring:nth-child(3) { animation-delay: 6s; }
+.lake-wave-ring:nth-child(4) { animation-delay: 9s; }
 
-.ripple-ring:nth-child(3) {
-    border-color: rgba(124, 58, 237, 0.1); /* Violet third ring */
-    animation-delay: 0.7s;
-    animation-duration: 3.1s;
-}
-
-@keyframes rippleRingExpand {
+@keyframes lakeWavePulse {
     0% {
-        width: 10px;
-        height: 10px;
-        opacity: 0.75;
-        transform: translate(-50%, -50%) scale(0.1);
+        width: 100px;
+        height: 100px;
+        opacity: 0;
+        transform: scale(0.1);
+        border-width: 3px;
     }
-    10% {
-        opacity: 0.75;
+    8% {
+        opacity: 0.85; /* Fade in smoothly */
     }
     50% {
-        opacity: 0.35;
+        opacity: 0.45;
     }
     100% {
-        width: 480px;
-        height: 480px;
+        width: 220vw;
+        height: 220vw;
         opacity: 0;
-        transform: translate(-50%, -50%) scale(1);
+        transform: scale(1);
+        border-width: 0.5px;
     }
 }
 
