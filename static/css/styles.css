@@ -343,7 +343,7 @@ body {
     right: auto;
     width: 20%;
     max-width: 20vw;
-    height: 50vh;
+    height: 70vh;
     background: #ffffff;
     box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.08);
     border-bottom-right-radius: 24px;
@@ -361,7 +361,7 @@ body {
     .landing-sidebar-drawer {
         width: 70%;
         max-width: 70vw;
-        height: 50vh;
+        height: 70vh;
     }
 }
 
@@ -6348,41 +6348,38 @@ input:checked + .slider:before {
    VERSION 2 MENU REDESIGN STYLING (ACTIVE STATES & MINI 3D TILES)
    ========================================================================== */
 
-/* Menu Active Page Transitions (Content goes down and blurs slightly) */
+/* Menu Active Page Transitions (Content goes down, clear background - no blur) */
 #landing-view.menu-active .hero-text-wrap {
     transform: translateY(180px);
-    opacity: 0.1;
-    filter: blur(5px);
+    opacity: 0.15;
     pointer-events: none;
 }
 
 #landing-view.menu-active .apps-hub-wrap {
     transform: translateY(130px);
-    opacity: 0.15;
-    filter: blur(5px);
+    opacity: 0.2;
     pointer-events: none;
 }
 
 .landing-about-reveal {
-    position: absolute;
-    top: 60px;
-    left: 50%;
+    position: fixed;
+    top: 22vh;
+    left: 50vw;
     transform: translate(-50%, -40px);
-    width: 90%;
+    width: 55vw;
     max-width: 650px;
     text-align: center;
     opacity: 0;
     pointer-events: none;
     transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
                 left 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-                opacity 0.8s ease, 
-                filter 0.8s ease;
-    z-index: 100;
+                opacity 0.8s ease;
+    z-index: 1000;
 }
 
 #landing-view.menu-active .landing-about-reveal {
     opacity: 1;
-    left: 60%;
+    left: 60vw;
     transform: translate(-50%, 0);
     pointer-events: all;
 }
