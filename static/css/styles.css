@@ -978,19 +978,22 @@ body {
 .glass-ribbon {
     position: absolute;
     border-radius: 40% 60% 60% 40% / 40% 40% 60% 60%;
-    backdrop-filter: blur(28px) saturate(180%);
-    -webkit-backdrop-filter: blur(28px) saturate(180%);
-    border: 1.5px solid rgba(255, 255, 255, 0.45);
-    box-shadow: inset 0 1px 3px rgba(255, 255, 255, 0.5), 
-                0 15px 35px rgba(124, 58, 237, 0.1);
-    opacity: 0.75;
+    backdrop-filter: blur(28px) saturate(190%);
+    -webkit-backdrop-filter: blur(28px) saturate(190%);
+    border: 1.8px solid rgba(255, 255, 255, 0.65);
+    box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.7), 
+                inset 0 -2px 4px rgba(0, 0, 0, 0.05),
+                0 20px 40px rgba(109, 40, 217, 0.12);
+    opacity: 0.82;
     will-change: transform, border-radius;
 }
 
 .glass-ribbon--1 {
     width: 600px;
     height: 600px;
-    background: linear-gradient(135deg, rgba(59, 130, 246, 0.25) 0%, rgba(139, 92, 246, 0.28) 50%, rgba(236, 72, 153, 0.22) 100%);
+    background: 
+        linear-gradient(135deg, rgba(255, 255, 255, 0.5) 0%, transparent 40%),
+        linear-gradient(225deg, rgba(29, 78, 216, 0.38) 0%, rgba(124, 58, 237, 0.42) 45%, rgba(219, 39, 119, 0.35) 80%, rgba(6, 182, 212, 0.22) 100%);
     top: -10%;
     right: -10%;
     animation: morphAndFloat 24s ease-in-out infinite alternate;
@@ -999,7 +1002,9 @@ body {
 .glass-ribbon--2 {
     width: 500px;
     height: 500px;
-    background: linear-gradient(135deg, rgba(139, 92, 246, 0.25) 0%, rgba(236, 72, 153, 0.25) 50%, rgba(249, 115, 22, 0.18) 100%);
+    background: 
+        linear-gradient(135deg, rgba(255, 255, 255, 0.5) 0%, transparent 40%),
+        linear-gradient(225deg, rgba(124, 58, 237, 0.38) 0%, rgba(219, 39, 119, 0.38) 50%, rgba(251, 146, 60, 0.18) 100%);
     bottom: -10%;
     left: -5%;
     animation: morphAndFloat 18s ease-in-out infinite alternate-reverse;
@@ -1008,7 +1013,9 @@ body {
 .glass-ribbon--3 {
     width: 400px;
     height: 400px;
-    background: linear-gradient(135deg, rgba(59, 130, 246, 0.22) 0%, rgba(6, 182, 212, 0.25) 100%);
+    background: 
+        linear-gradient(135deg, rgba(255, 255, 255, 0.5) 0%, transparent 40%),
+        linear-gradient(225deg, rgba(29, 78, 216, 0.32) 0%, rgba(6, 182, 212, 0.38) 100%);
     top: 40%;
     right: 15%;
     animation: morphAndFloat 30s ease-in-out infinite alternate;
