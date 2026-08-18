@@ -322,9 +322,9 @@ body {
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: rgba(15, 23, 42, 0.5);
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
+    background: rgba(15, 23, 42, 0.05); /* Softer overlay so About is fully visible */
+    backdrop-filter: blur(1.5px);
+    -webkit-backdrop-filter: blur(1.5px);
     z-index: 9998;
     opacity: 0;
     visibility: hidden;
@@ -339,18 +339,26 @@ body {
 .landing-sidebar-drawer {
     position: fixed;
     top: 0;
-    right: 0;
-    width: 380px;
-    max-width: 90vw;
+    left: 0;
+    right: auto;
+    width: 50%;
+    max-width: 50%;
     height: 100vh;
     background: #ffffff;
-    box-shadow: -10px 0 35px rgba(0, 0, 0, 0.15);
+    box-shadow: 10px 0 35px rgba(0, 0, 0, 0.12);
     z-index: 9999;
-    transform: translateX(100%);
+    transform: translateX(-100%);
     transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
     display: flex;
     flex-direction: column;
     overflow-y: auto;
+}
+
+@media (max-width: 768px) {
+    .landing-sidebar-drawer {
+        width: 85%;
+        max-width: 85%;
+    }
 }
 
 .landing-sidebar-drawer.active {
@@ -6351,18 +6359,18 @@ input:checked + .slider:before {
     pointer-events: none;
 }
 
-/* About Reveal Section at the Top */
 .landing-about-reveal {
     position: absolute;
     top: 60px;
     left: 50%;
     transform: translate(-50%, -40px);
     width: 90%;
-    max-width: 650px;
+    max-width: 500px;
     text-align: center;
     opacity: 0;
     pointer-events: none;
     transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
+                left 0.8s cubic-bezier(0.16, 1, 0.3, 1),
                 opacity 0.8s ease, 
                 filter 0.8s ease;
     z-index: 100;
@@ -6370,8 +6378,16 @@ input:checked + .slider:before {
 
 #landing-view.menu-active .landing-about-reveal {
     opacity: 1;
+    left: 75%;
     transform: translate(-50%, 0);
     pointer-events: all;
+}
+
+@media (max-width: 992px) {
+    #landing-view.menu-active .landing-about-reveal {
+        opacity: 0;
+        pointer-events: none;
+    }
 }
 
 .about-reveal-title {
