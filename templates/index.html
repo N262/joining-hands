@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- FontAwesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="styles.css?v=31">
+    <link rel="stylesheet" href="styles.css?v=32">
     <!-- Google Identity Services SDK -->
     <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
@@ -79,100 +79,96 @@
                 </div>
 
                 <div class="sidebar-content">
-                    <!-- Section 1: About Us -->
-                    <div class="sidebar-section sidebar-sec-about-styled" id="sidebar-sec-about">
-                        <div class="sidebar-sec-header sidebar-sec-header--about">
-                            <div class="sidebar-sec-title-wrap">
-                                <i class="fa-solid fa-circle-info text-kesari"></i>
-                                <h4>About Our Mission</h4>
+                    <div class="sidebar-apps-headline">Ecosystem Portals</div>
+                    
+                    <div class="sidebar-apps-container">
+                        <!-- 1. D Connect -->
+                        <div class="sidebar-app-tile sidebar-app-tile--d" onclick="closeLandingSidebar(); openLinkedinClone();" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ') { closeLandingSidebar(); openLinkedinClone(); }">
+                            <div class="tile-3d-body-mini">
+                                <div class="tile-3d-raised-mini">
+                                    <div class="tile-3d-circle-mini">
+                                        <svg class="tile-symbol-svg-mini" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <g stroke="#ffffff" stroke-width="8.5" stroke-linecap="round" stroke-linejoin="round">
+                                                <path d="M 50 14 L 50 86" />
+                                                <path d="M 14 50 L 86 50" />
+                                                <path d="M 50 14 L 84 14" />
+                                                <path d="M 86 50 L 86 84" />
+                                                <path d="M 50 86 L 16 86" />
+                                                <path d="M 14 50 L 14 16" />
+                                            </g>
+                                            <circle cx="32" cy="32" r="3.5" fill="#ffffff" />
+                                            <circle cx="68" cy="32" r="3.5" fill="#ffffff" />
+                                            <circle cx="32" cy="68" r="3.5" fill="#ffffff" />
+                                            <circle cx="68" cy="68" r="3.5" fill="#ffffff" />
+                                        </svg>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="sidebar-sec-actions">
-                                <span class="about-typing-badge" id="aboutTypingBadge"><span class="typing-pulse-dot"></span> Typing...</span>
-                                <button class="sidebar-replay-btn" id="replayAboutTypingBtn" onclick="startAboutTypewriter(true)" title="Replay typing animation" aria-label="Replay typing animation">
-                                    <i class="fa-solid fa-rotate-right"></i>
-                                </button>
+                            <div class="sidebar-app-info">
+                                <strong>D Connect</strong>
+                                <span>Professional Networking</span>
                             </div>
                         </div>
-                        <div class="sidebar-about-typewriter-container" id="sidebarAboutContainer" onclick="fastForwardAboutTypewriter()" title="Click to display full text">
-                            <p class="sidebar-sec-text typographical-about-text" id="sidebarAboutText">
-                                <strong>The Group of Joining Hands</strong> is a purpose-driven community ecosystem devoted to mutual empowerment, cultural unity, and shared social welfare under our sacred motto: <em class="sidebar-typo-motto">“Together Forever”</em>.
-                            </p>
-                        </div>
-                        <div class="sidebar-stats-mini" id="sidebarAboutStats">
-                            <div class="stat-pill"><span class="stat-num">500+</span><span class="stat-lbl">Members</span></div>
-                            <div class="stat-pill"><span class="stat-num">100%</span><span class="stat-lbl">Verified</span></div>
-                        </div>
-                    </div>
 
-                    <!-- Section 2: Ecosystem & Portals -->
-                    <div class="sidebar-section" id="sidebar-sec-ecosystem">
-                        <div class="sidebar-sec-header">
-                            <i class="fa-solid fa-network-wired text-purple"></i>
-                            <h4>Community Portals</h4>
-                        </div>
-                        <ul class="sidebar-nav-list">
-                            <li onclick="closeLandingSidebar(); openLinkedinClone();">
-                                <i class="fa-solid fa-briefcase text-kesari"></i>
-                                <div>
-                                    <strong>ProConnect Portal</strong>
-                                    <span>Career networking & opportunities</span>
+                        <!-- 2. H Rides -->
+                        <div class="sidebar-app-tile sidebar-app-tile--h" onclick="closeLandingSidebar(); openRapidoClone();" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ') { closeLandingSidebar(); openRapidoClone(); }">
+                            <div class="tile-3d-body-mini">
+                                <div class="tile-3d-raised-mini">
+                                    <div class="tile-3d-circle-mini">
+                                        <span class="tile-letter-mini">H</span>
+                                    </div>
                                 </div>
-                                <i class="fa-solid fa-chevron-right arrow-icon"></i>
-                            </li>
-                            <li onclick="closeLandingSidebar(); openInstagramClone();">
-                                <i class="fa-solid fa-camera-retro text-purple"></i>
-                                <div>
-                                    <strong>GramConnect Portal</strong>
-                                    <span>Visual stories & community moments</span>
+                            </div>
+                            <div class="sidebar-app-info">
+                                <strong>H Rides</strong>
+                                <span>Ride Booking Portal</span>
+                            </div>
+                        </div>
+
+                        <!-- 3. I Initiatives -->
+                        <div class="sidebar-app-tile sidebar-app-tile--i" onclick="closeLandingSidebar(); openLinkedinClone();" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ') { closeLandingSidebar(); openLinkedinClone(); }">
+                            <div class="tile-3d-body-mini">
+                                <div class="tile-3d-raised-mini">
+                                    <div class="tile-3d-circle-mini">
+                                        <span class="tile-letter-mini">I</span>
+                                    </div>
                                 </div>
-                                <i class="fa-solid fa-chevron-right arrow-icon"></i>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <!-- Section: Investor Relations -->
-                    <div class="sidebar-section" id="sidebar-sec-investors">
-                        <div class="sidebar-sec-header">
-                            <i class="fa-solid fa-chart-line text-purple"></i>
-                            <h4>Investor Relations</h4>
+                            </div>
+                            <div class="sidebar-app-info">
+                                <strong>I Initiatives</strong>
+                                <span>Youth & Welfare</span>
+                            </div>
                         </div>
-                        <ul class="sidebar-nav-list">
-                            <li onclick="closeLandingSidebar(); window.open('/presentation', '_blank');">
-                                <i class="fa-solid fa-file-powerpoint text-kesari"></i>
-                                <div>
-                                    <strong>Investor Deck</strong>
-                                    <span>Interactive 10-Slide Pitch</span>
+
+                        <!-- 4. P Connect -->
+                        <div class="sidebar-app-tile sidebar-app-tile--p" onclick="closeLandingSidebar(); openLinkedinClone();" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ') { closeLandingSidebar(); openLinkedinClone(); }">
+                            <div class="tile-3d-body-mini">
+                                <div class="tile-3d-raised-mini">
+                                    <div class="tile-3d-circle-mini">
+                                        <span class="tile-letter-mini">P</span>
+                                    </div>
                                 </div>
-                                <i class="fa-solid fa-arrow-up-right-from-square arrow-icon" style="margin-left: auto; color: var(--text-muted); font-size: 0.85rem;"></i>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <!-- Section 3: Community Initiatives & Events -->
-                    <div class="sidebar-section" id="sidebar-sec-initiatives">
-                        <div class="sidebar-sec-header">
-                            <i class="fa-solid fa-hands-holding-circle text-kesari"></i>
-                            <h4>Initiatives & Programs</h4>
+                            </div>
+                            <div class="sidebar-app-info">
+                                <strong>P Connect</strong>
+                                <span>Career Hub</span>
+                            </div>
                         </div>
-                        <ul class="sidebar-feature-list">
-                            <li><i class="fa-solid fa-check text-green"></i> Cultural & Youth Empowerment</li>
-                            <li><i class="fa-solid fa-check text-green"></i> Community Outreach & Welfare</li>
-                            <li><i class="fa-solid fa-check text-green"></i> Knowledge & Skill Exchange</li>
-                        </ul>
-                    </div>
 
-                    <!-- Section 4: Contact & Support -->
-                    <div class="sidebar-section" id="sidebar-sec-contact">
-                        <div class="sidebar-sec-header">
-                            <i class="fa-solid fa-envelope-open-text text-purple"></i>
-                            <h4>Reach Out</h4>
+                        <!-- 5. E GramConnect -->
+                        <div class="sidebar-app-tile sidebar-app-tile--e" onclick="closeLandingSidebar(); openInstagramClone();" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ') { closeLandingSidebar(); openInstagramClone(); }">
+                            <div class="tile-3d-body-mini">
+                                <div class="tile-3d-raised-mini">
+                                    <div class="tile-3d-circle-mini">
+                                        <span class="tile-letter-mini">E</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="sidebar-app-info">
+                                <strong>E Media</strong>
+                                <span>GramConnect Stories</span>
+                            </div>
                         </div>
-                        <p class="sidebar-contact-line">
-                            <i class="fa-solid fa-at"></i> <span>contact@joininghands.org</span>
-                        </p>
-                        <p class="sidebar-contact-line">
-                            <i class="fa-solid fa-location-dot"></i> <span>Bengaluru, Karnataka, India</span>
-                        </p>
                     </div>
                 </div>
 
@@ -187,6 +183,15 @@
 
             <!-- Main Hero & Ecosystem Container -->
             <div class="container hero-container">
+                <!-- Revealed About Us Description (Fades in when Menu is active) -->
+                <div class="landing-about-reveal">
+                    <h3 class="about-reveal-title">Our Vision & Mission</h3>
+                    <p class="about-reveal-desc">
+                        The Group of Joining Hands is a community initiative for social welfare, empowerment, and networking. 
+                        We build state-of-the-art platforms to connect youth, support professionals, and empower citizens across the globe.
+                    </p>
+                </div>
+
                 <div class="hero-text-wrap">
                     <!-- Main Purple Title Heading -->
                     <h1 class="hero-main-title">The Group of Joining Hands</h1>
@@ -1836,6 +1841,6 @@
     <!-- TOAST NOTIFICATION CONTAINER -->
     <div id="toastContainer"></div>
 
-    <script src="script.js?v=18"></script>
+    <script src="script.js?v=19"></script>
 </body>
 </html>

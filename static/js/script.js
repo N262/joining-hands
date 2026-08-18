@@ -335,8 +335,10 @@ function fastForwardAboutTypewriter() {
 function openLandingSidebar() {
     const drawer = document.getElementById("landingSidebarDrawer");
     const backdrop = document.getElementById("landingSidebarBackdrop");
+    const landingView = document.getElementById("landing-view");
     if (drawer) drawer.classList.add("active");
     if (backdrop) backdrop.classList.add("active");
+    if (landingView) landingView.classList.add("menu-active");
     document.body.style.overflow = "hidden";
 
     // Trigger real-time typographical typewriter on opening
@@ -346,8 +348,10 @@ function openLandingSidebar() {
 function closeLandingSidebar() {
     const drawer = document.getElementById("landingSidebarDrawer");
     const backdrop = document.getElementById("landingSidebarBackdrop");
+    const landingView = document.getElementById("landing-view");
     if (drawer) drawer.classList.remove("active");
     if (backdrop) backdrop.classList.remove("active");
+    if (landingView) landingView.classList.remove("menu-active");
     document.body.style.overflow = "";
 
     // Clear active typewriter
