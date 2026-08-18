@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- FontAwesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="styles.css?v=17">
+    <link rel="stylesheet" href="styles.css?v=25">
     <!-- Google Identity Services SDK -->
     <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
@@ -22,41 +22,33 @@
         <!-- Top Hero Section (Pure White Background) -->
         <section class="hero-section">
             
-            <!-- SINGLE HORIZONTAL INFINITE MARQUEE VIEWPORT -->
-            <div class="marquee-viewport" aria-label="The Group of Joining Hands Marquee">
-                <div class="marquee-track">
-                    <!-- Content Copy 1 -->
-                    <div class="marquee-content">
-                        <span class="marquee-text">The Group of Joining Hands</span>
-                        <span class="marquee-star">★</span>
-                        <span class="marquee-text">The Group of Joining Hands</span>
-                        <span class="marquee-star">★</span>
-                        <span class="marquee-text">The Group of Joining Hands</span>
-                        <span class="marquee-star">★</span>
-                        <span class="marquee-text">The Group of Joining Hands</span>
-                        <span class="marquee-star">★</span>
-                    </div>
-                    <!-- Identical Duplicate Copy 2 (aria-hidden) -->
-                    <div class="marquee-content" aria-hidden="true">
-                        <span class="marquee-text">The Group of Joining Hands</span>
-                        <span class="marquee-star">★</span>
-                        <span class="marquee-text">The Group of Joining Hands</span>
-                        <span class="marquee-star">★</span>
-                        <span class="marquee-text">The Group of Joining Hands</span>
-                        <span class="marquee-star">★</span>
-                        <span class="marquee-text">The Group of Joining Hands</span>
-                        <span class="marquee-star">★</span>
-                    </div>
-                </div>
+            <!-- BACKGROUND MESH GRID & ANIMATED GLASS RIBBONS -->
+            <div class="landing-bg-animation-container">
+                <div class="grid-mesh-overlay"></div>
+                <div class="glass-ribbon glass-ribbon--1"></div>
+                <div class="glass-ribbon glass-ribbon--2"></div>
+                <div class="glass-ribbon glass-ribbon--3"></div>
+                <div class="ambient-orb ambient-orb--1"></div>
+                <div class="ambient-orb ambient-orb--2"></div>
             </div>
 
-            <!-- HERO BUTTON TOOLBAR (Sidebar Navigation Trigger) -->
-            <div class="hero-toolbar hero-toolbar--single">
-                <button class="hero-pill-btn hero-pill-btn--menu" id="landingMenuBtn" onclick="toggleLandingSidebar()" aria-label="Open Navigation Menu">
-                    <i class="fa-solid fa-bars-staggered"></i>
-                    <span>Menu</span>
-                </button>
-            </div>
+
+
+            <!-- PREMIUM TOP STICKY NAVBAR -->
+            <header class="landing-navbar">
+                <div class="landing-navbar-inner">
+                    <div class="landing-nav-logo" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+                        <i class="fa-solid fa-handshake-angle text-purple"></i>
+                        <span>Joining Hands</span>
+                    </div>
+                    <div class="landing-nav-right">
+                        <button class="hero-pill-btn hero-pill-btn--menu" id="landingMenuBtn" onclick="toggleLandingSidebar()" aria-label="Open Navigation Menu">
+                            <i class="fa-solid fa-bars-staggered"></i>
+                            <span>Menu</span>
+                        </button>
+                    </div>
+                </div>
+            </header>
 
             <!-- SLIDING SIDEBAR NAVIGATION DRAWER & BACKDROP -->
             <div class="landing-sidebar-backdrop" id="landingSidebarBackdrop" onclick="closeLandingSidebar()"></div>
@@ -180,12 +172,13 @@
 
             <!-- Main Hero & Ecosystem Container -->
             <div class="container hero-container">
-                
-                <!-- Main Purple Title Heading -->
-                <h1 class="hero-main-title">The Group of Joining Hands</h1>
+                <div class="hero-text-wrap">
+                    <!-- Main Purple Title Heading -->
+                    <h1 class="hero-main-title">The Group of Joining Hands</h1>
 
-                <!-- Slogan -->
-                <p class="hero-slogan">Together Forever</p>
+                    <!-- Slogan "Together Forever" in elegant serif/italic typography -->
+                    <p class="hero-slogan">Together Forever</p>
+                </div>
 
                 <!-- Ecosystem Application Cards Hub (Brought to the top) -->
                 <div class="apps-hub-wrap" id="appsSection">
@@ -1825,6 +1818,6 @@
     <!-- TOAST NOTIFICATION CONTAINER -->
     <div id="toastContainer"></div>
 
-    <script src="script.js?v=14"></script>
+    <script src="script.js?v=15"></script>
 </body>
 </html>
