@@ -902,10 +902,49 @@ body {
     color: #1e1b4b;
     font-style: italic;
     margin-bottom: 24px;
-    letter-spacing: 0.04em;
     opacity: 0;
-    transform: translateY(15px);
-    animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
+    animation: expandLetterSpacing 1.8s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards;
+}
+
+@keyframes expandLetterSpacing {
+    from {
+        letter-spacing: 0.02em;
+        opacity: 0;
+        filter: blur(5px);
+        transform: translateY(10px);
+    }
+    to {
+        letter-spacing: 0.16em;
+        opacity: 1;
+        filter: blur(0);
+        transform: translateY(0);
+    }
+}
+
+.hero-text-wrap {
+    text-align: center;
+    position: relative;
+    z-index: 10;
+    margin-bottom: 30px;
+    margin-top: 50px;
+}
+
+.premium-separator {
+    width: 1px;
+    height: 60px;
+    background: linear-gradient(180deg, rgba(124, 58, 237, 0.4) 0%, rgba(255, 119, 0, 0) 100%);
+    margin: 40px auto 20px;
+    opacity: 0;
+    transform: scaleY(0);
+    transform-origin: top;
+    animation: growSeparator 1.5s cubic-bezier(0.16, 1, 0.3, 1) 1.2s forwards;
+}
+
+@keyframes growSeparator {
+    to {
+        opacity: 1;
+        transform: scaleY(1);
+    }
 }
 
 /* MICROSOFT-STYLE GLASSMORPHISM BACKGROUND & HERO SECTION */
@@ -1453,7 +1492,18 @@ body {
 }
 
 .ecosystem-tile:hover .tile-3d-raised {
-    transform: translateZ(18px);
+    transform: translateZ(24px) scale(1.03);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.ecosystem-tile:hover .tile-symbol-svg {
+    transform: translateZ(12px) scale(1.08) rotate(6deg);
+    transition: transform 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.ecosystem-tile:hover .tile-letter {
+    transform: translateZ(12px) scale(1.08) rotate(-6deg);
+    transition: transform 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 /* Click / Active: Physical Button Depressed Inward Motion */
