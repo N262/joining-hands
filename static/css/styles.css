@@ -6270,4 +6270,67 @@ input:checked + .slider:before {
     }
 }
 
+/* Water Drops Lake Ripple Effect */
+.water-ripples-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.water-ripple {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.ripple-ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 1.5px solid rgba(124, 58, 237, 0.22); /* Violet saffron theme blend */
+    box-shadow: 0 0 8px rgba(124, 58, 237, 0.08),
+                inset 0 0 8px rgba(124, 58, 237, 0.04);
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+    animation: rippleRingExpand 3.8s cubic-bezier(0.1, 0.45, 0.1, 1) forwards;
+}
+
+.ripple-ring:nth-child(2) {
+    border-color: rgba(255, 119, 0, 0.16); /* Kesari Saffron second ring */
+    animation-delay: 0.35s;
+    animation-duration: 3.45s;
+}
+
+.ripple-ring:nth-child(3) {
+    border-color: rgba(124, 58, 237, 0.1); /* Violet third ring */
+    animation-delay: 0.7s;
+    animation-duration: 3.1s;
+}
+
+@keyframes rippleRingExpand {
+    0% {
+        width: 10px;
+        height: 10px;
+        opacity: 0.75;
+        transform: translate(-50%, -50%) scale(0.1);
+    }
+    10% {
+        opacity: 0.75;
+    }
+    50% {
+        opacity: 0.35;
+    }
+    100% {
+        width: 480px;
+        height: 480px;
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
 
