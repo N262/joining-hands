@@ -10,6 +10,21 @@ function checkAppLock() {
     return false;
 }
 
+// Branded Intro Loader Fade-Out Hook
+window.addEventListener('DOMContentLoaded', () => {
+    const loader = document.getElementById('intro-loader');
+    if (loader) {
+        // Guarantee the loader is visible for at least 1.8s for premium visual flow
+        setTimeout(() => {
+            loader.classList.add('fade-out');
+            // Remove from DOM after transition completes to preserve memory and interaction
+            setTimeout(() => {
+                loader.remove();
+            }, 800);
+        }, 1800);
+    }
+});
+
 // Global State & Data Store
 let isProLoggedIn = false;
 let selectedImageFile = null;
