@@ -7029,63 +7029,88 @@ input:checked + .slider:before {
 }
 
 /* ==========================================================================
-   VERTICAL M-E-N-U BOXES TRIGGER
+   SINGLE 3D MENU CARD TRIGGER
    ========================================================================== */
 
-.vertical-menu-trigger {
+.vertical-menu-trigger.ecosystem-tile--menu {
     position: fixed;
     top: 90px;
     left: 24px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+    width: 100px;
+    height: 100px;
     cursor: pointer;
     z-index: 1000;
     user-select: none;
+    opacity: 1;
+    transform: none;
+    animation: none;
 }
 
-.menu-box {
-    width: 44px;
-    height: 44px;
-    border-radius: 10px;
-    background: rgba(255, 255, 255, 0.72);
-    border: 1.5px solid rgba(124, 58, 237, 0.22);
-    color: #6d28d9;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: var(--font-heading);
-    font-size: 1.15rem;
-    font-weight: 800;
-    box-shadow: 0 4px 10px rgba(124, 58, 237, 0.08);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.15);
+.vertical-menu-trigger.ecosystem-tile--menu .tile-3d-body {
+    border-radius: 22px;
+    background: linear-gradient(145deg, #7c3aed 0%, #5b21b6 100%);
+    box-shadow: 0 8px 20px rgba(124, 58, 237, 0.22),
+                inset 0 2px 4px rgba(255, 255, 255, 0.4),
+                inset 0 -2px 4px rgba(0, 0, 0, 0.2);
 }
 
-/* Staggered slide out on hover */
-.vertical-menu-trigger:hover .menu-box {
-    background: #ffffff;
-    border-color: #7c3aed;
-    color: #7c3aed;
-    transform: translateX(4px);
-    box-shadow: 0 6px 14px rgba(124, 58, 237, 0.16);
+.vertical-menu-trigger.ecosystem-tile--menu .tile-3d-raised {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    transform: translateZ(12px);
+    background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%);
+    box-shadow: 0 4px 10px rgba(124, 58, 237, 0.25),
+                inset 0 2px 3px rgba(255, 255, 255, 0.35);
 }
 
-.vertical-menu-trigger:hover .menu-box:nth-child(2) { transition-delay: 0.04s; }
-.vertical-menu-trigger:hover .menu-box:nth-child(3) { transition-delay: 0.08s; }
-.vertical-menu-trigger:hover .menu-box:nth-child(4) { transition-delay: 0.12s; }
+.vertical-menu-trigger.ecosystem-tile--menu .tile-3d-circle {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.3),
+                inset 0 -2px 3px rgba(255, 255, 255, 0.2);
+}
+
+.menu-tile-text {
+    font-family: 'Plus Jakarta Sans', var(--font-heading), sans-serif;
+    font-size: 0.85rem;
+    font-weight: 900;
+    letter-spacing: 0.04em;
+    color: #ffffff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    transform: translateZ(6px);
+    pointer-events: none;
+}
+
+/* Hover and active states */
+.vertical-menu-trigger.ecosystem-tile--menu:hover .tile-3d-body {
+    transform: translateY(-4px) rotateY(-5deg);
+    box-shadow: 0 12px 28px rgba(124, 58, 237, 0.35);
+}
+
+.vertical-menu-trigger.ecosystem-tile--menu:active .tile-3d-body {
+    transform: translateY(1px);
+    box-shadow: 0 4px 10px rgba(124, 58, 237, 0.15);
+}
 
 @media (max-width: 768px) {
-    .vertical-menu-trigger {
+    .vertical-menu-trigger.ecosystem-tile--menu {
         top: 80px;
         left: 16px;
+        width: 80px;
+        height: 80px;
     }
-    .menu-box {
-        width: 38px;
-        height: 38px;
-        font-size: 0.95rem;
-        border-radius: 8px;
+    .vertical-menu-trigger.ecosystem-tile--menu .tile-3d-raised {
+        width: 58px;
+        height: 58px;
+    }
+    .vertical-menu-trigger.ecosystem-tile--menu .tile-3d-circle {
+        width: 48px;
+        height: 48px;
+    }
+    .menu-tile-text {
+        font-size: 0.72rem;
     }
 }
 
