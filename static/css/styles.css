@@ -880,15 +880,21 @@ body {
 
 
 @media (max-width: 1024px) {
-    .hero-main-title {
+    .hero-main-title,
+    .divider-slogan {
         font-size: 2.7rem;
+    }
+    .hero-main-title {
         margin-bottom: 22px;
     }
 }
 
 @media (max-width: 768px) {
-    .hero-main-title {
+    .hero-main-title,
+    .divider-slogan {
         font-size: 2.0rem;
+    }
+    .hero-main-title {
         margin-bottom: 18px;
     }
 }
@@ -1640,14 +1646,19 @@ body {
 }
 
 .divider-slogan {
-    font-family: var(--font-slogan);
-    font-size: 2rem;
-    font-weight: 600;
-    color: #1e1b4b;
-    font-style: italic;
-    line-height: 1;
+    font-family: var(--font-heading);
+    font-size: 3.4rem;
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    line-height: 1.15;
+    background: linear-gradient(135deg, #7c3aed 0%, #4f46e5 35%, #ea580c 75%, #ff7700 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 4px 16px rgba(124, 58, 237, 0.15));
     opacity: 0;
-    animation: expandLetterSpacing 1.8s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards;
+    animation: fadeInUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards,
+               midnightBlueShimmer 5s ease-in-out infinite alternate;
 }
 
 /* ==========================================================================
@@ -6809,7 +6820,9 @@ input:checked + .slider:before {
 #landing-view.theme-midnight .divider-slogan,
 #landing-view.theme-deepsea .divider-slogan,
 #landing-view.theme-darkflow .divider-slogan {
-    color: #e2e8f0 !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    text-shadow: 0 4px 20px rgba(124, 58, 237, 0.4) !important;
 }
 
 #landing-view.theme-midnight .about-reveal-title,
@@ -7319,4 +7332,25 @@ input:checked + .slider:before {
 .ecosystem-tile .tile-letter,
 .ecosystem-tile .tile-symbol-svg {
     display: none !important;
+}
+
+/* Vertical Editorial Pointers */
+.editorial-pointer {
+    width: 1.5px;
+    height: 30px;
+    background: linear-gradient(180deg, var(--theme-divider-color) 0%, var(--theme-divider-color) 100%);
+    margin: 0 auto;
+    opacity: 0.6;
+    transform-origin: top;
+    transition: background 0.5s ease, opacity 0.5s ease;
+}
+
+.editorial-pointer--top {
+    margin-bottom: 24px;
+    margin-top: -24px;
+}
+
+.editorial-pointer--bottom {
+    margin-top: 24px;
+    margin-bottom: -24px;
 }
