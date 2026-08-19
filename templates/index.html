@@ -110,10 +110,7 @@
             <header class="landing-navbar">
                 <div class="landing-navbar-inner">
                     <div class="landing-nav-left">
-                        <button class="hero-pill-btn hero-pill-btn--menu" id="landingMenuBtn" onclick="toggleLandingSidebar()" aria-label="Open Navigation Menu">
-                            <i class="fa-solid fa-bars-staggered"></i>
-                            <span>Menu</span>
-                        </button>
+                        <!-- Header Menu Button Removed -->
                     </div>
                     <div class="landing-nav-right">
                         <button class="hero-pill-btn hero-pill-btn--ai" id="landingAiBtn" onclick="openLinkedinClone()" aria-label="Our AI Portal">
@@ -123,6 +120,14 @@
                     </div>
                 </div>
             </header>
+
+            <!-- Vertical M-E-N-U Boxes Trigger -->
+            <div class="vertical-menu-trigger" onclick="toggleLandingSidebar()" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ') { toggleLandingSidebar(); }" aria-label="Open Navigation Menu">
+                <div class="menu-box">M</div>
+                <div class="menu-box">E</div>
+                <div class="menu-box">N</div>
+                <div class="menu-box">U</div>
+            </div>
 
             <!-- SLIDING SIDEBAR NAVIGATION DRAWER & BACKDROP -->
             <div class="landing-sidebar-backdrop" id="landingSidebarBackdrop" onclick="closeLandingSidebar()"></div>

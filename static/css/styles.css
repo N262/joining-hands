@@ -6924,4 +6924,64 @@ input:checked + .slider:before {
     }
 }
 
+/* ==========================================================================
+   VERTICAL M-E-N-U BOXES TRIGGER
+   ========================================================================== */
+
+.vertical-menu-trigger {
+    position: fixed;
+    top: 90px;
+    left: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    cursor: pointer;
+    z-index: 1000;
+    user-select: none;
+}
+
+.menu-box {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.72);
+    border: 1.5px solid rgba(124, 58, 237, 0.22);
+    color: #6d28d9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-heading);
+    font-size: 0.95rem;
+    font-weight: 800;
+    box-shadow: 0 4px 10px rgba(124, 58, 237, 0.08);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.15);
+}
+
+/* Staggered slide out on hover */
+.vertical-menu-trigger:hover .menu-box {
+    background: #ffffff;
+    border-color: #7c3aed;
+    color: #7c3aed;
+    transform: translateX(4px);
+    box-shadow: 0 6px 14px rgba(124, 58, 237, 0.16);
+}
+
+.vertical-menu-trigger:hover .menu-box:nth-child(2) { transition-delay: 0.04s; }
+.vertical-menu-trigger:hover .menu-box:nth-child(3) { transition-delay: 0.08s; }
+.vertical-menu-trigger:hover .menu-box:nth-child(4) { transition-delay: 0.12s; }
+
+@media (max-width: 768px) {
+    .vertical-menu-trigger {
+        top: 80px;
+        left: 16px;
+    }
+    .menu-box {
+        width: 32px;
+        height: 32px;
+        font-size: 0.85rem;
+    }
+}
+
 
