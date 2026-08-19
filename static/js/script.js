@@ -4935,4 +4935,384 @@ function initRapidoCaptainMap() {
     drawCaptainMap();
 }
 
+// ==========================================================================
+// 10 BACKGROUND THEMES ENGINE
+// ==========================================================================
+
+let activeTheme = "water";
+let themeAnimationIds = {};
+let canvasElements = {};
+let canvasContexts = {};
+
+// Initialize theme switcher on DOM load
+document.addEventListener("DOMContentLoaded", () => {
+    // Make sure default active theme class is set
+    const landingView = document.getElementById("landing-view");
+    if (landingView && !landingView.classList.contains("theme-water")) {
+        landingView.classList.add("theme-water");
+    }
+
+    // Set up canvas elements and listeners
+    const themeCanvases = ["grid3dCanvas", "neuralCanvas", "goldCanvas", "zenCanvas", "fluidCanvas", "digitalCanvas"];
+    themeCanvases.forEach(id => {
+        const canvas = document.getElementById(id);
+        if (canvas) {
+            canvasElements[id] = canvas;
+            canvasContexts[id] = canvas.getContext("2d");
+            resizeThemeCanvas(canvas);
+        }
+    });
+
+    window.addEventListener("resize", () => {
+        Object.values(canvasElements).forEach(canvas => resizeThemeCanvas(canvas));
+    });
+
+    // Start background loops
+    initThemeLoops();
+});
+
+function resizeThemeCanvas(canvas) {
+    if (canvas) {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
+}
+
+function switchBackdropTheme(theme) {
+    activeTheme = theme;
+    
+    // Toggle active class on landing view container
+    const landingView = document.getElementById("landing-view");
+    if (landingView) {
+        // Remove all previous theme classes
+        const themes = ["water", "aurora", "grid3d", "ribbon", "spheres", "neural", "gold", "zen", "fluid", "digital"];
+        themes.forEach(t => landingView.classList.remove(`theme-${t}`));
+        landingView.classList.add(`theme-${theme}`);
+    }
+
+    // Update active button indicators in sidebar menu
+    const buttons = document.querySelectorAll(".theme-select-btn");
+    buttons.forEach(btn => {
+        if (btn.getAttribute("data-theme") === theme) {
+            btn.classList.add("active");
+        } else {
+            btn.classList.remove("active");
+        }
+    });
+
+    // Start target loops and resize
+    const canvasId = getCanvasIdForTheme(theme);
+    if (canvasId && canvasElements[canvasId]) {
+        resizeThemeCanvas(canvasElements[canvasId]);
+    }
+}
+
+function getCanvasIdForTheme(theme) {
+    const map = {
+        "grid3d": "grid3dCanvas",
+        "neural": "neuralCanvas",
+        "gold": "goldCanvas",
+        "zen": "zenCanvas",
+        "fluid": "fluidCanvas",
+        "digital": "digitalCanvas"
+    };
+    return map[theme] || null;
+}
+
+function initThemeLoops() {
+    // 1. 3D Grid Mesh Loop
+    let gridRotation = 0;
+    function loopGrid3d() {
+        if (activeTheme === "grid3d") {
+            const ctx = canvasContexts["grid3dCanvas"];
+            const canvas = canvasElements["grid3dCanvas"];
+            if (ctx && canvas) {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.strokeStyle = "rgba(124, 58, 237, 0.04)";
+                ctx.lineWidth = 1.2;
+                
+                const centerX = canvas.width / 2;
+                const centerY = canvas.height / 2;
+                gridRotation += 0.001;
+                
+                // Draw 3D-like rotating grid lines
+                const linesCount = 28;
+                const size = Math.max(canvas.width, canvas.height) * 1.5;
+                
+                ctx.save();
+                ctx.translate(centerX, centerY);
+                ctx.rotate(gridRotation);
+                
+                for (let i = -linesCount; i <= linesCount; i++) {
+                    // X lines
+                    let x = (i * size) / linesCount;
+                    ctx.beginPath();
+                    ctx.moveTo(x, -size);
+                    ctx.lineTo(x, size);
+                    ctx.stroke();
+                    
+                    // Y lines
+                    let y = (i * size) / linesCount;
+                    ctx.beginPath();
+                    ctx.moveTo(-size, y);
+                    ctx.lineTo(size, y);
+                    ctx.stroke();
+                }
+                ctx.restore();
+            }
+        }
+        requestAnimationFrame(loopGrid3d);
+    }
+    loopGrid3d();
+
+    // 2. Neural Constellation Loop
+    const nodes = [];
+    const maxNodes = 45;
+    function initNeuralNodes(canvas) {
+        if (nodes.length > 0) return;
+        for (let i = 0; i < maxNodes; i++) {
+            nodes.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                vx: (Math.random() - 0.5) * 0.45,
+                vy: (Math.random() - 0.5) * 0.45,
+                radius: Math.random() * 2 + 1.5
+            });
+        }
+    }
+
+    function loopNeural() {
+        if (activeTheme === "neural") {
+            const ctx = canvasContexts["neuralCanvas"];
+            const canvas = canvasElements["neuralCanvas"];
+            if (ctx && canvas) {
+                initNeuralNodes(canvas);
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                
+                // Move and draw nodes
+                ctx.fillStyle = "rgba(124, 58, 237, 0.28)";
+                nodes.forEach(node => {
+                    node.x += node.vx;
+                    node.y += node.vy;
+                    
+                    if (node.x < 0 || node.x > canvas.width) node.vx *= -1;
+                    if (node.y < 0 || node.y > canvas.height) node.vy *= -1;
+                    
+                    ctx.beginPath();
+                    ctx.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
+                    ctx.fill();
+                });
+                
+                // Draw link lines
+                ctx.strokeStyle = "rgba(124, 58, 237, 0.05)";
+                ctx.lineWidth = 1;
+                for (let i = 0; i < nodes.length; i++) {
+                    for (let j = i + 1; j < nodes.length; j++) {
+                        const dist = Math.hypot(nodes[i].x - nodes[j].x, nodes[i].y - nodes[j].y);
+                        if (dist < 130) {
+                            ctx.strokeStyle = `rgba(124, 58, 237, ${0.08 * (1 - dist / 130)})`;
+                            ctx.beginPath();
+                            ctx.moveTo(nodes[i].x, nodes[i].y);
+                            ctx.lineTo(nodes[j].x, nodes[j].y);
+                            ctx.stroke();
+                        }
+                    }
+                }
+            }
+        }
+        requestAnimationFrame(loopNeural);
+    }
+    loopNeural();
+
+    // 3. Golden Aura Loop
+    const goldParticles = [];
+    const maxGold = 35;
+    function initGoldParticles(canvas) {
+        if (goldParticles.length > 0) return;
+        for (let i = 0; i < maxGold; i++) {
+            goldParticles.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                vy: -Math.random() * 0.3 - 0.15,
+                vx: (Math.random() - 0.5) * 0.15,
+                size: Math.random() * 4 + 2,
+                opacity: Math.random() * 0.6 + 0.1,
+                fadeRate: Math.random() * 0.005 + 0.002,
+                fadeDirection: Math.random() > 0.5 ? 1 : -1
+            });
+        }
+    }
+
+    function loopGold() {
+        if (activeTheme === "gold") {
+            const ctx = canvasContexts["goldCanvas"];
+            const canvas = canvasElements["goldCanvas"];
+            if (ctx && canvas) {
+                initGoldParticles(canvas);
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                
+                goldParticles.forEach(p => {
+                    p.y += p.vy;
+                    p.x += p.vx;
+                    p.opacity += p.fadeDirection * p.fadeRate;
+                    
+                    if (p.opacity <= 0.1) {
+                        p.fadeDirection = 1;
+                    } else if (p.opacity >= 0.75) {
+                        p.fadeDirection = -1;
+                    }
+                    
+                    if (p.y < 0) {
+                        p.y = canvas.height;
+                        p.x = Math.random() * canvas.width;
+                    }
+                    
+                    ctx.fillStyle = `rgba(255, 186, 0, ${p.opacity * 0.38})`;
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                    ctx.fill();
+                    
+                    // Subtle glowing shadow
+                    ctx.shadowBlur = 8;
+                    ctx.shadowColor = "rgba(255, 186, 0, 0.4)";
+                });
+                ctx.shadowBlur = 0; // Reset shadow
+            }
+        }
+        requestAnimationFrame(loopGold);
+    }
+    loopGold();
+
+    // 4. Zen Torus Rings Loop
+    let zenAngle = 0;
+    function loopZen() {
+        if (activeTheme === "zen") {
+            const ctx = canvasContexts["zenCanvas"];
+            const canvas = canvasElements["zenCanvas"];
+            if (ctx && canvas) {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                
+                const centerX = canvas.width / 2;
+                const centerY = canvas.height / 2;
+                zenAngle += 0.008;
+                
+                ctx.save();
+                ctx.translate(centerX, centerY);
+                
+                // Draw 3 revolving rings with different sizes/tilts
+                const rings = [
+                    { rx: 240, ry: 65, rot: zenAngle, color: "rgba(124, 58, 237, 0.07)" },
+                    { rx: 190, ry: 45, rot: -zenAngle * 0.8, color: "rgba(255, 119, 0, 0.06)" },
+                    { rx: 140, ry: 30, rot: zenAngle * 1.2, color: "rgba(124, 58, 237, 0.09)" }
+                ];
+                
+                rings.forEach(ring => {
+                    ctx.save();
+                    ctx.rotate(ring.rot);
+                    ctx.strokeStyle = ring.color;
+                    ctx.lineWidth = 2.5;
+                    ctx.beginPath();
+                    ctx.ellipse(0, 0, ring.rx, ring.ry, ring.rot / 2, 0, Math.PI * 2);
+                    ctx.stroke();
+                    ctx.restore();
+                });
+                
+                ctx.restore();
+            }
+        }
+        requestAnimationFrame(loopZen);
+    }
+    loopZen();
+
+    // 5. Fluid Flow Field Loop
+    let flowTime = 0;
+    function loopFluid() {
+        if (activeTheme === "fluid") {
+            const ctx = canvasContexts["fluidCanvas"];
+            const canvas = canvasElements["fluidCanvas"];
+            if (ctx && canvas) {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                
+                flowTime += 0.002;
+                ctx.lineWidth = 1.5;
+                
+                // Draw 4 fluid horizontal sine-wave lines
+                const wavesCount = 4;
+                for (let i = 0; i < wavesCount; i++) {
+                    const colorVal = i % 2 === 0 ? "rgba(124, 58, 237, 0.05)" : "rgba(255, 119, 0, 0.04)";
+                    ctx.strokeStyle = colorVal;
+                    ctx.beginPath();
+                    
+                    for (let x = 0; x < canvas.width; x += 15) {
+                        const wavePhase = flowTime * 2 + (x * 0.002) + (i * Math.PI / 2);
+                        const y = canvas.height / 2 + Math.sin(wavePhase) * (140 + i * 30) + Math.cos(flowTime + x * 0.001) * 40;
+                        if (x === 0) {
+                            ctx.moveTo(x, y);
+                        } else {
+                            ctx.lineTo(x, y);
+                        }
+                    }
+                    ctx.stroke();
+                }
+            }
+        }
+        requestAnimationFrame(loopFluid);
+    }
+    loopFluid();
+
+    // 6. Digital Geometric Canvas Loop
+    let pulseGrid = [];
+    const rows = 12;
+    const cols = 20;
+    function initDigitalGrid(canvas) {
+        if (pulseGrid.length > 0) return;
+        const cellW = canvas.width / cols;
+        const cellH = canvas.height / rows;
+        for (let r = 0; r < rows; r++) {
+            for (let c = 0; c < cols; c++) {
+                pulseGrid.push({
+                    x: c * cellW + cellW / 2,
+                    y: r * cellH + cellH / 2,
+                    targetRadius: Math.random() * 3 + 1,
+                    radius: 0.1,
+                    alpha: Math.random() * 0.2 + 0.02,
+                    fadeRate: Math.random() * 0.008 + 0.002,
+                    fadeDir: Math.random() > 0.5 ? 1 : -1
+                });
+            }
+        }
+    }
+
+    function loopDigital() {
+        if (activeTheme === "digital") {
+            const ctx = canvasContexts["digitalCanvas"];
+            const canvas = canvasElements["digitalCanvas"];
+            if (ctx && canvas) {
+                initDigitalGrid(canvas);
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                
+                pulseGrid.forEach(p => {
+                    p.alpha += p.fadeDir * p.fadeRate;
+                    if (p.alpha <= 0.02) {
+                        p.fadeDir = 1;
+                        p.targetRadius = Math.random() * 3 + 1;
+                    } else if (p.alpha >= 0.28) {
+                        p.fadeDir = -1;
+                    }
+                    
+                    // Smoothly size radius with alpha
+                    p.radius = p.targetRadius * (p.alpha * 3);
+                    
+                    ctx.fillStyle = `rgba(16, 185, 129, ${p.alpha * 0.4})`;
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                    ctx.fill();
+                });
+            }
+        }
+        requestAnimationFrame(loopDigital);
+    }
+    loopDigital();
+}
+
 

@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- FontAwesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="styles.css?v=36">
+    <link rel="stylesheet" href="styles.css?v=37">
     <!-- Google Identity Services SDK -->
     <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
@@ -28,7 +28,7 @@
     </div>
 
     <!-- MAIN LANDING PAGE VIEW -->
-    <div id="landing-view" class="view-active">
+    <div id="landing-view" class="view-active theme-water">
 
         <!-- Top Hero Section (Pure White Background) -->
         <section class="hero-section">
@@ -36,18 +36,71 @@
             <!-- BACKGROUND MESH GRID, ANIMATED GLASS RIBBONS & WATER RIPPLES -->
             <div class="landing-bg-animation-container">
                 <div class="grid-mesh-overlay"></div>
-                <div class="glass-ribbon glass-ribbon--1"></div>
-                <div class="glass-ribbon glass-ribbon--2"></div>
-                <div class="glass-ribbon glass-ribbon--3"></div>
-                <div class="ambient-orb ambient-orb--1"></div>
-                <div class="ambient-orb ambient-orb--2"></div>
                 
-                <!-- Automatic Central Lake Waves -->
-                <div class="lake-waves-container">
-                    <div class="lake-wave-ring"></div>
-                    <div class="lake-wave-ring"></div>
-                    <div class="lake-wave-ring"></div>
-                    <div class="lake-wave-ring"></div>
+                <!-- Theme 1: Water Droplets (Default Lake Waves with full Glassmorphism) -->
+                <div class="theme-layer layer--water">
+                    <div class="glass-ribbon glass-ribbon--1"></div>
+                    <div class="glass-ribbon glass-ribbon--2"></div>
+                    <div class="glass-ribbon glass-ribbon--3"></div>
+                    <div class="ambient-orb ambient-orb--1"></div>
+                    <div class="ambient-orb ambient-orb--2"></div>
+                    <div class="lake-waves-container">
+                        <div class="lake-wave-ring"></div>
+                        <div class="lake-wave-ring"></div>
+                        <div class="lake-wave-ring"></div>
+                        <div class="lake-wave-ring"></div>
+                    </div>
+                </div>
+
+                <!-- Theme 2: Aurora Borealis Waves (CSS Animated Gradients) -->
+                <div class="theme-layer layer--aurora">
+                    <div class="aurora-glow aurora-glow--1"></div>
+                    <div class="aurora-glow aurora-glow--2"></div>
+                </div>
+
+                <!-- Theme 3: 3D Grid Mesh (JS Canvas) -->
+                <div class="theme-layer layer--grid3d">
+                    <canvas id="grid3dCanvas"></canvas>
+                </div>
+
+                <!-- Theme 4: Glass Ribbon Morph (Refracted Blob Panels) -->
+                <div class="theme-layer layer--ribbon">
+                    <div class="glass-ribbon glass-ribbon--1"></div>
+                    <div class="glass-ribbon glass-ribbon--2"></div>
+                    <div class="glass-ribbon glass-ribbon--3"></div>
+                </div>
+
+                <!-- Theme 5: Ambient Spheres (Floating 3D Orbs) -->
+                <div class="theme-layer layer--spheres">
+                    <div class="ambient-orb ambient-orb--1"></div>
+                    <div class="ambient-orb ambient-orb--2"></div>
+                    <div class="ambient-orb ambient-orb--3"></div>
+                    <div class="ambient-orb ambient-orb--4"></div>
+                </div>
+
+                <!-- Theme 6: Neural Constellation (JS Canvas) -->
+                <div class="theme-layer layer--neural">
+                    <canvas id="neuralCanvas"></canvas>
+                </div>
+
+                <!-- Theme 7: Golden Aura (Drifting Sparkles Canvas) -->
+                <div class="theme-layer layer--gold">
+                    <canvas id="goldCanvas"></canvas>
+                </div>
+
+                <!-- Theme 8: Zen Torus Rings (JS Canvas / Revolving Rings) -->
+                <div class="theme-layer layer--zen">
+                    <canvas id="zenCanvas"></canvas>
+                </div>
+
+                <!-- Theme 9: Fluid Flow Field Waves (JS Canvas) -->
+                <div class="theme-layer layer--fluid">
+                    <canvas id="fluidCanvas"></canvas>
+                </div>
+
+                <!-- Theme 10: Digital Geometric Canvas (JS Canvas Matrix) -->
+                <div class="theme-layer layer--digital">
+                    <canvas id="digitalCanvas"></canvas>
                 </div>
             </div>
 
@@ -60,6 +113,12 @@
                         <button class="hero-pill-btn hero-pill-btn--menu" id="landingMenuBtn" onclick="toggleLandingSidebar()" aria-label="Open Navigation Menu">
                             <i class="fa-solid fa-bars-staggered"></i>
                             <span>Menu</span>
+                        </button>
+                    </div>
+                    <div class="landing-nav-right">
+                        <button class="hero-pill-btn hero-pill-btn--ai" id="landingAiBtn" onclick="openLinkedinClone()" aria-label="Our AI Portal">
+                            <i class="fa-solid fa-robot"></i>
+                            <span>our AI</span>
                         </button>
                     </div>
                 </div>
@@ -104,10 +163,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="sidebar-app-info">
-                                <strong>D Connect</strong>
-                                <span>Professional Networking</span>
-                            </div>
                         </div>
 
                         <!-- 2. H Rides -->
@@ -118,10 +173,6 @@
                                         <span class="tile-letter-mini">H</span>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="sidebar-app-info">
-                                <strong>H Rides</strong>
-                                <span>Ride Booking Portal</span>
                             </div>
                         </div>
 
@@ -134,10 +185,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="sidebar-app-info">
-                                <strong>I Initiatives</strong>
-                                <span>Youth & Welfare</span>
-                            </div>
                         </div>
 
                         <!-- 4. P Connect -->
@@ -148,10 +195,6 @@
                                         <span class="tile-letter-mini">P</span>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="sidebar-app-info">
-                                <strong>P Connect</strong>
-                                <span>Career Hub</span>
                             </div>
                         </div>
 
@@ -164,10 +207,64 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="sidebar-app-info">
-                                <strong>E Media</strong>
-                                <span>GramConnect Stories</span>
+                        </div>
+
+                        <!-- 6. Bright Orange Tile (Placeholder) -->
+                        <div class="sidebar-app-tile sidebar-app-tile--o" onclick="closeLandingSidebar();" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ') { closeLandingSidebar(); }">
+                            <div class="tile-3d-body-mini">
+                                <div class="tile-3d-raised-mini">
+                                    <div class="tile-3d-circle-mini">
+                                        <span class="tile-letter-mini">O</span>
+                                    </div>
+                                </div>
                             </div>
+                        </div>
+                    </div>
+
+                    <!-- Backdrop Theme Customization Selector -->
+                    <div class="sidebar-themes-section">
+                        <div class="sidebar-themes-headline">Backdrop Theme</div>
+                        <div class="sidebar-themes-grid">
+                            <button class="theme-select-btn active" data-theme="water" onclick="switchBackdropTheme('water')" title="Water Droplets">
+                                <span class="theme-color-dot theme-dot--water"></span>
+                                <span class="theme-btn-label">Water</span>
+                            </button>
+                            <button class="theme-select-btn" data-theme="aurora" onclick="switchBackdropTheme('aurora')" title="Aurora Waves">
+                                <span class="theme-color-dot theme-dot--aurora"></span>
+                                <span class="theme-btn-label">Aurora</span>
+                            </button>
+                            <button class="theme-select-btn" data-theme="grid3d" onclick="switchBackdropTheme('grid3d')" title="3D Grid Mesh">
+                                <span class="theme-color-dot theme-dot--grid3d"></span>
+                                <span class="theme-btn-label">3D Grid</span>
+                            </button>
+                            <button class="theme-select-btn" data-theme="ribbon" onclick="switchBackdropTheme('ribbon')" title="Glass Ribbon Morph">
+                                <span class="theme-color-dot theme-dot--ribbon"></span>
+                                <span class="theme-btn-label">Ribbons</span>
+                            </button>
+                            <button class="theme-select-btn" data-theme="spheres" onclick="switchBackdropTheme('spheres')" title="Ambient Spheres">
+                                <span class="theme-color-dot theme-dot--spheres"></span>
+                                <span class="theme-btn-label">Spheres</span>
+                            </button>
+                            <button class="theme-select-btn" data-theme="neural" onclick="switchBackdropTheme('neural')" title="Neural Constellation">
+                                <span class="theme-color-dot theme-dot--neural"></span>
+                                <span class="theme-btn-label">Neural</span>
+                            </button>
+                            <button class="theme-select-btn" data-theme="gold" onclick="switchBackdropTheme('gold')" title="Golden Aura">
+                                <span class="theme-color-dot theme-dot--gold"></span>
+                                <span class="theme-btn-label">Gold</span>
+                            </button>
+                            <button class="theme-select-btn" data-theme="zen" onclick="switchBackdropTheme('zen')" title="Zen Torus">
+                                <span class="theme-color-dot theme-dot--zen"></span>
+                                <span class="theme-btn-label">Zen Ring</span>
+                            </button>
+                            <button class="theme-select-btn" data-theme="fluid" onclick="switchBackdropTheme('fluid')" title="Fluid Waves">
+                                <span class="theme-color-dot theme-dot--fluid"></span>
+                                <span class="theme-btn-label">Fluid</span>
+                            </button>
+                            <button class="theme-select-btn" data-theme="digital" onclick="switchBackdropTheme('digital')" title="Digital Canvas">
+                                <span class="theme-color-dot theme-dot--digital"></span>
+                                <span class="theme-btn-label">Digital</span>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -185,6 +282,7 @@
             <div class="container hero-container">
                 <!-- Revealed About Us Description (Fades in when Menu is active) -->
                 <div class="landing-about-reveal">
+                    <div class="about-reveal-badge">ABOUT US</div>
                     <h3 class="about-reveal-title">Our Vision & Mission</h3>
                     <p class="about-reveal-desc">
                         The Group of Joining Hands is a community initiative for social welfare, empowerment, and networking. 
@@ -196,8 +294,6 @@
                     <!-- Main Purple Title Heading -->
                     <h1 class="hero-main-title">The Group of Joining Hands</h1>
 
-                    <!-- Slogan "Together Forever" in elegant serif/italic typography -->
-                    <p class="hero-slogan">Together Forever</p>
 
                     <!-- Premium Vertical Editorial Separator Line -->
                     <div class="premium-separator"></div>
@@ -284,15 +380,28 @@
                             </div>
                         </div>
 
+                        <!-- 6. O TILE (Bright Electric Orange with White O) -->
+                        <div class="ecosystem-tile ecosystem-tile--o" role="button" tabindex="0" aria-label="O Portal - Orange Initiative">
+                            <div class="tile-3d-body">
+                                <div class="tile-3d-raised">
+                                    <div class="tile-3d-circle">
+                                        <span class="tile-letter">O</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
 
-                    <!-- Subtle Handshake Divider as in Target Design -->
+                    <!-- Subtle Handshake Divider with Split Slogan -->
                     <div class="ecosystem-divider">
+                        <span class="divider-slogan">Together</span>
                         <span class="divider-line"></span>
                         <div class="divider-icon">
                             <i class="fa-solid fa-handshake-angle"></i>
                         </div>
                         <span class="divider-line"></span>
+                        <span class="divider-slogan">Forever</span>
                     </div>
                 </div>
 
