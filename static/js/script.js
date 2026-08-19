@@ -4934,6 +4934,10 @@ let themeAnimationIds = {};
 let canvasElements = {};
 let canvasContexts = {};
 
+const themeRotationList = ["water", "aurora", "grid3d", "ribbon", "spheres", "neural", "gold", "zen", "fluid", "digital"];
+let themeRotationIntervalId = null;
+let themeRotationIntervalTime = 5000; // 5 seconds default
+
 // Initialize theme switcher on DOM load
 document.addEventListener("DOMContentLoaded", () => {
     // Make sure default active theme class is set
@@ -4959,6 +4963,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Start background loops
     initThemeLoops();
+
+    // Start auto-rotate timer automatically on load
+    startThemeRotation();
 });
 
 function resizeThemeCanvas(canvas) {
@@ -4968,7 +4975,7 @@ function resizeThemeCanvas(canvas) {
     }
 }
 
-function switchBackdropTheme(theme) {
+function switchBackdropTheme(theme, isAuto = false) {
     activeTheme = theme;
     
     // Toggle active class on landing view container
@@ -4994,6 +5001,11 @@ function switchBackdropTheme(theme) {
     const canvasId = getCanvasIdForTheme(theme);
     if (canvasId && canvasElements[canvasId]) {
         resizeThemeCanvas(canvasElements[canvasId]);
+    }
+
+    // Reset the rotation interval to give the user full duration on manual click
+    if (!isAuto && typeof themeRotationIntervalTime !== 'undefined' && themeRotationIntervalTime > 0) {
+        startThemeRotation();
     }
 }
 
@@ -5331,5 +5343,46 @@ document.addEventListener("click", (e) => {
         }
     }
 });
+
+// Theme Rotation Logic
+function startThemeRotation() {
+    if (themeRotationIntervalId) {
+        clearInterval(themeRotationIntervalId);
+    }
+    if (themeRotationIntervalTime <= 0) return;
+    themeRotationIntervalId = setInterval(() => {
+        const currentIdx = themeRotationList.indexOf(activeTheme);
+        const nextIdx = (currentIdx + 1) % themeRotationList.length;
+        switchBackdropTheme(themeRotationList[nextIdx], true);
+    }, themeRotationIntervalTime);
+}
+
+function stopThemeRotation() {
+    if (themeRotationIntervalId) {
+        clearInterval(themeRotationIntervalId);
+        themeRotationIntervalId = null;
+    }
+}
+
+function changeThemeInterval(seconds) {
+    themeRotationIntervalTime = seconds * 1000;
+    
+    // Update UI active state for interval buttons
+    const buttons = document.querySelectorAll(".timer-opt-btn");
+    buttons.forEach(btn => {
+        const val = parseInt(btn.getAttribute("data-interval"), 10);
+        if (val === seconds) {
+            btn.classList.add("active");
+        } else {
+            btn.classList.remove("active");
+        }
+    });
+    
+    if (seconds > 0) {
+        startThemeRotation();
+    } else {
+        stopThemeRotation();
+    }
+}
 
 
