@@ -30,9 +30,9 @@
     --pro-shadow: 0 4px 6px -1px rgba(15, 23, 42, 0.04), 0 2px 4px -2px rgba(15, 23, 42, 0.04), 0 0 0 1px rgba(15, 23, 42, 0.04);
 
     /* Fonts */
-    --font-heading: 'Outfit', 'Plus Jakarta Sans', sans-serif;
-    --font-body: 'Plus Jakarta Sans', 'Inter', sans-serif;
-    --font-slogan: 'Playfair Display', serif;
+    --font-heading: 'Plus Jakarta Sans', sans-serif;
+    --font-body: 'Plus Jakarta Sans', sans-serif;
+    --font-slogan: 'Plus Jakarta Sans', sans-serif;
 }
 
 /* Dark Mode Tokens for ProConnect */
@@ -6466,7 +6466,7 @@ input:checked + .slider:before {
 }
 
 .about-reveal-desc {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: 1.05rem;
     line-height: 1.6;
     color: #475569;
@@ -6481,7 +6481,7 @@ input:checked + .slider:before {
     border-radius: 16px;
     background: rgba(255, 255, 255, 0.45);
     border: 1.5px dashed rgba(124, 58, 237, 0.22);
-    font-family: 'Inter', sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: 1rem;
     font-weight: 500;
     color: #1e1b4b;
