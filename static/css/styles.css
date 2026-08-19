@@ -6934,16 +6934,16 @@ input:checked + .slider:before {
     left: 24px;
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 8px;
     cursor: pointer;
     z-index: 1000;
     user-select: none;
 }
 
 .menu-box {
-    width: 36px;
-    height: 36px;
-    border-radius: 8px;
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
     background: rgba(255, 255, 255, 0.72);
     border: 1.5px solid rgba(124, 58, 237, 0.22);
     color: #6d28d9;
@@ -6951,7 +6951,7 @@ input:checked + .slider:before {
     align-items: center;
     justify-content: center;
     font-family: var(--font-heading);
-    font-size: 0.95rem;
+    font-size: 1.15rem;
     font-weight: 800;
     box-shadow: 0 4px 10px rgba(124, 58, 237, 0.08);
     backdrop-filter: blur(10px);
@@ -6978,9 +6978,10 @@ input:checked + .slider:before {
         left: 16px;
     }
     .menu-box {
-        width: 32px;
-        height: 32px;
-        font-size: 0.85rem;
+        width: 38px;
+        height: 38px;
+        font-size: 0.95rem;
+        border-radius: 8px;
     }
 }
 
