@@ -220,53 +220,6 @@
                             </div>
                         </div>
                     </div>
-
-                    <!-- Backdrop Theme Customization Selector -->
-                    <div class="sidebar-themes-section">
-                        <div class="sidebar-themes-headline">Backdrop Theme</div>
-                        <div class="sidebar-themes-grid">
-                            <button class="theme-select-btn active" data-theme="water" onclick="switchBackdropTheme('water')" title="Water Droplets">
-                                <span class="theme-color-dot theme-dot--water"></span>
-                                <span class="theme-btn-label">Water</span>
-                            </button>
-                            <button class="theme-select-btn" data-theme="aurora" onclick="switchBackdropTheme('aurora')" title="Aurora Waves">
-                                <span class="theme-color-dot theme-dot--aurora"></span>
-                                <span class="theme-btn-label">Aurora</span>
-                            </button>
-                            <button class="theme-select-btn" data-theme="grid3d" onclick="switchBackdropTheme('grid3d')" title="3D Grid Mesh">
-                                <span class="theme-color-dot theme-dot--grid3d"></span>
-                                <span class="theme-btn-label">3D Grid</span>
-                            </button>
-                            <button class="theme-select-btn" data-theme="ribbon" onclick="switchBackdropTheme('ribbon')" title="Glass Ribbon Morph">
-                                <span class="theme-color-dot theme-dot--ribbon"></span>
-                                <span class="theme-btn-label">Ribbons</span>
-                            </button>
-                            <button class="theme-select-btn" data-theme="spheres" onclick="switchBackdropTheme('spheres')" title="Ambient Spheres">
-                                <span class="theme-color-dot theme-dot--spheres"></span>
-                                <span class="theme-btn-label">Spheres</span>
-                            </button>
-                            <button class="theme-select-btn" data-theme="neural" onclick="switchBackdropTheme('neural')" title="Neural Constellation">
-                                <span class="theme-color-dot theme-dot--neural"></span>
-                                <span class="theme-btn-label">Neural</span>
-                            </button>
-                            <button class="theme-select-btn" data-theme="gold" onclick="switchBackdropTheme('gold')" title="Golden Aura">
-                                <span class="theme-color-dot theme-dot--gold"></span>
-                                <span class="theme-btn-label">Gold</span>
-                            </button>
-                            <button class="theme-select-btn" data-theme="zen" onclick="switchBackdropTheme('zen')" title="Zen Torus">
-                                <span class="theme-color-dot theme-dot--zen"></span>
-                                <span class="theme-btn-label">Zen Ring</span>
-                            </button>
-                            <button class="theme-select-btn" data-theme="fluid" onclick="switchBackdropTheme('fluid')" title="Fluid Waves">
-                                <span class="theme-color-dot theme-dot--fluid"></span>
-                                <span class="theme-btn-label">Fluid</span>
-                            </button>
-                            <button class="theme-select-btn" data-theme="digital" onclick="switchBackdropTheme('digital')" title="Digital Canvas">
-                                <span class="theme-color-dot theme-dot--digital"></span>
-                                <span class="theme-btn-label">Digital</span>
-                            </button>
-                        </div>
-                    </div>
                 </div>
 
                 <div class="sidebar-footer">
@@ -414,6 +367,61 @@
                 <p>&copy; 2026 The Group of Joining Hands. All rights reserved.</p>
             </div>
         </footer>
+        <!-- Floating Settings Button and Backdrop Theme Popover (Downside) -->
+        <div class="landing-settings-container">
+            <button class="settings-floating-btn" id="settingsFloatingBtn" onclick="toggleSettingsPanel(event)" aria-label="Configure Backdrop Themes" title="Theme Settings">
+                <i class="fa-solid fa-gear"></i>
+            </button>
+            
+            <div class="settings-popover-panel" id="settingsPopoverPanel" onclick="event.stopPropagation()">
+                <div class="settings-panel-header">
+                    <h4>Backdrop Theme</h4>
+                    <button class="settings-close-btn" onclick="closeSettingsPanel()" aria-label="Close Settings Panel">&times;</button>
+                </div>
+                <div class="sidebar-themes-grid">
+                    <button class="theme-select-btn active" data-theme="water" onclick="switchBackdropTheme('water')" title="Water Droplets">
+                        <span class="theme-color-dot theme-dot--water"></span>
+                        <span class="theme-btn-label">Water</span>
+                    </button>
+                    <button class="theme-select-btn" data-theme="aurora" onclick="switchBackdropTheme('aurora')" title="Aurora Waves">
+                        <span class="theme-color-dot theme-dot--aurora"></span>
+                        <span class="theme-btn-label">Aurora</span>
+                    </button>
+                    <button class="theme-select-btn" data-theme="grid3d" onclick="switchBackdropTheme('grid3d')" title="3D Grid Mesh">
+                        <span class="theme-color-dot theme-dot--grid3d"></span>
+                        <span class="theme-btn-label">3D Grid</span>
+                    </button>
+                    <button class="theme-select-btn" data-theme="ribbon" onclick="switchBackdropTheme('ribbon')" title="Glass Ribbon Morph">
+                        <span class="theme-color-dot theme-dot--ribbon"></span>
+                        <span class="theme-btn-label">Ribbons</span>
+                    </button>
+                    <button class="theme-select-btn" data-theme="spheres" onclick="switchBackdropTheme('spheres')" title="Ambient Spheres">
+                        <span class="theme-color-dot theme-dot--spheres"></span>
+                        <span class="theme-btn-label">Spheres</span>
+                    </button>
+                    <button class="theme-select-btn" data-theme="neural" onclick="switchBackdropTheme('neural')" title="Neural Constellation">
+                        <span class="theme-color-dot theme-dot--neural"></span>
+                        <span class="theme-btn-label">Neural</span>
+                    </button>
+                    <button class="theme-select-btn" data-theme="gold" onclick="switchBackdropTheme('gold')" title="Golden Aura">
+                        <span class="theme-color-dot theme-dot--gold"></span>
+                        <span class="theme-btn-label">Gold</span>
+                    </button>
+                    <button class="theme-select-btn" data-theme="zen" onclick="switchBackdropTheme('zen')" title="Zen Torus">
+                        <span class="theme-color-dot theme-dot--zen"></span>
+                        <span class="theme-btn-label">Zen Ring</span>
+                    </button>
+                    <button class="theme-select-btn" data-theme="fluid" onclick="switchBackdropTheme('fluid')" title="Fluid Waves">
+                        <span class="theme-color-dot theme-dot--fluid"></span>
+                        <span class="theme-btn-label">Fluid</span>
+                    </button>
+                    <button class="theme-select-btn" data-theme="digital" onclick="switchBackdropTheme('digital')" title="Digital Canvas">
+                        <span class="theme-color-dot theme-dot--digital"></span>
+                        <span class="theme-btn-label">Digital</span>
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- LOCKED APPS STAGE OVERLAY -->

@@ -5315,4 +5315,31 @@ function initThemeLoops() {
     loopDigital();
 }
 
+// Downside Settings Panel Handlers
+function toggleSettingsPanel(event) {
+    if (event) event.stopPropagation();
+    const panel = document.getElementById("settingsPopoverPanel");
+    if (panel) {
+        panel.classList.toggle("active");
+    }
+}
+
+function closeSettingsPanel() {
+    const panel = document.getElementById("settingsPopoverPanel");
+    if (panel) {
+        panel.classList.remove("active");
+    }
+}
+
+// Auto-close popover when clicking outside
+document.addEventListener("click", (e) => {
+    const panel = document.getElementById("settingsPopoverPanel");
+    const btn = document.getElementById("settingsFloatingBtn");
+    if (panel && panel.classList.contains("active")) {
+        if (!panel.contains(e.target) && e.target !== btn && !btn.contains(e.target)) {
+            closeSettingsPanel();
+        }
+    }
+});
+
 

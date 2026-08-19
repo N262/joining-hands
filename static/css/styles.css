@@ -6821,4 +6821,107 @@ input:checked + .slider:before {
     opacity: 0.85 !important;
 }
 
+/* ==========================================================================
+   FLOATING SETTINGS BUTTON & POPOVER PANEL (DOWNSIDE)
+   ========================================================================== */
+
+.landing-settings-container {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 2000;
+}
+
+.settings-floating-btn {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.75);
+    border: 1px solid rgba(124, 58, 237, 0.2);
+    color: #7c3aed;
+    font-size: 1.25rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 4px 16px rgba(124, 58, 237, 0.16);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.settings-floating-btn:hover {
+    background: #ffffff;
+    border-color: #7c3aed;
+    transform: rotate(45deg) scale(1.08);
+    box-shadow: 0 6px 20px rgba(124, 58, 237, 0.28);
+}
+
+.settings-popover-panel {
+    position: absolute;
+    bottom: 64px;
+    right: 0;
+    width: 320px;
+    background: rgba(255, 255, 255, 0.82);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(124, 58, 237, 0.12);
+    border-radius: 20px;
+    padding: 16px;
+    box-shadow: 0 12px 36px rgba(124, 58, 237, 0.16);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(15px) scale(0.95);
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    transform-origin: bottom right;
+}
+
+.settings-popover-panel.active {
+    opacity: 1;
+    pointer-events: all;
+    transform: translateY(0) scale(1);
+}
+
+.settings-panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(124, 58, 237, 0.08);
+}
+
+.settings-panel-header h4 {
+    font-family: var(--font-heading);
+    font-size: 0.85rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #475569;
+    margin: 0;
+}
+
+.settings-close-btn {
+    background: transparent;
+    border: none;
+    font-size: 1.25rem;
+    font-weight: 300;
+    color: #94a3b8;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0;
+    transition: color 0.2s ease;
+}
+
+.settings-close-btn:hover {
+    color: #ef4444;
+}
+
+@media (max-width: 480px) {
+    .settings-popover-panel {
+        right: -10px;
+        width: 280px;
+    }
+}
+
 
