@@ -5409,4 +5409,21 @@ function changeThemeInterval(seconds) {
     }
 }
 
+// LocalStorage persistence bindings for the custom About Us text area
+document.addEventListener("DOMContentLoaded", () => {
+    const revealTextarea = document.getElementById("aboutRevealTextarea");
+    if (revealTextarea) {
+        const savedText = localStorage.getItem("aboutRevealCustomText");
+        if (savedText) {
+            revealTextarea.value = savedText;
+        } else {
+            revealTextarea.value = "The Group of Joining Hands is a community initiative for social welfare, empowerment, and networking.";
+        }
+        
+        revealTextarea.addEventListener("input", (e) => {
+            localStorage.setItem("aboutRevealCustomText", e.target.value);
+        });
+    }
+});
+
 
