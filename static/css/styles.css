@@ -6694,15 +6694,9 @@ input:checked + .slider:before {
 
 /* Show active layers matching theme class on #landing-view */
 #landing-view.theme-water .layer--water,
-#landing-view.theme-aurora .layer--aurora,
-#landing-view.theme-grid3d .layer--grid3d,
-#landing-view.theme-ribbon .layer--ribbon,
-#landing-view.theme-spheres .layer--spheres,
-#landing-view.theme-neural .layer--neural,
-#landing-view.theme-gold .layer--gold,
-#landing-view.theme-zen .layer--zen,
-#landing-view.theme-fluid .layer--fluid,
-#landing-view.theme-digital .layer--digital {
+#landing-view.theme-midnight .layer--midnight,
+#landing-view.theme-deepsea .layer--deepsea,
+#landing-view.theme-darkflow .layer--darkflow {
     opacity: 1;
     visibility: visible;
     pointer-events: all;
@@ -6718,34 +6712,120 @@ input:checked + .slider:before {
     display: block;
 }
 
-/* Aurora Waves Theme Styles */
-.layer--aurora {
-    background: radial-gradient(circle at 50% -20%, #fafafa, #ffffff 70%);
+/* Dark Mode Theme Overrides for Text & Layout */
+#landing-view.theme-midnight,
+#landing-view.theme-deepsea,
+#landing-view.theme-darkflow {
+    color: #f8fafc !important;
 }
 
-.aurora-glow {
+#landing-view.theme-midnight .hero-main-title,
+#landing-view.theme-deepsea .hero-main-title,
+#landing-view.theme-darkflow .hero-main-title {
+    color: #ffffff !important;
+    text-shadow: 0 4px 20px rgba(124, 58, 237, 0.4);
+}
+
+#landing-view.theme-midnight .divider-slogan,
+#landing-view.theme-deepsea .divider-slogan,
+#landing-view.theme-darkflow .divider-slogan {
+    color: #e2e8f0 !important;
+}
+
+#landing-view.theme-midnight .about-reveal-title,
+#landing-view.theme-deepsea .about-reveal-title,
+#landing-view.theme-darkflow .about-reveal-title {
+    background: linear-gradient(135deg, #ffffff 0%, #818cf8 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+}
+
+#landing-view.theme-midnight .about-reveal-textarea,
+#landing-view.theme-deepsea .about-reveal-textarea,
+#landing-view.theme-darkflow .about-reveal-textarea {
+    background: rgba(15, 23, 42, 0.65) !important;
+    border-color: rgba(139, 92, 246, 0.4) !important;
+    color: #f8fafc !important;
+}
+
+#landing-view.theme-midnight .about-reveal-badge,
+#landing-view.theme-deepsea .about-reveal-badge,
+#landing-view.theme-darkflow .about-reveal-badge {
+    background: rgba(255, 255, 255, 0.12) !important;
+    border-color: rgba(255, 255, 255, 0.22) !important;
+    color: #ffffff !important;
+}
+
+/* Layer styles */
+.layer--midnight {
+    background: #080b11;
+}
+
+.layer--deepsea {
+    background: #020617;
+}
+
+.layer--darkflow {
+    background: #0f0f12;
+}
+
+/* Microsoft Dark Flow Glassmorphism layers */
+.dark-glass-ribbon {
     position: absolute;
-    width: 150vw;
-    height: 150vw;
     border-radius: 50%;
     filter: blur(120px);
-    opacity: 0.85;
-    mix-blend-mode: multiply;
+    opacity: 0.65;
+    mix-blend-mode: screen;
     pointer-events: none;
+    animation: darkFloat 20s infinite alternate ease-in-out;
 }
 
-.aurora-glow--1 {
-    top: -50%;
-    left: -25%;
-    background: radial-gradient(circle, rgba(139, 92, 246, 0.65) 0%, transparent 60%);
-    animation: auroraShift1 24s ease-in-out infinite alternate;
+.dark-glass-ribbon.glass-ribbon--1 {
+    width: 600px;
+    height: 600px;
+    top: -10%;
+    left: 20%;
+    background: radial-gradient(circle, rgba(124, 58, 237, 0.45) 0%, transparent 80%);
+    animation-duration: 25s;
 }
 
-.aurora-glow--2 {
-    top: -40%;
-    right: -25%;
-    background: radial-gradient(circle, rgba(249, 115, 22, 0.58) 0%, transparent 60%);
-    animation: auroraShift2 28s ease-in-out infinite alternate;
+.dark-glass-ribbon.glass-ribbon--2 {
+    width: 500px;
+    height: 500px;
+    bottom: -15%;
+    right: 15%;
+    background: radial-gradient(circle, rgba(249, 115, 22, 0.35) 0%, transparent 80%);
+    animation-duration: 28s;
+}
+
+.dark-glass-ribbon.glass-ribbon--3 {
+    width: 400px;
+    height: 400px;
+    top: 30%;
+    left: 10%;
+    background: radial-gradient(circle, rgba(236, 72, 153, 0.35) 0%, transparent 80%);
+    animation-duration: 22s;
+}
+
+.dark-ambient-orb {
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.38) 0%, transparent 80%);
+    filter: blur(50px);
+    opacity: 0.6;
+    animation: darkFloatOrb 15s infinite alternate ease-in-out;
+}
+
+@keyframes darkFloat {
+    0% { transform: translate(0, 0) scale(1) rotate(0deg); }
+    100% { transform: translate(60px, 40px) scale(1.1) rotate(180deg); }
+}
+
+@keyframes darkFloatOrb {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(-40px, -30px) scale(1.15); }
 }
 
 @keyframes auroraShift1 {

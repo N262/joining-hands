@@ -52,55 +52,23 @@
                     </div>
                 </div>
 
-                <!-- Theme 2: Aurora Borealis Waves (CSS Animated Gradients) -->
-                <div class="theme-layer layer--aurora">
-                    <div class="aurora-glow aurora-glow--1"></div>
-                    <div class="aurora-glow aurora-glow--2"></div>
+                <!-- Theme 2: Midnight Waves (Dark Fluid Wave ribbons) -->
+                <div class="theme-layer layer--midnight">
+                    <canvas id="midnightCanvas"></canvas>
                 </div>
 
-                <!-- Theme 3: 3D Grid Mesh (JS Canvas) -->
-                <div class="theme-layer layer--grid3d">
-                    <canvas id="grid3dCanvas"></canvas>
+                <!-- Theme 3: Deep Sea Ripple (Dark Water Wavelength Concentric Ripples) -->
+                <div class="theme-layer layer--deepsea">
+                    <canvas id="deepseaCanvas"></canvas>
                 </div>
 
-                <!-- Theme 4: Glass Ribbon Morph (Refracted Blob Panels) -->
-                <div class="theme-layer layer--ribbon">
-                    <div class="glass-ribbon glass-ribbon--1"></div>
-                    <div class="glass-ribbon glass-ribbon--2"></div>
-                    <div class="glass-ribbon glass-ribbon--3"></div>
-                </div>
-
-                <!-- Theme 5: Ambient Spheres (Floating 3D Orbs) -->
-                <div class="theme-layer layer--spheres">
-                    <div class="ambient-orb ambient-orb--1"></div>
-                    <div class="ambient-orb ambient-orb--2"></div>
-                    <div class="ambient-orb ambient-orb--3"></div>
-                    <div class="ambient-orb ambient-orb--4"></div>
-                </div>
-
-                <!-- Theme 6: Neural Constellation (JS Canvas) -->
-                <div class="theme-layer layer--neural">
-                    <canvas id="neuralCanvas"></canvas>
-                </div>
-
-                <!-- Theme 7: Golden Aura (Drifting Sparkles Canvas) -->
-                <div class="theme-layer layer--gold">
-                    <canvas id="goldCanvas"></canvas>
-                </div>
-
-                <!-- Theme 8: Zen Torus Rings (JS Canvas / Revolving Rings) -->
-                <div class="theme-layer layer--zen">
-                    <canvas id="zenCanvas"></canvas>
-                </div>
-
-                <!-- Theme 9: Fluid Flow Field Waves (JS Canvas) -->
-                <div class="theme-layer layer--fluid">
-                    <canvas id="fluidCanvas"></canvas>
-                </div>
-
-                <!-- Theme 10: Digital Geometric Canvas (JS Canvas Matrix) -->
-                <div class="theme-layer layer--digital">
-                    <canvas id="digitalCanvas"></canvas>
+                <!-- Theme 4: Microsoft Dark Flow (Dark Glassmorphic morphing ribbons & glowing orbs) -->
+                <div class="theme-layer layer--darkflow">
+                    <div class="dark-glass-ribbon glass-ribbon--1"></div>
+                    <div class="dark-glass-ribbon glass-ribbon--2"></div>
+                    <div class="dark-glass-ribbon glass-ribbon--3"></div>
+                    <div class="dark-ambient-orb ambient-orb--1"></div>
+                    <div class="dark-ambient-orb ambient-orb--2"></div>
                 </div>
             </div>
 
@@ -278,45 +246,21 @@
                     <button class="settings-close-btn" onclick="closeSettingsPanel()" aria-label="Close Settings Panel">&times;</button>
                 </div>
                 <div class="sidebar-themes-grid">
-                    <button class="theme-select-btn active" data-theme="water" onclick="switchBackdropTheme('water')" title="Water Droplets">
+                    <button class="theme-select-btn active" data-theme="water" onclick="switchBackdropTheme('water')" title="Water Droplets (Light)">
                         <span class="theme-color-dot theme-dot--water"></span>
-                        <span class="theme-btn-label">Water</span>
+                        <span class="theme-btn-label">Water Light</span>
                     </button>
-                    <button class="theme-select-btn" data-theme="aurora" onclick="switchBackdropTheme('aurora')" title="Aurora Waves">
-                        <span class="theme-color-dot theme-dot--aurora"></span>
-                        <span class="theme-btn-label">Aurora</span>
+                    <button class="theme-select-btn" data-theme="midnight" onclick="switchBackdropTheme('midnight')" title="Midnight Waves (Dark)">
+                        <span class="theme-color-dot" style="background: #1e1b4b;"></span>
+                        <span class="theme-btn-label">Midnight Dark</span>
                     </button>
-                    <button class="theme-select-btn" data-theme="grid3d" onclick="switchBackdropTheme('grid3d')" title="3D Grid Mesh">
-                        <span class="theme-color-dot theme-dot--grid3d"></span>
-                        <span class="theme-btn-label">3D Grid</span>
+                    <button class="theme-select-btn" data-theme="deepsea" onclick="switchBackdropTheme('deepsea')" title="Deep Sea Ripple (Dark)">
+                        <span class="theme-color-dot" style="background: #0d9488;"></span>
+                        <span class="theme-btn-label">Deep Sea</span>
                     </button>
-                    <button class="theme-select-btn" data-theme="ribbon" onclick="switchBackdropTheme('ribbon')" title="Glass Ribbon Morph">
-                        <span class="theme-color-dot theme-dot--ribbon"></span>
-                        <span class="theme-btn-label">Ribbons</span>
-                    </button>
-                    <button class="theme-select-btn" data-theme="spheres" onclick="switchBackdropTheme('spheres')" title="Ambient Spheres">
-                        <span class="theme-color-dot theme-dot--spheres"></span>
-                        <span class="theme-btn-label">Spheres</span>
-                    </button>
-                    <button class="theme-select-btn" data-theme="neural" onclick="switchBackdropTheme('neural')" title="Neural Constellation">
-                        <span class="theme-color-dot theme-dot--neural"></span>
-                        <span class="theme-btn-label">Neural</span>
-                    </button>
-                    <button class="theme-select-btn" data-theme="gold" onclick="switchBackdropTheme('gold')" title="Golden Aura">
-                        <span class="theme-color-dot theme-dot--gold"></span>
-                        <span class="theme-btn-label">Gold</span>
-                    </button>
-                    <button class="theme-select-btn" data-theme="zen" onclick="switchBackdropTheme('zen')" title="Zen Torus">
-                        <span class="theme-color-dot theme-dot--zen"></span>
-                        <span class="theme-btn-label">Zen Ring</span>
-                    </button>
-                    <button class="theme-select-btn" data-theme="fluid" onclick="switchBackdropTheme('fluid')" title="Fluid Waves">
-                        <span class="theme-color-dot theme-dot--fluid"></span>
-                        <span class="theme-btn-label">Fluid</span>
-                    </button>
-                    <button class="theme-select-btn" data-theme="digital" onclick="switchBackdropTheme('digital')" title="Digital Canvas">
-                        <span class="theme-color-dot theme-dot--digital"></span>
-                        <span class="theme-btn-label">Digital</span>
+                    <button class="theme-select-btn" data-theme="darkflow" onclick="switchBackdropTheme('darkflow')" title="Microsoft Dark Flow (Dark)">
+                        <span class="theme-color-dot" style="background: #374151;"></span>
+                        <span class="theme-btn-label">Dark Flow</span>
                     </button>
                 </div>
                 <div class="settings-timer-section">

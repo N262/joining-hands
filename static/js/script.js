@@ -4934,7 +4934,7 @@ let themeAnimationIds = {};
 let canvasElements = {};
 let canvasContexts = {};
 
-const themeRotationList = ["water", "aurora", "grid3d", "ribbon", "spheres", "neural", "gold", "zen", "fluid", "digital"];
+const themeRotationList = ["water", "midnight", "deepsea", "darkflow"];
 let themeRotationIntervalId = null;
 let themeRotationIntervalTime = 5000; // 5 seconds default
 
@@ -4947,7 +4947,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Set up canvas elements and listeners
-    const themeCanvases = ["grid3dCanvas", "neuralCanvas", "goldCanvas", "zenCanvas", "fluidCanvas", "digitalCanvas"];
+    const themeCanvases = ["midnightCanvas", "deepseaCanvas"];
     themeCanvases.forEach(id => {
         const canvas = document.getElementById(id);
         if (canvas) {
@@ -4982,7 +4982,7 @@ function switchBackdropTheme(theme, isAuto = false) {
     const landingView = document.getElementById("landing-view");
     if (landingView) {
         // Remove all previous theme classes
-        const themes = ["water", "aurora", "grid3d", "ribbon", "spheres", "neural", "gold", "zen", "fluid", "digital"];
+        const themes = ["water", "midnight", "deepsea", "darkflow"];
         themes.forEach(t => landingView.classList.remove(`theme-${t}`));
         landingView.classList.add(`theme-${theme}`);
     }
@@ -5011,265 +5011,44 @@ function switchBackdropTheme(theme, isAuto = false) {
 
 function getCanvasIdForTheme(theme) {
     const map = {
-        "grid3d": "grid3dCanvas",
-        "neural": "neuralCanvas",
-        "gold": "goldCanvas",
-        "zen": "zenCanvas",
-        "fluid": "fluidCanvas",
-        "digital": "digitalCanvas"
+        "midnight": "midnightCanvas",
+        "deepsea": "deepseaCanvas"
     };
     return map[theme] || null;
 }
 
 function initThemeLoops() {
-    // 1. 3D Grid Mesh Loop
-    let gridRotation = 0;
-    function loopGrid3d() {
-        if (activeTheme === "grid3d") {
-            const ctx = canvasContexts["grid3dCanvas"];
-            const canvas = canvasElements["grid3dCanvas"];
-            if (ctx && canvas) {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                const grad = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
-                grad.addColorStop(0, "rgba(139, 92, 246, 0.38)");
-                grad.addColorStop(0.5, "rgba(236, 72, 153, 0.32)");
-                grad.addColorStop(1, "rgba(249, 115, 22, 0.38)");
-                ctx.strokeStyle = grad;
-                ctx.lineWidth = 1.8;
-                
-                const centerX = canvas.width / 2;
-                const centerY = canvas.height / 2;
-                gridRotation += 0.001;
-                
-                // Draw 3D-like rotating grid lines
-                const linesCount = 28;
-                const size = Math.max(canvas.width, canvas.height) * 1.5;
-                
-                ctx.save();
-                ctx.translate(centerX, centerY);
-                ctx.rotate(gridRotation);
-                
-                for (let i = -linesCount; i <= linesCount; i++) {
-                    // X lines
-                    let x = (i * size) / linesCount;
-                    ctx.beginPath();
-                    ctx.moveTo(x, -size);
-                    ctx.lineTo(x, size);
-                    ctx.stroke();
-                    
-                    // Y lines
-                    let y = (i * size) / linesCount;
-                    ctx.beginPath();
-                    ctx.moveTo(-size, y);
-                    ctx.lineTo(size, y);
-                    ctx.stroke();
-                }
-                ctx.restore();
-            }
-        }
-        requestAnimationFrame(loopGrid3d);
-    }
-    loopGrid3d();
-
-    // 2. Neural Constellation Loop
-    const nodes = [];
-    const maxNodes = 45;
-    function initNeuralNodes(canvas) {
-        if (nodes.length > 0) return;
-        for (let i = 0; i < maxNodes; i++) {
-            nodes.push({
-                x: Math.random() * canvas.width,
-                y: Math.random() * canvas.height,
-                vx: (Math.random() - 0.5) * 0.45,
-                vy: (Math.random() - 0.5) * 0.45,
-                radius: Math.random() * 2 + 1.5,
-                color: Math.random() > 0.5 ? "rgba(124, 58, 237, 0.72)" : "rgba(249, 115, 22, 0.72)"
-            });
-        }
-    }
-
-    function loopNeural() {
-        if (activeTheme === "neural") {
-            const ctx = canvasContexts["neuralCanvas"];
-            const canvas = canvasElements["neuralCanvas"];
-            if (ctx && canvas) {
-                initNeuralNodes(canvas);
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                
-                // Move and draw nodes
-                nodes.forEach(node => {
-                    node.x += node.vx;
-                    node.y += node.vy;
-                    
-                    if (node.x < 0 || node.x > canvas.width) node.vx *= -1;
-                    if (node.y < 0 || node.y > canvas.height) node.vy *= -1;
-                    
-                    ctx.fillStyle = node.color;
-                    ctx.beginPath();
-                    ctx.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
-                    ctx.fill();
-                });
-                
-                // Draw link lines
-                ctx.lineWidth = 1;
-                for (let i = 0; i < nodes.length; i++) {
-                    for (let j = i + 1; j < nodes.length; j++) {
-                        const dist = Math.hypot(nodes[i].x - nodes[j].x, nodes[i].y - nodes[j].y);
-                        if (dist < 130) {
-                            const alpha = 0.35 * (1 - dist / 130);
-                            const grad = ctx.createLinearGradient(nodes[i].x, nodes[i].y, nodes[j].x, nodes[j].y);
-                            grad.addColorStop(0, nodes[i].color.replace("0.72", alpha.toFixed(2)));
-                            grad.addColorStop(1, nodes[j].color.replace("0.72", alpha.toFixed(2)));
-                            ctx.strokeStyle = grad;
-                            ctx.beginPath();
-                            ctx.moveTo(nodes[i].x, nodes[i].y);
-                            ctx.lineTo(nodes[j].x, nodes[j].y);
-                            ctx.stroke();
-                        }
-                    }
-                }
-            }
-        }
-        requestAnimationFrame(loopNeural);
-    }
-    loopNeural();
-
-    // 3. Golden Aura Loop
-    const goldParticles = [];
-    const maxGold = 35;
-    function initGoldParticles(canvas) {
-        if (goldParticles.length > 0) return;
-        const goldColors = ["rgba(245, 158, 11,", "rgba(251, 191, 36,", "rgba(254, 240, 138,", "rgba(254, 243, 199,"];
-        for (let i = 0; i < maxGold; i++) {
-            goldParticles.push({
-                x: Math.random() * canvas.width,
-                y: Math.random() * canvas.height,
-                vy: -Math.random() * 0.3 - 0.15,
-                vx: (Math.random() - 0.5) * 0.15,
-                size: Math.random() * 6 + 3,
-                opacity: Math.random() * 0.6 + 0.1,
-                fadeRate: Math.random() * 0.005 + 0.002,
-                fadeDirection: Math.random() > 0.5 ? 1 : -1,
-                colorBase: goldColors[Math.floor(Math.random() * goldColors.length)]
-            });
-        }
-    }
-
-    function loopGold() {
-        if (activeTheme === "gold") {
-            const ctx = canvasContexts["goldCanvas"];
-            const canvas = canvasElements["goldCanvas"];
-            if (ctx && canvas) {
-                initGoldParticles(canvas);
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                
-                goldParticles.forEach(p => {
-                    p.y += p.vy;
-                    p.x += p.vx;
-                    p.opacity += p.fadeDirection * p.fadeRate;
-                    
-                    if (p.opacity <= 0.1) {
-                        p.fadeDirection = 1;
-                    } else if (p.opacity >= 0.75) {
-                        p.fadeDirection = -1;
-                    }
-                    
-                    if (p.y < 0) {
-                        p.y = canvas.height;
-                        p.x = Math.random() * canvas.width;
-                    }
-                    
-                    ctx.fillStyle = `${p.colorBase} ${p.opacity * 0.9})`;
-                    ctx.beginPath();
-                    ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-                    ctx.fill();
-                    
-                    // Subtle glowing shadow
-                    ctx.shadowBlur = 12;
-                    ctx.shadowColor = "rgba(251, 191, 36, 0.75)";
-                });
-                ctx.shadowBlur = 0; // Reset shadow
-            }
-        }
-        requestAnimationFrame(loopGold);
-    }
-    loopGold();
-
-    // 4. Zen Torus Rings Loop
-    let zenAngle = 0;
-    function loopZen() {
-        if (activeTheme === "zen") {
-            const ctx = canvasContexts["zenCanvas"];
-            const canvas = canvasElements["zenCanvas"];
-            if (ctx && canvas) {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                
-                const centerX = canvas.width / 2;
-                const centerY = canvas.height / 2;
-                zenAngle += 0.008;
-                
-                ctx.save();
-                ctx.translate(centerX, centerY);
-                
-                // Draw 3 revolving rings with different sizes/tilts
-                const rings = [
-                    { rx: 240, ry: 65, rot: zenAngle, color: "rgba(139, 92, 246, 0.58)" },
-                    { rx: 190, ry: 45, rot: -zenAngle * 0.8, color: "rgba(249, 115, 22, 0.52)" },
-                    { rx: 140, ry: 30, rot: zenAngle * 1.2, color: "rgba(236, 72, 153, 0.55)" }
-                ];
-                
-                rings.forEach(ring => {
-                    ctx.save();
-                    ctx.rotate(ring.rot);
-                    ctx.strokeStyle = ring.color;
-                    ctx.lineWidth = 4.2;
-                    ctx.shadowBlur = 10;
-                    ctx.shadowColor = ring.color;
-                    ctx.beginPath();
-                    ctx.ellipse(0, 0, ring.rx, ring.ry, ring.rot / 2, 0, Math.PI * 2);
-                    ctx.stroke();
-                    ctx.restore();
-                });
-                ctx.shadowBlur = 0;
-                
-                ctx.restore();
-            }
-        }
-        requestAnimationFrame(loopZen);
-    }
-    loopZen();
-
-    // 5. Fluid Flow Field Loop
+    // 1. Midnight Waves Loop (Dark mode fluid waves)
     let flowTime = 0;
-    function loopFluid() {
-        if (activeTheme === "fluid") {
-            const ctx = canvasContexts["fluidCanvas"];
-            const canvas = canvasElements["fluidCanvas"];
+    function loopMidnight() {
+        if (activeTheme === "midnight") {
+            const ctx = canvasContexts["midnightCanvas"];
+            const canvas = canvasElements["midnightCanvas"];
             if (ctx && canvas) {
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
                 
-                flowTime += 0.002;
-                ctx.lineWidth = 3.2;
+                flowTime += 0.003;
+                ctx.lineWidth = 3.5;
                 
-                // Draw 4 fluid horizontal sine-wave lines
                 const wavesCount = 4;
                 for (let i = 0; i < wavesCount; i++) {
                     const grad = ctx.createLinearGradient(0, 0, canvas.width, 0);
                     if (i % 2 === 0) {
-                        grad.addColorStop(0, "rgba(139, 92, 246, 0.42)");
-                        grad.addColorStop(0.5, "rgba(236, 72, 153, 0.35)");
-                        grad.addColorStop(1, "rgba(99, 102, 241, 0.42)");
+                        grad.addColorStop(0, "rgba(59, 130, 246, 0.45)");
+                        grad.addColorStop(0.5, "rgba(139, 92, 246, 0.38)");
+                        grad.addColorStop(1, "rgba(236, 72, 153, 0.45)");
                     } else {
-                        grad.addColorStop(0, "rgba(249, 115, 22, 0.38)");
-                        grad.addColorStop(0.5, "rgba(236, 72, 153, 0.32)");
-                        grad.addColorStop(1, "rgba(244, 63, 94, 0.38)");
+                        grad.addColorStop(0, "rgba(99, 102, 241, 0.4)");
+                        grad.addColorStop(0.5, "rgba(6, 182, 212, 0.32)");
+                        grad.addColorStop(1, "rgba(124, 58, 237, 0.4)");
                     }
+                    
                     ctx.strokeStyle = grad;
                     ctx.beginPath();
                     
                     for (let x = 0; x < canvas.width; x += 15) {
-                        const wavePhase = flowTime * 2 + (x * 0.002) + (i * Math.PI / 2);
-                        const y = canvas.height / 2 + Math.sin(wavePhase) * (140 + i * 30) + Math.cos(flowTime + x * 0.001) * 40;
+                        const wavePhase = flowTime * 2 + (x * 0.0025) + (i * Math.PI / 2);
+                        const y = canvas.height / 2 + Math.sin(wavePhase) * (150 + i * 35) + Math.cos(flowTime + x * 0.001) * 50;
                         if (x === 0) {
                             ctx.moveTo(x, y);
                         } else {
@@ -5280,65 +5059,67 @@ function initThemeLoops() {
                 }
             }
         }
-        requestAnimationFrame(loopFluid);
+        requestAnimationFrame(loopMidnight);
     }
-    loopFluid();
+    loopMidnight();
 
-    // 6. Digital Geometric Canvas Loop
-    let pulseGrid = [];
-    const rows = 12;
-    const cols = 20;
-    function initDigitalGrid(canvas) {
-        if (pulseGrid.length > 0) return;
-        const cellW = canvas.width / cols;
-        const cellH = canvas.height / rows;
-        const matrixColors = ["rgba(16, 185, 129,", "rgba(6, 182, 212,", "rgba(99, 102, 241,"];
-        for (let r = 0; r < rows; r++) {
-            for (let c = 0; c < cols; c++) {
-                pulseGrid.push({
-                    x: c * cellW + cellW / 2,
-                    y: r * cellH + cellH / 2,
-                    targetRadius: Math.random() * 3 + 1,
-                    radius: 0.1,
-                    alpha: Math.random() * 0.4 + 0.05,
-                    fadeRate: Math.random() * 0.008 + 0.002,
-                    fadeDir: Math.random() > 0.5 ? 1 : -1,
-                    colorBase: matrixColors[Math.floor(Math.random() * matrixColors.length)]
-                });
-            }
-        }
-    }
-
-    function loopDigital() {
-        if (activeTheme === "digital") {
-            const ctx = canvasContexts["digitalCanvas"];
-            const canvas = canvasElements["digitalCanvas"];
+    // 2. Deep Sea Ripple Loop (Dark Concentric Waves)
+    let ripples = [];
+    const maxRipples = 6;
+    let spawnTimer = 0;
+    
+    function loopDeepsea() {
+        if (activeTheme === "deepsea") {
+            const ctx = canvasContexts["deepseaCanvas"];
+            const canvas = canvasElements["deepseaCanvas"];
             if (ctx && canvas) {
-                initDigitalGrid(canvas);
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
                 
-                pulseGrid.forEach(p => {
-                    p.alpha += p.fadeDir * p.fadeRate;
-                    if (p.alpha <= 0.02) {
-                        p.fadeDir = 1;
-                        p.targetRadius = Math.random() * 3 + 1;
-                    } else if (p.alpha >= 0.75) {
-                        p.fadeDir = -1;
+                spawnTimer++;
+                if (spawnTimer > 120 && ripples.length < maxRipples) {
+                    ripples.push({
+                        r: 0,
+                        maxR: Math.max(canvas.width, canvas.height) * 0.8,
+                        color: Math.random() > 0.5 ? "rgba(6, 182, 212," : "rgba(20, 184, 166,",
+                        speed: 1.2,
+                        weight: Math.random() * 2.5 + 1.5
+                    });
+                    spawnTimer = 0;
+                }
+                
+                if (ripples.length === 0) {
+                    ripples.push({
+                        r: 0,
+                        maxR: Math.max(canvas.width, canvas.height) * 0.8,
+                        color: "rgba(6, 182, 212,",
+                        speed: 1.2,
+                        weight: 3.5
+                    });
+                }
+                
+                const centerX = canvas.width / 2;
+                const centerY = canvas.height / 2;
+                
+                ripples.forEach((rip, idx) => {
+                    rip.r += rip.speed;
+                    
+                    const alpha = 0.52 * (1 - rip.r / rip.maxR);
+                    
+                    if (alpha <= 0 || rip.r >= rip.maxR) {
+                        rip.r = 0;
+                    } else {
+                        ctx.strokeStyle = `${rip.color} ${alpha})`;
+                        ctx.lineWidth = rip.weight;
+                        ctx.beginPath();
+                        ctx.arc(centerX, centerY, rip.r, 0, Math.PI * 2);
+                        ctx.stroke();
                     }
-                    
-                    // Smoothly size radius with alpha
-                    p.radius = p.targetRadius * (p.alpha * 3);
-                    
-                    ctx.fillStyle = `${p.colorBase} ${p.alpha * 0.95})`;
-                    ctx.beginPath();
-                    ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-                    ctx.fill();
                 });
             }
         }
-        requestAnimationFrame(loopDigital);
+        requestAnimationFrame(loopDeepsea);
     }
-    loopDigital();
+    loopDeepsea();
 }
 
 // Downside Settings Panel Handlers
