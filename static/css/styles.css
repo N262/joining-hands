@@ -6713,14 +6713,14 @@ input:checked + .slider:before {
 .aurora-glow--1 {
     top: -50%;
     left: -25%;
-    background: radial-gradient(circle, rgba(124, 58, 237, 0.48) 0%, transparent 60%);
+    background: radial-gradient(circle, rgba(139, 92, 246, 0.65) 0%, transparent 60%);
     animation: auroraShift1 24s ease-in-out infinite alternate;
 }
 
 .aurora-glow--2 {
     top: -40%;
     right: -25%;
-    background: radial-gradient(circle, rgba(255, 119, 0, 0.42) 0%, transparent 60%);
+    background: radial-gradient(circle, rgba(249, 115, 22, 0.58) 0%, transparent 60%);
     animation: auroraShift2 28s ease-in-out infinite alternate;
 }
 

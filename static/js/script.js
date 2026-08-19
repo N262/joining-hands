@@ -5030,8 +5030,12 @@ function initThemeLoops() {
             const canvas = canvasElements["grid3dCanvas"];
             if (ctx && canvas) {
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
-                ctx.strokeStyle = "rgba(124, 58, 237, 0.16)";
-                ctx.lineWidth = 1.5;
+                const grad = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+                grad.addColorStop(0, "rgba(139, 92, 246, 0.38)");
+                grad.addColorStop(0.5, "rgba(236, 72, 153, 0.32)");
+                grad.addColorStop(1, "rgba(249, 115, 22, 0.38)");
+                ctx.strokeStyle = grad;
+                ctx.lineWidth = 1.8;
                 
                 const centerX = canvas.width / 2;
                 const centerY = canvas.height / 2;
@@ -5078,7 +5082,8 @@ function initThemeLoops() {
                 y: Math.random() * canvas.height,
                 vx: (Math.random() - 0.5) * 0.45,
                 vy: (Math.random() - 0.5) * 0.45,
-                radius: Math.random() * 2 + 1.5
+                radius: Math.random() * 2 + 1.5,
+                color: Math.random() > 0.5 ? "rgba(124, 58, 237, 0.72)" : "rgba(249, 115, 22, 0.72)"
             });
         }
     }
@@ -5092,7 +5097,6 @@ function initThemeLoops() {
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
                 
                 // Move and draw nodes
-                ctx.fillStyle = "rgba(124, 58, 237, 0.65)";
                 nodes.forEach(node => {
                     node.x += node.vx;
                     node.y += node.vy;
@@ -5100,19 +5104,23 @@ function initThemeLoops() {
                     if (node.x < 0 || node.x > canvas.width) node.vx *= -1;
                     if (node.y < 0 || node.y > canvas.height) node.vy *= -1;
                     
+                    ctx.fillStyle = node.color;
                     ctx.beginPath();
                     ctx.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
                     ctx.fill();
                 });
                 
                 // Draw link lines
-                ctx.strokeStyle = "rgba(124, 58, 237, 0.15)";
                 ctx.lineWidth = 1;
                 for (let i = 0; i < nodes.length; i++) {
                     for (let j = i + 1; j < nodes.length; j++) {
                         const dist = Math.hypot(nodes[i].x - nodes[j].x, nodes[i].y - nodes[j].y);
                         if (dist < 130) {
-                            ctx.strokeStyle = `rgba(124, 58, 237, ${0.32 * (1 - dist / 130)})`;
+                            const alpha = 0.35 * (1 - dist / 130);
+                            const grad = ctx.createLinearGradient(nodes[i].x, nodes[i].y, nodes[j].x, nodes[j].y);
+                            grad.addColorStop(0, nodes[i].color.replace("0.72", alpha.toFixed(2)));
+                            grad.addColorStop(1, nodes[j].color.replace("0.72", alpha.toFixed(2)));
+                            ctx.strokeStyle = grad;
                             ctx.beginPath();
                             ctx.moveTo(nodes[i].x, nodes[i].y);
                             ctx.lineTo(nodes[j].x, nodes[j].y);
@@ -5131,6 +5139,7 @@ function initThemeLoops() {
     const maxGold = 35;
     function initGoldParticles(canvas) {
         if (goldParticles.length > 0) return;
+        const goldColors = ["rgba(245, 158, 11,", "rgba(251, 191, 36,", "rgba(254, 240, 138,", "rgba(254, 243, 199,"];
         for (let i = 0; i < maxGold; i++) {
             goldParticles.push({
                 x: Math.random() * canvas.width,
@@ -5140,7 +5149,8 @@ function initThemeLoops() {
                 size: Math.random() * 6 + 3,
                 opacity: Math.random() * 0.6 + 0.1,
                 fadeRate: Math.random() * 0.005 + 0.002,
-                fadeDirection: Math.random() > 0.5 ? 1 : -1
+                fadeDirection: Math.random() > 0.5 ? 1 : -1,
+                colorBase: goldColors[Math.floor(Math.random() * goldColors.length)]
             });
         }
     }
@@ -5169,14 +5179,14 @@ function initThemeLoops() {
                         p.x = Math.random() * canvas.width;
                     }
                     
-                    ctx.fillStyle = `rgba(255, 186, 0, ${p.opacity * 0.85})`;
+                    ctx.fillStyle = `${p.colorBase} ${p.opacity * 0.9})`;
                     ctx.beginPath();
                     ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
                     ctx.fill();
                     
                     // Subtle glowing shadow
-                    ctx.shadowBlur = 8;
-                    ctx.shadowColor = "rgba(255, 186, 0, 0.4)";
+                    ctx.shadowBlur = 12;
+                    ctx.shadowColor = "rgba(251, 191, 36, 0.75)";
                 });
                 ctx.shadowBlur = 0; // Reset shadow
             }
@@ -5203,21 +5213,24 @@ function initThemeLoops() {
                 
                 // Draw 3 revolving rings with different sizes/tilts
                 const rings = [
-                    { rx: 240, ry: 65, rot: zenAngle, color: "rgba(124, 58, 237, 0.35)" },
-                    { rx: 190, ry: 45, rot: -zenAngle * 0.8, color: "rgba(255, 119, 0, 0.28)" },
-                    { rx: 140, ry: 30, rot: zenAngle * 1.2, color: "rgba(124, 58, 237, 0.38)" }
+                    { rx: 240, ry: 65, rot: zenAngle, color: "rgba(139, 92, 246, 0.58)" },
+                    { rx: 190, ry: 45, rot: -zenAngle * 0.8, color: "rgba(249, 115, 22, 0.52)" },
+                    { rx: 140, ry: 30, rot: zenAngle * 1.2, color: "rgba(236, 72, 153, 0.55)" }
                 ];
                 
                 rings.forEach(ring => {
                     ctx.save();
                     ctx.rotate(ring.rot);
                     ctx.strokeStyle = ring.color;
-                    ctx.lineWidth = 3.5;
+                    ctx.lineWidth = 4.2;
+                    ctx.shadowBlur = 10;
+                    ctx.shadowColor = ring.color;
                     ctx.beginPath();
                     ctx.ellipse(0, 0, ring.rx, ring.ry, ring.rot / 2, 0, Math.PI * 2);
                     ctx.stroke();
                     ctx.restore();
                 });
+                ctx.shadowBlur = 0;
                 
                 ctx.restore();
             }
@@ -5236,13 +5249,22 @@ function initThemeLoops() {
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
                 
                 flowTime += 0.002;
-                ctx.lineWidth = 2.2;
+                ctx.lineWidth = 3.2;
                 
                 // Draw 4 fluid horizontal sine-wave lines
                 const wavesCount = 4;
                 for (let i = 0; i < wavesCount; i++) {
-                    const colorVal = i % 2 === 0 ? "rgba(124, 58, 237, 0.25)" : "rgba(255, 119, 0, 0.20)";
-                    ctx.strokeStyle = colorVal;
+                    const grad = ctx.createLinearGradient(0, 0, canvas.width, 0);
+                    if (i % 2 === 0) {
+                        grad.addColorStop(0, "rgba(139, 92, 246, 0.42)");
+                        grad.addColorStop(0.5, "rgba(236, 72, 153, 0.35)");
+                        grad.addColorStop(1, "rgba(99, 102, 241, 0.42)");
+                    } else {
+                        grad.addColorStop(0, "rgba(249, 115, 22, 0.38)");
+                        grad.addColorStop(0.5, "rgba(236, 72, 153, 0.32)");
+                        grad.addColorStop(1, "rgba(244, 63, 94, 0.38)");
+                    }
+                    ctx.strokeStyle = grad;
                     ctx.beginPath();
                     
                     for (let x = 0; x < canvas.width; x += 15) {
@@ -5270,6 +5292,7 @@ function initThemeLoops() {
         if (pulseGrid.length > 0) return;
         const cellW = canvas.width / cols;
         const cellH = canvas.height / rows;
+        const matrixColors = ["rgba(16, 185, 129,", "rgba(6, 182, 212,", "rgba(99, 102, 241,"];
         for (let r = 0; r < rows; r++) {
             for (let c = 0; c < cols; c++) {
                 pulseGrid.push({
@@ -5279,7 +5302,8 @@ function initThemeLoops() {
                     radius: 0.1,
                     alpha: Math.random() * 0.4 + 0.05,
                     fadeRate: Math.random() * 0.008 + 0.002,
-                    fadeDir: Math.random() > 0.5 ? 1 : -1
+                    fadeDir: Math.random() > 0.5 ? 1 : -1,
+                    colorBase: matrixColors[Math.floor(Math.random() * matrixColors.length)]
                 });
             }
         }
@@ -5305,7 +5329,7 @@ function initThemeLoops() {
                     // Smoothly size radius with alpha
                     p.radius = p.targetRadius * (p.alpha * 3);
                     
-                    ctx.fillStyle = `rgba(16, 185, 129, ${p.alpha * 0.9})`;
+                    ctx.fillStyle = `${p.colorBase} ${p.alpha * 0.95})`;
                     ctx.beginPath();
                     ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
                     ctx.fill();
