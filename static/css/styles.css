@@ -7312,4 +7312,11 @@ input:checked + .slider:before {
     box-shadow: 0 4px 12px rgba(124, 58, 237, 0.2);
 }
 
-
+/* ==========================================================================
+   DEVELOPER PROTOCOL: HIDE LETTERS/SYMBOLS INSIDE 3D ECOSYSTEM TILES
+   (Restore by removing display: none when user says "Iron Man")
+   ========================================================================== */
+.ecosystem-tile .tile-letter,
+.ecosystem-tile .tile-symbol-svg {
+    display: none !important;
+}
