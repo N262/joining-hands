@@ -5028,8 +5028,8 @@ function initThemeLoops() {
             const canvas = canvasElements["grid3dCanvas"];
             if (ctx && canvas) {
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
-                ctx.strokeStyle = "rgba(124, 58, 237, 0.04)";
-                ctx.lineWidth = 1.2;
+                ctx.strokeStyle = "rgba(124, 58, 237, 0.16)";
+                ctx.lineWidth = 1.5;
                 
                 const centerX = canvas.width / 2;
                 const centerY = canvas.height / 2;
@@ -5090,7 +5090,7 @@ function initThemeLoops() {
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
                 
                 // Move and draw nodes
-                ctx.fillStyle = "rgba(124, 58, 237, 0.28)";
+                ctx.fillStyle = "rgba(124, 58, 237, 0.65)";
                 nodes.forEach(node => {
                     node.x += node.vx;
                     node.y += node.vy;
@@ -5104,13 +5104,13 @@ function initThemeLoops() {
                 });
                 
                 // Draw link lines
-                ctx.strokeStyle = "rgba(124, 58, 237, 0.05)";
+                ctx.strokeStyle = "rgba(124, 58, 237, 0.15)";
                 ctx.lineWidth = 1;
                 for (let i = 0; i < nodes.length; i++) {
                     for (let j = i + 1; j < nodes.length; j++) {
                         const dist = Math.hypot(nodes[i].x - nodes[j].x, nodes[i].y - nodes[j].y);
                         if (dist < 130) {
-                            ctx.strokeStyle = `rgba(124, 58, 237, ${0.08 * (1 - dist / 130)})`;
+                            ctx.strokeStyle = `rgba(124, 58, 237, ${0.32 * (1 - dist / 130)})`;
                             ctx.beginPath();
                             ctx.moveTo(nodes[i].x, nodes[i].y);
                             ctx.lineTo(nodes[j].x, nodes[j].y);
@@ -5135,7 +5135,7 @@ function initThemeLoops() {
                 y: Math.random() * canvas.height,
                 vy: -Math.random() * 0.3 - 0.15,
                 vx: (Math.random() - 0.5) * 0.15,
-                size: Math.random() * 4 + 2,
+                size: Math.random() * 6 + 3,
                 opacity: Math.random() * 0.6 + 0.1,
                 fadeRate: Math.random() * 0.005 + 0.002,
                 fadeDirection: Math.random() > 0.5 ? 1 : -1
@@ -5167,7 +5167,7 @@ function initThemeLoops() {
                         p.x = Math.random() * canvas.width;
                     }
                     
-                    ctx.fillStyle = `rgba(255, 186, 0, ${p.opacity * 0.38})`;
+                    ctx.fillStyle = `rgba(255, 186, 0, ${p.opacity * 0.85})`;
                     ctx.beginPath();
                     ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
                     ctx.fill();
@@ -5201,16 +5201,16 @@ function initThemeLoops() {
                 
                 // Draw 3 revolving rings with different sizes/tilts
                 const rings = [
-                    { rx: 240, ry: 65, rot: zenAngle, color: "rgba(124, 58, 237, 0.07)" },
-                    { rx: 190, ry: 45, rot: -zenAngle * 0.8, color: "rgba(255, 119, 0, 0.06)" },
-                    { rx: 140, ry: 30, rot: zenAngle * 1.2, color: "rgba(124, 58, 237, 0.09)" }
+                    { rx: 240, ry: 65, rot: zenAngle, color: "rgba(124, 58, 237, 0.35)" },
+                    { rx: 190, ry: 45, rot: -zenAngle * 0.8, color: "rgba(255, 119, 0, 0.28)" },
+                    { rx: 140, ry: 30, rot: zenAngle * 1.2, color: "rgba(124, 58, 237, 0.38)" }
                 ];
                 
                 rings.forEach(ring => {
                     ctx.save();
                     ctx.rotate(ring.rot);
                     ctx.strokeStyle = ring.color;
-                    ctx.lineWidth = 2.5;
+                    ctx.lineWidth = 3.5;
                     ctx.beginPath();
                     ctx.ellipse(0, 0, ring.rx, ring.ry, ring.rot / 2, 0, Math.PI * 2);
                     ctx.stroke();
@@ -5234,12 +5234,12 @@ function initThemeLoops() {
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
                 
                 flowTime += 0.002;
-                ctx.lineWidth = 1.5;
+                ctx.lineWidth = 2.2;
                 
                 // Draw 4 fluid horizontal sine-wave lines
                 const wavesCount = 4;
                 for (let i = 0; i < wavesCount; i++) {
-                    const colorVal = i % 2 === 0 ? "rgba(124, 58, 237, 0.05)" : "rgba(255, 119, 0, 0.04)";
+                    const colorVal = i % 2 === 0 ? "rgba(124, 58, 237, 0.25)" : "rgba(255, 119, 0, 0.20)";
                     ctx.strokeStyle = colorVal;
                     ctx.beginPath();
                     
@@ -5275,7 +5275,7 @@ function initThemeLoops() {
                     y: r * cellH + cellH / 2,
                     targetRadius: Math.random() * 3 + 1,
                     radius: 0.1,
-                    alpha: Math.random() * 0.2 + 0.02,
+                    alpha: Math.random() * 0.4 + 0.05,
                     fadeRate: Math.random() * 0.008 + 0.002,
                     fadeDir: Math.random() > 0.5 ? 1 : -1
                 });
@@ -5296,14 +5296,14 @@ function initThemeLoops() {
                     if (p.alpha <= 0.02) {
                         p.fadeDir = 1;
                         p.targetRadius = Math.random() * 3 + 1;
-                    } else if (p.alpha >= 0.28) {
+                    } else if (p.alpha >= 0.75) {
                         p.fadeDir = -1;
                     }
                     
                     // Smoothly size radius with alpha
                     p.radius = p.targetRadius * (p.alpha * 3);
                     
-                    ctx.fillStyle = `rgba(16, 185, 129, ${p.alpha * 0.4})`;
+                    ctx.fillStyle = `rgba(16, 185, 129, ${p.alpha * 0.9})`;
                     ctx.beginPath();
                     ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
                     ctx.fill();
