@@ -4967,15 +4967,27 @@ document.addEventListener("DOMContentLoaded", () => {
         landingView.classList.add("theme-water");
     }
 
-    // Set initial dropdown values to match state
-    const themeDropdown = document.getElementById("themeSelectDropdown");
-    if (themeDropdown) {
-        themeDropdown.value = activeTheme;
-    }
-    const intervalDropdown = document.getElementById("intervalSelectDropdown");
-    if (intervalDropdown) {
-        intervalDropdown.value = (themeRotationIntervalTime / 1000).toString();
-    }
+    // Sync theme select buttons active state
+    const themeButtons = document.querySelectorAll(".theme-select-btn");
+    themeButtons.forEach(btn => {
+        if (btn.getAttribute("data-theme") === activeTheme) {
+            btn.classList.add("active");
+        } else {
+            btn.classList.remove("active");
+        }
+    });
+
+    // Sync auto-rotate interval buttons active state
+    const intervalSeconds = themeRotationIntervalTime / 1000;
+    const intervalButtons = document.querySelectorAll(".timer-opt-btn");
+    intervalButtons.forEach(btn => {
+        const val = parseInt(btn.getAttribute("data-interval"), 10);
+        if (val === intervalSeconds) {
+            btn.classList.add("active");
+        } else {
+            btn.classList.remove("active");
+        }
+    });
 
     // Set up canvas elements and listeners
     const themeCanvases = ["flowCanvas", "glassflowCanvas", "waterflowCanvas", "6thCanvas", "7thCanvas"];

@@ -278,23 +278,39 @@
                     <h4>Themes</h4>
                     <button class="settings-close-btn" onclick="closeSettingsPanel()" aria-label="Close Settings Panel">&times;</button>
                 </div>
-                <div class="settings-select-group">
-                    <select id="themeSelectDropdown" class="theme-select-dropdown" onchange="switchBackdropTheme(this.value)">
-                        <option value="water">Water Light</option>
-                        <option value="flow">Flow</option>
-                        <option value="glassflow">Glass Flow</option>
-                        <option value="waterflow">Water Flow</option>
-                        <option value="6th">6th</option>
-                        <option value="7th">7th</option>
-                    </select>
+                <div class="sidebar-themes-grid">
+                    <button class="theme-select-btn active" data-theme="water" onclick="switchBackdropTheme('water')" title="Water Light">
+                        <span class="theme-color-dot theme-dot--water"></span>
+                        <span class="theme-btn-label">Water Light</span>
+                    </button>
+                    <button class="theme-select-btn" data-theme="flow" onclick="switchBackdropTheme('flow')" title="Flow">
+                        <span class="theme-color-dot" style="background: linear-gradient(135deg, #0284c7 0%, #d97706 100%);"></span>
+                        <span class="theme-btn-label">Flow</span>
+                    </button>
+                    <button class="theme-select-btn" data-theme="glassflow" onclick="switchBackdropTheme('glassflow')" title="Glass Flow">
+                        <span class="theme-color-dot" style="background: linear-gradient(135deg, #818cf8 0%, #c084fc 100%);"></span>
+                        <span class="theme-btn-label">Glass Flow</span>
+                    </button>
+                    <button class="theme-select-btn" data-theme="waterflow" onclick="switchBackdropTheme('waterflow')" title="Water Flow">
+                        <span class="theme-color-dot" style="background: linear-gradient(135deg, #06b6d4 0%, #10b881 100%);"></span>
+                        <span class="theme-btn-label">Water Flow</span>
+                    </button>
+                    <button class="theme-select-btn" data-theme="6th" onclick="switchBackdropTheme('6th')" title="6th Theme">
+                        <span class="theme-color-dot" style="background: linear-gradient(135deg, #ffa000 0%, #e65100 100%);"></span>
+                        <span class="theme-btn-label">6th</span>
+                    </button>
+                    <button class="theme-select-btn" data-theme="7th" onclick="switchBackdropTheme('7th')" title="7th Theme">
+                        <span class="theme-color-dot" style="background: linear-gradient(135deg, #d946ef 0%, #4f46e5 100%);"></span>
+                        <span class="theme-btn-label">7th</span>
+                    </button>
                 </div>
                 <div class="settings-timer-section">
                     <div class="settings-timer-label">Auto-Rotate Interval</div>
-                    <select id="intervalSelectDropdown" class="interval-select-dropdown" onchange="changeThemeInterval(parseInt(this.value))">
-                        <option value="5">5s</option>
-                        <option value="10">10s</option>
-                        <option value="0">None</option>
-                    </select>
+                    <div class="settings-timer-options">
+                        <button class="timer-opt-btn active" data-interval="5" onclick="changeThemeInterval(5)">5s</button>
+                        <button class="timer-opt-btn" data-interval="10" onclick="changeThemeInterval(10)">10s</button>
+                        <button class="timer-opt-btn" data-interval="0" onclick="changeThemeInterval(0)">None</button>
+                    </div>
                 </div>
             </div>
         </div>
