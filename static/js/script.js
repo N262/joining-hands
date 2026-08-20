@@ -4934,7 +4934,7 @@ let themeAnimationIds = {};
 let canvasElements = {};
 let canvasContexts = {};
 
-const themeRotationList = ["water", "midnight", "deepsea", "darkflow"];
+const themeRotationList = ["water", "flow"];
 let themeRotationIntervalId = null;
 let themeRotationIntervalTime = 5000; // 5 seconds default
 
@@ -4947,7 +4947,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Set up canvas elements and listeners
-    const themeCanvases = ["midnightCanvas", "deepseaCanvas"];
+    const themeCanvases = ["flowCanvas"];
     themeCanvases.forEach(id => {
         const canvas = document.getElementById(id);
         if (canvas) {
@@ -4982,7 +4982,7 @@ function switchBackdropTheme(theme, isAuto = false) {
     const landingView = document.getElementById("landing-view");
     if (landingView) {
         // Remove all previous theme classes
-        const themes = ["water", "midnight", "deepsea", "darkflow"];
+        const themes = ["water", "flow"];
         themes.forEach(t => landingView.classList.remove(`theme-${t}`));
         landingView.classList.add(`theme-${theme}`);
     }
@@ -5011,115 +5011,187 @@ function switchBackdropTheme(theme, isAuto = false) {
 
 function getCanvasIdForTheme(theme) {
     const map = {
-        "midnight": "midnightCanvas",
-        "deepsea": "deepseaCanvas"
+        "flow": "flowCanvas"
     };
     return map[theme] || null;
 }
 
 function initThemeLoops() {
-    // 1. Midnight Waves Loop (Dark mode fluid waves)
-    let flowTime = 0;
-    function loopMidnight() {
-        if (activeTheme === "midnight") {
-            const ctx = canvasContexts["midnightCanvas"];
-            const canvas = canvasElements["midnightCanvas"];
-            if (ctx && canvas) {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                
-                flowTime += 0.003;
-                ctx.lineWidth = 3.5;
-                
-                const wavesCount = 4;
-                for (let i = 0; i < wavesCount; i++) {
-                    const grad = ctx.createLinearGradient(0, 0, canvas.width, 0);
-                    if (i % 2 === 0) {
-                        grad.addColorStop(0, "rgba(59, 130, 246, 0.45)");
-                        grad.addColorStop(0.5, "rgba(139, 92, 246, 0.38)");
-                        grad.addColorStop(1, "rgba(236, 72, 153, 0.45)");
-                    } else {
-                        grad.addColorStop(0, "rgba(99, 102, 241, 0.4)");
-                        grad.addColorStop(0.5, "rgba(6, 182, 212, 0.32)");
-                        grad.addColorStop(1, "rgba(124, 58, 237, 0.4)");
-                    }
-                    
-                    ctx.strokeStyle = grad;
-                    ctx.beginPath();
-                    
-                    for (let x = 0; x < canvas.width; x += 15) {
-                        const wavePhase = flowTime * 2 + (x * 0.0025) + (i * Math.PI / 2);
-                        const y = canvas.height / 2 + Math.sin(wavePhase) * (150 + i * 35) + Math.cos(flowTime + x * 0.001) * 50;
-                        if (x === 0) {
-                            ctx.moveTo(x, y);
-                        } else {
-                            ctx.lineTo(x, y);
-                        }
-                    }
-                    ctx.stroke();
-                }
-            }
-        }
-        requestAnimationFrame(loopMidnight);
-    }
-    loopMidnight();
+    // Global mouse coordinates for interactive parallax offsets
+    let mouseX = window.innerWidth / 2;
+    let mouseY = window.innerHeight / 2;
+    window.addEventListener("mousemove", (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+    });
 
-    // 2. Deep Sea Ripple Loop (Dark Concentric Waves)
-    let ripples = [];
-    const maxRipples = 6;
-    let spawnTimer = 0;
-    
-    function loopDeepsea() {
-        if (activeTheme === "deepsea") {
-            const ctx = canvasContexts["deepseaCanvas"];
-            const canvas = canvasElements["deepseaCanvas"];
+    let goldDust = [];
+    const maxGoldDust = 70;
+    let feathers = [];
+    const maxFeathers = 4;
+
+    function loopFlow() {
+        if (activeTheme === "flow") {
+            const ctx = canvasContexts["flowCanvas"];
+            const canvas = canvasElements["flowCanvas"];
             if (ctx && canvas) {
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
-                
-                spawnTimer++;
-                if (spawnTimer > 120 && ripples.length < maxRipples) {
-                    ripples.push({
-                        r: 0,
-                        maxR: Math.max(canvas.width, canvas.height) * 0.8,
-                        color: Math.random() > 0.5 ? "rgba(6, 182, 212," : "rgba(20, 184, 166,",
-                        speed: 1.2,
-                        weight: Math.random() * 2.5 + 1.5
-                    });
-                    spawnTimer = 0;
+
+                // Setup parallax offsets
+                const targetOffsetX = (mouseX - canvas.width / 2) * 0.05;
+                const targetOffsetY = (mouseY - canvas.height / 2) * 0.05;
+
+                // Initialize gold dust particles
+                if (goldDust.length === 0) {
+                    for (let i = 0; i < maxGoldDust; i++) {
+                        goldDust.push({
+                            x: Math.random() * canvas.width,
+                            y: Math.random() * canvas.height,
+                            r: Math.random() * 2 + 0.8,
+                            speedY: Math.random() * 0.35 + 0.15,
+                            speedX: Math.random() * 0.2 - 0.1,
+                            alpha: Math.random() * 0.5 + 0.3,
+                            color: Math.random() > 0.5 ? "rgba(217, 119, 6, " : "rgba(251, 191, 36, ",
+                            swaySpeed: Math.random() * 0.015 + 0.005,
+                            swayPhase: Math.random() * Math.PI * 2
+                        });
+                    }
                 }
-                
-                if (ripples.length === 0) {
-                    ripples.push({
-                        r: 0,
-                        maxR: Math.max(canvas.width, canvas.height) * 0.8,
-                        color: "rgba(6, 182, 212,",
-                        speed: 1.2,
-                        weight: 3.5
-                    });
+
+                // Initialize floating feathers
+                if (feathers.length === 0) {
+                    for (let i = 0; i < maxFeathers; i++) {
+                        feathers.push({
+                            x: Math.random() * canvas.width,
+                            y: Math.random() * canvas.height + canvas.height,
+                            size: Math.random() * 40 + 40,
+                            angle: Math.random() * Math.PI * 2,
+                            speedY: Math.random() * 0.4 + 0.25,
+                            swingSpeed: Math.random() * 0.01 + 0.004,
+                            swingRange: Math.random() * 20 + 15,
+                            swingPhase: Math.random() * Math.PI * 2,
+                            spinSpeed: Math.random() * 0.008 + 0.002
+                        });
+                    }
                 }
-                
-                const centerX = canvas.width / 2;
-                const centerY = canvas.height / 2;
-                
-                ripples.forEach((rip, idx) => {
-                    rip.r += rip.speed;
-                    
-                    const alpha = 0.52 * (1 - rip.r / rip.maxR);
-                    
-                    if (alpha <= 0 || rip.r >= rip.maxR) {
-                        rip.r = 0;
-                    } else {
-                        ctx.strokeStyle = `${rip.color} ${alpha})`;
-                        ctx.lineWidth = rip.weight;
+
+                // 1. Draw and update gold dust particles with parallax
+                goldDust.forEach(p => {
+                    p.y -= p.speedY;
+                    p.swayPhase += p.swaySpeed;
+                    const curX = p.x + Math.sin(p.swayPhase) * 6 + targetOffsetX;
+                    const curY = p.y + targetOffsetY;
+
+                    if (p.y < -10) {
+                        p.y = canvas.height + 10;
+                        p.x = Math.random() * canvas.width;
+                    }
+
+                    ctx.fillStyle = p.color + p.alpha + ")";
+                    ctx.shadowBlur = 4;
+                    ctx.shadowColor = "rgba(217, 119, 6, 0.6)";
+                    ctx.beginPath();
+                    ctx.arc(curX, curY, p.r, 0, Math.PI * 2);
+                    ctx.fill();
+                });
+                ctx.shadowBlur = 0;
+
+                // 2. Draw and update floating peacock feathers with detailed rendering
+                feathers.forEach(f => {
+                    f.y -= f.speedY;
+                    f.swingPhase += f.swingSpeed;
+                    f.angle += f.spinSpeed;
+                    const curX = f.x + Math.sin(f.swingPhase) * f.swingRange + targetOffsetX;
+                    const curY = f.y + targetOffsetY;
+
+                    if (f.y < -150) {
+                        f.y = canvas.height + 150;
+                        f.x = Math.random() * canvas.width;
+                    }
+
+                    ctx.save();
+                    ctx.translate(curX, curY);
+                    ctx.rotate(f.angle);
+                    ctx.globalAlpha = 0.5;
+
+                    // Draw feather central quill stem
+                    ctx.strokeStyle = "rgba(251, 191, 36, 0.4)";
+                    ctx.lineWidth = 2.0;
+                    ctx.beginPath();
+                    ctx.moveTo(0, f.size);
+                    ctx.quadraticCurveTo(-10, 0, 0, -f.size);
+                    ctx.stroke();
+
+                    // Draw fine barbs (strands) branching left and right
+                    const steps = 30;
+                    for (let j = 0; j < steps; j++) {
+                        const ratio = j / steps;
+                        const yPos = f.size - ratio * (f.size * 2);
+                        const barbLength = (1 - Math.abs(ratio - 0.5) * 2) * (f.size * 0.4);
+
+                        // Gradient for barbs transitioning from purple/blue to green/gold at tips
+                        const barbGrad = ctx.createLinearGradient(0, yPos, barbLength, yPos);
+                        barbGrad.addColorStop(0, "rgba(99, 102, 241, 0.35)");
+                        barbGrad.addColorStop(0.5, "rgba(6, 182, 212, 0.4)");
+                        barbGrad.addColorStop(1, "rgba(217, 119, 6, 0.2)");
+
+                        // Left Barb
+                        ctx.strokeStyle = barbGrad;
+                        ctx.lineWidth = 1.0;
                         ctx.beginPath();
-                        ctx.arc(centerX, centerY, rip.r, 0, Math.PI * 2);
+                        ctx.moveTo(0, yPos);
+                        ctx.quadraticCurveTo(-barbLength * 0.5, yPos - 5, -barbLength, yPos - 12);
+                        ctx.stroke();
+
+                        // Right Barb
+                        ctx.beginPath();
+                        ctx.moveTo(0, yPos);
+                        ctx.quadraticCurveTo(barbLength * 0.5, yPos - 5, barbLength, yPos - 12);
                         ctx.stroke();
                     }
+
+                    // Draw realistic Peacock Eye at the tip
+                    const eyeY = -f.size * 0.75;
+                    const eyeR = f.size * 0.24;
+
+                    // A. Outer golden/bronze ring
+                    ctx.fillStyle = "rgba(217, 119, 6, 0.8)";
+                    ctx.beginPath();
+                    ctx.arc(0, eyeY, eyeR, 0, Math.PI * 2);
+                    ctx.fill();
+
+                    // B. Middle vibrant green ring
+                    ctx.fillStyle = "rgba(16, 185, 129, 0.9)";
+                    ctx.beginPath();
+                    ctx.arc(0, eyeY, eyeR * 0.7, 0, Math.PI * 2);
+                    ctx.fill();
+
+                    // C. Deep indigo/purple crescent base
+                    ctx.fillStyle = "rgba(30, 27, 75, 1)";
+                    ctx.beginPath();
+                    ctx.arc(0, eyeY + 2, eyeR * 0.45, 0, Math.PI * 2);
+                    ctx.fill();
+
+                    // D. Saturated cyan center spot
+                    ctx.fillStyle = "rgba(6, 182, 212, 1)";
+                    ctx.beginPath();
+                    ctx.arc(-2, eyeY + 3, eyeR * 0.28, 0, Math.PI * 2);
+                    ctx.fill();
+
+                    // E. Soft white specular highlight dot
+                    ctx.fillStyle = "rgba(255, 255, 255, 0.95)";
+                    ctx.beginPath();
+                    ctx.arc(-3, eyeY + 2, 1.5, 0, Math.PI * 2);
+                    ctx.fill();
+
+                    ctx.restore();
                 });
+                ctx.globalAlpha = 1.0;
             }
         }
-        requestAnimationFrame(loopDeepsea);
+        requestAnimationFrame(loopFlow);
     }
-    loopDeepsea();
+    loopFlow();
 }
 
 // Downside Settings Panel Handlers
