@@ -4974,6 +4974,23 @@ document.addEventListener("DOMContentLoaded", () => {
     // Start background loops
     initThemeLoops();
 
+    // Optimize video loads: Pause all videos initially, then play only active one
+    const allVideos = document.querySelectorAll(".theme-layer video");
+    allVideos.forEach(vid => {
+        try {
+            vid.pause();
+        } catch(e) {}
+    });
+    const activeLayer = document.querySelector(`.layer--${activeTheme}`);
+    if (activeLayer) {
+        const activeVideo = activeLayer.querySelector("video");
+        if (activeVideo) {
+            try {
+                activeVideo.play();
+            } catch(e) {}
+        }
+    }
+
     // Start auto-rotate timer automatically on load
     startThemeRotation();
 });
@@ -4995,6 +5012,23 @@ function switchBackdropTheme(theme, isAuto = false) {
         const themes = ["water", "flow", "glassflow", "waterflow", "6th", "7th"];
         themes.forEach(t => landingView.classList.remove(`theme-${t}`));
         landingView.classList.add(`theme-${theme}`);
+    }
+
+    // Performance Optimization: Play active theme video and pause all others
+    const allVideos = document.querySelectorAll(".theme-layer video");
+    allVideos.forEach(vid => {
+        try {
+            vid.pause();
+        } catch(e) {}
+    });
+    const activeLayer = document.querySelector(`.layer--${theme}`);
+    if (activeLayer) {
+        const activeVideo = activeLayer.querySelector("video");
+        if (activeVideo) {
+            try {
+                activeVideo.play();
+            } catch(e) {}
+        }
     }
 
     // Update theme select dropdown value if exists
@@ -5045,100 +5079,62 @@ function initThemeLoops() {
         mouseY = e.clientY;
     });
 
-    function loopFlow() {
+    function runGlobalThemeLoop() {
         if (activeTheme === "flow") {
             const canvas = canvasElements["flowCanvas"];
             if (canvas) {
-                // Setup parallax offsets
                 const targetOffsetX = (mouseX - canvas.width / 2) * 0.05;
                 const targetOffsetY = (mouseY - canvas.height / 2) * 0.05;
-
-                // Parallax shift for background video
                 const bgVideo = document.querySelector(".theme-layer.layer--flow .theme-bg-video");
                 if (bgVideo) {
                     bgVideo.style.transform = `translate(calc(-50% + ${targetOffsetX}px), calc(-50% + ${targetOffsetY}px)) scale(1.05)`;
                 }
             }
-        }
-        requestAnimationFrame(loopFlow);
-    }
-    loopFlow();
-
-    function loopGlassflow() {
-        if (activeTheme === "glassflow") {
+        } else if (activeTheme === "glassflow") {
             const canvas = canvasElements["glassflowCanvas"];
             if (canvas) {
-                // Setup parallax offsets
                 const targetOffsetX = (mouseX - canvas.width / 2) * 0.05;
                 const targetOffsetY = (mouseY - canvas.height / 2) * 0.05;
-
-                // Parallax shift for background video
                 const bgVideo = document.querySelector(".theme-layer.layer--glassflow .theme-bg-video");
                 if (bgVideo) {
                     bgVideo.style.transform = `translate(calc(-50% + ${targetOffsetX}px), calc(-50% + ${targetOffsetY}px)) scale(1.05)`;
                 }
             }
-        }
-        requestAnimationFrame(loopGlassflow);
-    }
-    loopGlassflow();
-
-    function loopWaterflow() {
-        if (activeTheme === "waterflow") {
+        } else if (activeTheme === "waterflow") {
             const canvas = canvasElements["waterflowCanvas"];
             if (canvas) {
-                // Setup parallax offsets
                 const targetOffsetX = (mouseX - canvas.width / 2) * 0.05;
                 const targetOffsetY = (mouseY - canvas.height / 2) * 0.05;
-
-                // Parallax shift for background video
                 const bgVideo = document.querySelector(".theme-layer.layer--waterflow .theme-bg-video");
                 if (bgVideo) {
                     bgVideo.style.transform = `translate(calc(-50% + ${targetOffsetX}px), calc(-50% + ${targetOffsetY}px)) scale(1.05)`;
                 }
             }
-        }
-        requestAnimationFrame(loopWaterflow);
-    }
-    loopWaterflow();
-
-    function loop6th() {
-        if (activeTheme === "6th") {
+        } else if (activeTheme === "6th") {
             const canvas = canvasElements["6thCanvas"];
             if (canvas) {
-                // Setup parallax offsets
                 const targetOffsetX = (mouseX - canvas.width / 2) * 0.05;
                 const targetOffsetY = (mouseY - canvas.height / 2) * 0.05;
-
-                // Parallax shift for background video
                 const bgVideo = document.querySelector(".theme-layer.layer--6th .theme-bg-video");
                 if (bgVideo) {
                     bgVideo.style.transform = `translate(calc(-50% + ${targetOffsetX}px), calc(-50% + ${targetOffsetY}px)) scale(1.05)`;
                 }
             }
-        }
-        requestAnimationFrame(loop6th);
-    }
-    loop6th();
-
-    function loop7th() {
-        if (activeTheme === "7th") {
+        } else if (activeTheme === "7th") {
             const canvas = canvasElements["7thCanvas"];
             if (canvas) {
-                // Setup parallax offsets
                 const targetOffsetX = (mouseX - canvas.width / 2) * 0.05;
                 const targetOffsetY = (mouseY - canvas.height / 2) * 0.05;
-
-                // Parallax shift for background video
                 const bgVideo = document.querySelector(".theme-layer.layer--7th .theme-bg-video");
                 if (bgVideo) {
                     bgVideo.style.transform = `translate(calc(-50% + ${targetOffsetX}px), calc(-50% + ${targetOffsetY}px)) scale(1.05)`;
                 }
             }
         }
-        requestAnimationFrame(loop7th);
+        requestAnimationFrame(runGlobalThemeLoop);
     }
-    loop7th();
+    runGlobalThemeLoop();
+}
 }
 
 // Downside Settings Panel Handlers
