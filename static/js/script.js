@@ -4987,6 +4987,12 @@ function switchBackdropTheme(theme, isAuto = false) {
         landingView.classList.add(`theme-${theme}`);
     }
 
+    // Update theme select dropdown value if exists
+    const themeDropdown = document.getElementById("themeSelectDropdown");
+    if (themeDropdown) {
+        themeDropdown.value = theme;
+    }
+
     // Update active button indicators in sidebar menu
     const buttons = document.querySelectorAll(".theme-select-btn");
     buttons.forEach(btn => {
@@ -5114,6 +5120,12 @@ function stopThemeRotation() {
 
 function changeThemeInterval(seconds) {
     themeRotationIntervalTime = seconds * 1000;
+    
+    // Update interval select dropdown value if exists
+    const intervalDropdown = document.getElementById("intervalSelectDropdown");
+    if (intervalDropdown) {
+        intervalDropdown.value = seconds.toString();
+    }
     
     // Update UI active state for interval buttons
     const buttons = document.querySelectorAll(".timer-opt-btn");

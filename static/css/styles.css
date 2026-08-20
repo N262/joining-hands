@@ -7009,13 +7009,13 @@ input:checked + .slider:before {
     bottom: 64px;
     right: 0;
     width: 320px;
-    background: rgba(255, 255, 255, 0.82);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(124, 58, 237, 0.12);
+    background: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border: none !important;
     border-radius: 20px;
     padding: 16px;
-    box-shadow: 0 12px 36px rgba(124, 58, 237, 0.16);
+    box-shadow: none !important;
     opacity: 0;
     pointer-events: none;
     transform: translateY(15px) scale(0.95);
@@ -7291,4 +7291,74 @@ input:checked + .slider:before {
 .editorial-pointer--bottom {
     margin-top: 24px;
     margin-bottom: -24px;
+}
+
+/* Custom Select Dropdowns inside Settings Panel */
+.theme-select-dropdown,
+.interval-select-dropdown {
+    width: 100%;
+    padding: 10px 14px;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-weight: 500;
+    border-radius: 12px;
+    border: 1px solid rgba(124, 58, 237, 0.2);
+    background: rgba(255, 255, 255, 0.75);
+    color: #1e293b;
+    outline: none;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    margin-bottom: 12px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg fill='%2364748b' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+}
+
+.theme-select-dropdown option,
+.interval-select-dropdown option {
+    background: #ffffff;
+    color: #1e293b;
+}
+
+.theme-select-dropdown:hover,
+.interval-select-dropdown:hover,
+.theme-select-dropdown:focus,
+.interval-select-dropdown:focus {
+    border-color: #7c3aed;
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 4px 15px rgba(124, 58, 237, 0.12);
+}
+
+/* Dark theme overrides for select dropdowns */
+#landing-view.theme-flow .theme-select-dropdown,
+#landing-view.theme-glassflow .theme-select-dropdown,
+#landing-view.theme-flow .interval-select-dropdown,
+#landing-view.theme-glassflow .interval-select-dropdown {
+    background: rgba(15, 23, 42, 0.65) !important;
+    border-color: rgba(255, 255, 255, 0.15) !important;
+    color: #f8fafc !important;
+    background-image: url("data:image/svg+xml;utf8,<svg fill='%2394a3b8' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+}
+
+#landing-view.theme-flow .theme-select-dropdown option,
+#landing-view.theme-glassflow .theme-select-dropdown option,
+#landing-view.theme-flow .interval-select-dropdown option,
+#landing-view.theme-glassflow .interval-select-dropdown option {
+    background: #0f172a;
+    color: #f8fafc;
+}
+
+#landing-view.theme-flow .settings-panel-header h4,
+#landing-view.theme-glassflow .settings-panel-header h4 {
+    color: #ffffff !important;
+}
+
+#landing-view.theme-flow .settings-timer-label,
+#landing-view.theme-glassflow .settings-timer-label {
+    color: #cbd5e1 !important;
 }
