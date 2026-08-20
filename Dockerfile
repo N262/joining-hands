@@ -1,4 +1,5 @@
 # Use lightweight Python 3.10 slim base image
+# Force rebuild trigger for Render deployment sync
 FROM python:3.10-slim
 
 # Set working directory inside container
