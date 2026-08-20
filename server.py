@@ -484,12 +484,15 @@ class EnterpriseRESTRequestHandler(http.server.SimpleHTTPRequestHandler):
                 pass
 
         # 4. SERVE HERO & STATIC IMAGES & UPLOADS & VIDEOS
-        elif path.startswith('/hero.jpg') or path.startswith('/k3.png') or path.startswith('/static/images/') or path.startswith('/uploads/') or path.startswith('/static/uploads/') or path.startswith('/static/video/') or path.endswith('.mp4'):
+        elif path.startswith('/hero.jpg') or path.startswith('/k3.png') or path.startswith('/static/images/') or path.startswith('/uploads/') or path.startswith('/static/uploads/') or path.startswith('/static/video/') or path.startswith('/themes/') or path.endswith('.mp4'):
             filename = os.path.basename(path)
             if 'uploads' in path:
                 filepath = os.path.join(UPLOADS_DIR, filename)
-            elif 'video' in path or filename.endswith('.mp4'):
-                filepath = os.path.join(STATIC_DIR, 'video', filename)
+            elif 'video' in path or 'themes' in path or filename.endswith('.mp4'):
+                # Try the unified themes/ directory first, then fallback to static/video/
+                filepath = os.path.join(BASE_DIR, 'themes', filename)
+                if not os.path.exists(filepath):
+                    filepath = os.path.join(STATIC_DIR, 'video', filename)
             else:
                 filepath = os.path.join(IMAGES_DIR, filename)
 
