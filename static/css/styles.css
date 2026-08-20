@@ -6733,7 +6733,7 @@ input:checked + .slider:before {
 
 /* Theme Layers Sizing & Transitions */
 .theme-layer {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
