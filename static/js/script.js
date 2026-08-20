@@ -4934,7 +4934,7 @@ let themeAnimationIds = {};
 let canvasElements = {};
 let canvasContexts = {};
 
-const themeRotationList = ["water", "flow", "glassflow", "waterflow", "6th"];
+const themeRotationList = ["water", "flow", "glassflow", "waterflow", "6th", "7th"];
 let themeRotationIntervalId = null;
 let themeRotationIntervalTime = 5000; // 5 seconds default
 
@@ -4957,7 +4957,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Set up canvas elements and listeners
-    const themeCanvases = ["flowCanvas", "glassflowCanvas", "waterflowCanvas", "6thCanvas"];
+    const themeCanvases = ["flowCanvas", "glassflowCanvas", "waterflowCanvas", "6thCanvas", "7thCanvas"];
     themeCanvases.forEach(id => {
         const canvas = document.getElementById(id);
         if (canvas) {
@@ -4992,7 +4992,7 @@ function switchBackdropTheme(theme, isAuto = false) {
     const landingView = document.getElementById("landing-view");
     if (landingView) {
         // Remove all previous theme classes
-        const themes = ["water", "flow", "glassflow", "waterflow", "6th"];
+        const themes = ["water", "flow", "glassflow", "waterflow", "6th", "7th"];
         themes.forEach(t => landingView.classList.remove(`theme-${t}`));
         landingView.classList.add(`theme-${theme}`);
     }
@@ -5030,7 +5030,8 @@ function getCanvasIdForTheme(theme) {
         "flow": "flowCanvas",
         "glassflow": "glassflowCanvas",
         "waterflow": "waterflowCanvas",
-        "6th": "6thCanvas"
+        "6th": "6thCanvas",
+        "7th": "7thCanvas"
     };
     return map[theme] || null;
 }
@@ -5119,6 +5120,25 @@ function initThemeLoops() {
         requestAnimationFrame(loop6th);
     }
     loop6th();
+
+    function loop7th() {
+        if (activeTheme === "7th") {
+            const canvas = canvasElements["7thCanvas"];
+            if (canvas) {
+                // Setup parallax offsets
+                const targetOffsetX = (mouseX - canvas.width / 2) * 0.05;
+                const targetOffsetY = (mouseY - canvas.height / 2) * 0.05;
+
+                // Parallax shift for background video
+                const bgVideo = document.querySelector(".theme-layer.layer--7th .theme-bg-video");
+                if (bgVideo) {
+                    bgVideo.style.transform = `translate(calc(-50% + ${targetOffsetX}px), calc(-50% + ${targetOffsetY}px)) scale(1.05)`;
+                }
+            }
+        }
+        requestAnimationFrame(loop7th);
+    }
+    loop7th();
 }
 
 // Downside Settings Panel Handlers
