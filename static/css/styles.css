@@ -6863,24 +6863,6 @@ input:checked + .slider:before {
     color: #f8fafc !important;
 }
 
-#landing-view.theme-flow .hero-main-title,
-#landing-view.theme-glassflow .hero-main-title,
-#landing-view.theme-waterflow .hero-main-title,
-#landing-view.theme-6th .hero-main-title,
-#landing-view.theme-7th .hero-main-title {
-    color: #ffffff !important;
-    text-shadow: 0 4px 20px rgba(129, 140, 248, 0.4);
-}
-
-#landing-view.theme-flow .divider-slogan,
-#landing-view.theme-glassflow .divider-slogan,
-#landing-view.theme-waterflow .divider-slogan,
-#landing-view.theme-6th .divider-slogan,
-#landing-view.theme-7th .divider-slogan {
-    color: #ffffff !important;
-    -webkit-text-fill-color: #ffffff !important;
-    text-shadow: 0 4px 20px rgba(129, 140, 248, 0.4) !important;
-}
 
 #landing-view.theme-flow .about-reveal-title,
 #landing-view.theme-glassflow .about-reveal-title,
