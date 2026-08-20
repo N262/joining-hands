@@ -59,6 +59,14 @@
                     </video>
                     <canvas id="flowCanvas"></canvas>
                 </div>
+
+                <!-- Theme 3: Glass Flow (Iridescent glass refractions in motion) -->
+                <div class="theme-layer layer--glassflow">
+                    <video class="theme-bg-video theme-bg-video--glass" autoplay loop muted playsinline>
+                        <source src="/static/video/bg-glassflow.mp4" type="video/mp4">
+                    </video>
+                    <canvas id="glassflowCanvas"></canvas>
+                </div>
             </div>
 
 
@@ -254,6 +262,10 @@
                     <button class="theme-select-btn" data-theme="flow" onclick="switchBackdropTheme('flow')" title="Gilded Flow (3D Moving)">
                         <span class="theme-color-dot" style="background: linear-gradient(135deg, #0284c7 0%, #d97706 100%);"></span>
                         <span class="theme-btn-label">Flow</span>
+                    </button>
+                    <button class="theme-select-btn" data-theme="glassflow" onclick="switchBackdropTheme('glassflow')" title="Glass Flow (3D Moving)">
+                        <span class="theme-color-dot" style="background: linear-gradient(135deg, #818cf8 0%, #c084fc 100%);"></span>
+                        <span class="theme-btn-label">Glass Flow</span>
                     </button>
                 </div>
                 <div class="settings-timer-section">

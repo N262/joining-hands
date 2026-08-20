@@ -6730,7 +6730,8 @@ input:checked + .slider:before {
 
 /* Show active layers matching theme class on #landing-view */
 #landing-view.theme-water .layer--water,
-#landing-view.theme-flow .layer--flow {
+#landing-view.theme-flow .layer--flow,
+#landing-view.theme-glassflow .layer--glassflow {
     opacity: 1;
     visibility: visible;
     pointer-events: all;
@@ -6765,50 +6766,77 @@ input:checked + .slider:before {
     --theme-ai-text: #f8fafc;
 }
 
+#landing-view.theme-glassflow {
+    --theme-accent-gradient: linear-gradient(135deg, rgba(129, 140, 248, 0.45) 0%, rgba(192, 132, 252, 0.4) 100%);
+    --theme-raised-gradient: linear-gradient(135deg, rgba(165, 180, 252, 0.5) 0%, rgba(216, 180, 254, 0.45) 100%);
+    --theme-ai-gradient: linear-gradient(135deg, rgba(216, 180, 254, 0.45) 0%, rgba(165, 180, 252, 0.45) 100%);
+    --theme-divider-color: #a78bfa;
+    --theme-divider-line: rgba(167, 139, 250, 0.4);
+
+    /* Glass overrides */
+    --glass-bg: rgba(15, 23, 42, 0.6);
+    --glass-border: rgba(129, 140, 248, 0.3);
+    --glass-text: #f8fafc;
+    --glass-raised-bg: rgba(15, 23, 42, 0.75);
+    --glass-raised-border: rgba(192, 132, 252, 0.35);
+    --theme-ai-bg: rgba(15, 23, 42, 0.6);
+    --theme-ai-border: rgba(129, 140, 248, 0.35);
+    --theme-ai-text: #f8fafc;
+}
+
 /* Dark Mode Theme Overrides for Text & Layout */
-#landing-view.theme-flow {
+#landing-view.theme-flow,
+#landing-view.theme-glassflow {
     color: #f8fafc !important;
 }
 
-#landing-view.theme-flow .hero-main-title {
+#landing-view.theme-flow .hero-main-title,
+#landing-view.theme-glassflow .hero-main-title {
     color: #ffffff !important;
-    text-shadow: 0 4px 20px rgba(217, 119, 6, 0.4);
+    text-shadow: 0 4px 20px rgba(129, 140, 248, 0.4);
 }
 
-#landing-view.theme-flow .divider-slogan {
+#landing-view.theme-flow .divider-slogan,
+#landing-view.theme-glassflow .divider-slogan {
     color: #ffffff !important;
     -webkit-text-fill-color: #ffffff !important;
-    text-shadow: 0 4px 20px rgba(217, 119, 6, 0.4) !important;
+    text-shadow: 0 4px 20px rgba(129, 140, 248, 0.4) !important;
 }
 
-#landing-view.theme-flow .about-reveal-title {
-    background: linear-gradient(135deg, #ffffff 0%, #fbbf24 100%) !important;
+#landing-view.theme-flow .about-reveal-title,
+#landing-view.theme-glassflow .about-reveal-title {
+    background: linear-gradient(135deg, #ffffff 0%, #c084fc 100%) !important;
     -webkit-background-clip: text !important;
     -webkit-text-fill-color: transparent !important;
 }
 
-#landing-view.theme-flow .about-reveal-textarea {
+#landing-view.theme-flow .about-reveal-textarea,
+#landing-view.theme-glassflow .about-reveal-textarea {
     background: rgba(15, 23, 42, 0.65) !important;
-    border-color: rgba(217, 119, 6, 0.4) !important;
+    border-color: rgba(129, 140, 248, 0.4) !important;
     color: #f8fafc !important;
 }
 
-#landing-view.theme-flow .about-reveal-badge {
+#landing-view.theme-flow .about-reveal-badge,
+#landing-view.theme-glassflow .about-reveal-badge {
     background: rgba(255, 255, 255, 0.12) !important;
     border-color: rgba(255, 255, 255, 0.22) !important;
     color: #ffffff !important;
 }
 
-#landing-view.theme-flow .landing-footer {
+#landing-view.theme-flow .landing-footer,
+#landing-view.theme-glassflow .landing-footer {
     border-top: 1px solid rgba(255, 255, 255, 0.12) !important;
 }
 
-#landing-view.theme-flow .landing-footer p {
+#landing-view.theme-flow .landing-footer p,
+#landing-view.theme-glassflow .landing-footer p {
     color: #94a3b8 !important;
 }
 
 /* Layer styles */
-.layer--flow {
+.layer--flow,
+.layer--glassflow {
     background: #060a12;
     overflow: hidden;
 }
