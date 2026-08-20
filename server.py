@@ -483,11 +483,13 @@ class EnterpriseRESTRequestHandler(http.server.SimpleHTTPRequestHandler):
             except Exception:
                 pass
 
-        # 4. SERVE HERO & STATIC IMAGES & UPLOADS
-        elif path.startswith('/hero.jpg') or path.startswith('/k3.png') or path.startswith('/static/images/') or path.startswith('/uploads/') or path.startswith('/static/uploads/'):
+        # 4. SERVE HERO & STATIC IMAGES & UPLOADS & VIDEOS
+        elif path.startswith('/hero.jpg') or path.startswith('/k3.png') or path.startswith('/static/images/') or path.startswith('/uploads/') or path.startswith('/static/uploads/') or path.startswith('/static/video/') or path.endswith('.mp4'):
             filename = os.path.basename(path)
             if 'uploads' in path:
                 filepath = os.path.join(UPLOADS_DIR, filename)
+            elif 'video' in path or filename.endswith('.mp4'):
+                filepath = os.path.join(STATIC_DIR, 'video', filename)
             else:
                 filepath = os.path.join(IMAGES_DIR, filename)
 
@@ -500,9 +502,15 @@ class EnterpriseRESTRequestHandler(http.server.SimpleHTTPRequestHandler):
                 with open(filepath, 'rb') as f:
                     content = f.read()
                 self.send_response(200)
-                mime = 'image/png' if filename.endswith('.png') else 'image/jpeg'
+                if filename.endswith('.png'):
+                    mime = 'image/png'
+                elif filename.endswith('.mp4'):
+                    mime = 'video/mp4'
+                else:
+                    mime = 'image/jpeg'
                 self.send_header('Content-Type', mime)
                 self.send_header('Content-Length', str(len(content)))
+                self.send_header('Accept-Ranges', 'bytes')
                 self.end_headers()
                 self.wfile.write(content)
                 return
