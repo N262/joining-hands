@@ -6736,9 +6736,12 @@ input:checked + .slider:before {
     opacity: 0;
     pointer-events: none;
     visibility: hidden;
-    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
-                visibility 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1), 
+                visibility 1.2s cubic-bezier(0.25, 1, 0.5, 1);
     z-index: 1;
+    will-change: opacity;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
 }
 
 /* Show active layers matching theme class on #landing-view */
@@ -6928,8 +6931,11 @@ input:checked + .slider:before {
     min-height: 100%;
     width: auto;
     height: auto;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%) translate3d(0, 0, 0);
     object-fit: cover;
+    pointer-events: none;
+    will-change: transform;
+    backface-visibility: hidden;
     filter: brightness(0.62) saturate(1.15);
     z-index: 1;
     pointer-events: none;
@@ -7347,7 +7353,7 @@ input:checked + .slider:before {
    (Restore by removing display: none when user says "Iron Man")
    ========================================================================== */
 .ecosystem-tile .tile-letter,
-.ecosystem-tile .tile-symbol-svg {
+.ecosystem-tile:not(.ecosystem-tile--d) .tile-symbol-svg {
     display: none !important;
 }
 
