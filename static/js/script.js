@@ -5135,7 +5135,6 @@ function initThemeLoops() {
     }
     runGlobalThemeLoop();
 }
-}
 
 // Downside Settings Panel Handlers
 function toggleSettingsPanel(event) {
