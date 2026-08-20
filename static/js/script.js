@@ -4982,7 +4982,7 @@ function switchBackdropTheme(theme, isAuto = false) {
     const landingView = document.getElementById("landing-view");
     if (landingView) {
         // Remove all previous theme classes
-        const themes = ["water", "flow", "glassflow"];
+        const themes = ["water", "flow", "glassflow", "waterflow"];
         themes.forEach(t => landingView.classList.remove(`theme-${t}`));
         landingView.classList.add(`theme-${theme}`);
     }
@@ -5018,7 +5018,8 @@ function switchBackdropTheme(theme, isAuto = false) {
 function getCanvasIdForTheme(theme) {
     const map = {
         "flow": "flowCanvas",
-        "glassflow": "glassflowCanvas"
+        "glassflow": "glassflowCanvas",
+        "waterflow": "waterflowCanvas"
     };
     return map[theme] || null;
 }
@@ -5069,6 +5070,25 @@ function initThemeLoops() {
         requestAnimationFrame(loopGlassflow);
     }
     loopGlassflow();
+
+    function loopWaterflow() {
+        if (activeTheme === "waterflow") {
+            const canvas = canvasElements["waterflowCanvas"];
+            if (canvas) {
+                // Setup parallax offsets
+                const targetOffsetX = (mouseX - canvas.width / 2) * 0.05;
+                const targetOffsetY = (mouseY - canvas.height / 2) * 0.05;
+
+                // Parallax shift for background video
+                const bgVideo = document.querySelector(".theme-layer.layer--waterflow .theme-bg-video");
+                if (bgVideo) {
+                    bgVideo.style.transform = `translate(calc(-50% + ${targetOffsetX}px), calc(-50% + ${targetOffsetY}px)) scale(1.05)`;
+                }
+            }
+        }
+        requestAnimationFrame(loopWaterflow);
+    }
+    loopWaterflow();
 }
 
 // Downside Settings Panel Handlers
