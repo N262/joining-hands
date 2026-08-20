@@ -4934,6 +4934,27 @@ let themeAnimationIds = {};
 let canvasElements = {};
 let canvasContexts = {};
 
+// Performance-optimized global particle system for background canvases
+const themeParticles = [];
+const PARTICLE_COUNT = 45;
+
+function initParticles(canvas) {
+    themeParticles.length = 0;
+    if (!canvas) return;
+    for (let i = 0; i < PARTICLE_COUNT; i++) {
+        themeParticles.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            vx: (Math.random() - 0.5) * 0.4,
+            vy: (Math.random() - 0.5) * 0.4,
+            radius: Math.random() * 3.5 + 1.5,
+            alpha: Math.random() * 0.4 + 0.12,
+            pulseSpeed: Math.random() * 0.015 + 0.004,
+            pulseDir: Math.random() > 0.5 ? 1 : -1
+        });
+    }
+}
+
 const themeRotationList = ["water", "flow", "glassflow", "waterflow", "6th", "7th"];
 let themeRotationIntervalId = null;
 let themeRotationIntervalTime = 5000; // 5 seconds default
@@ -5050,7 +5071,9 @@ function switchBackdropTheme(theme, isAuto = false) {
     // Start target loops and resize
     const canvasId = getCanvasIdForTheme(theme);
     if (canvasId && canvasElements[canvasId]) {
-        resizeThemeCanvas(canvasElements[canvasId]);
+        const canvas = canvasElements[canvasId];
+        resizeThemeCanvas(canvas);
+        initParticles(canvas);
     }
 
     // Reset the rotation interval to give the user full duration on manual click
@@ -5080,6 +5103,80 @@ function initThemeLoops() {
     });
 
     function runGlobalThemeLoop() {
+        const canvasId = getCanvasIdForTheme(activeTheme);
+        if (canvasId) {
+            const canvas = canvasElements[canvasId];
+            const ctx = canvasContexts[canvasId];
+            if (canvas && ctx) {
+                // Clear active canvas
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                
+                // Get accent colors based on theme
+                let colors = ["#8b5cf6", "#4f46e5", "#ec4899"];
+                if (activeTheme === "flow") {
+                    colors = ["#ff7700", "#7c3aed", "#f59e0b"];
+                } else if (activeTheme === "waterflow") {
+                    colors = ["#06b6d4", "#10b881", "#3b82f6"];
+                } else if (activeTheme === "6th") {
+                    colors = ["#ffa000", "#ff6f00", "#e65100"];
+                } else if (activeTheme === "7th") {
+                    colors = ["#d946ef", "#4f46e5", "#818cf8"];
+                }
+
+                // Initialize particles if empty
+                if (themeParticles.length === 0) {
+                    initParticles(canvas);
+                }
+
+                // Render and update
+                themeParticles.forEach(p => {
+                    // Pulse alpha
+                    p.alpha += p.pulseSpeed * p.pulseDir;
+                    if (p.alpha > 0.6 || p.alpha < 0.1) {
+                        p.pulseDir *= -1;
+                    }
+
+                    // Mouse gravity attraction
+                    const dx = mouseX - p.x;
+                    const dy = mouseY - p.y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+                    if (dist < 300) {
+                        const force = (300 - dist) / 300 * 0.08;
+                        p.vx += (dx / dist) * force;
+                        p.vy += (dy / dist) * force;
+                    }
+
+                    // Friction
+                    p.vx *= 0.98;
+                    p.vy *= 0.98;
+
+                    // Update positions
+                    p.x += p.vx;
+                    p.y += p.vy;
+
+                    // Wrap boundaries
+                    if (p.x < 0) p.x = canvas.width;
+                    if (p.x > canvas.width) p.x = 0;
+                    if (p.y < 0) p.y = canvas.height;
+                    if (p.y > canvas.height) p.y = 0;
+
+                    // Draw radial gradient particle
+                    ctx.beginPath();
+                    const grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.radius * 2);
+                    const color = colors[Math.floor(p.radius * 10) % colors.length];
+                    grad.addColorStop(0, color);
+                    grad.addColorStop(0.5, color);
+                    grad.addColorStop(1, "transparent");
+
+                    ctx.fillStyle = grad;
+                    ctx.globalAlpha = p.alpha;
+                    ctx.arc(p.x, p.y, p.radius * 2.2, 0, Math.PI * 2);
+                    ctx.fill();
+                });
+                ctx.globalAlpha = 1.0;
+            }
+        }
+
         if (activeTheme === "flow") {
             const canvas = canvasElements["flowCanvas"];
             if (canvas) {
