@@ -6745,7 +6745,8 @@ input:checked + .slider:before {
 #landing-view.theme-water .layer--water,
 #landing-view.theme-flow .layer--flow,
 #landing-view.theme-glassflow .layer--glassflow,
-#landing-view.theme-waterflow .layer--waterflow {
+#landing-view.theme-waterflow .layer--waterflow,
+#landing-view.theme-6th .layer--6th {
     opacity: 1;
     visibility: visible;
     pointer-events: all;
@@ -6816,23 +6817,44 @@ input:checked + .slider:before {
     --theme-ai-text: #f8fafc;
 }
 
+#landing-view.theme-6th {
+    --theme-accent-gradient: linear-gradient(135deg, rgba(249, 115, 22, 0.45) 0%, rgba(234, 88, 12, 0.4) 100%);
+    --theme-raised-gradient: linear-gradient(135deg, rgba(251, 146, 60, 0.5) 0%, rgba(249, 115, 22, 0.45) 100%);
+    --theme-ai-gradient: linear-gradient(135deg, rgba(249, 115, 22, 0.45) 0%, rgba(251, 146, 60, 0.45) 100%);
+    --theme-divider-color: #ea580c;
+    --theme-divider-line: rgba(234, 88, 12, 0.4);
+
+    /* Glass overrides */
+    --glass-bg: rgba(15, 23, 42, 0.6);
+    --glass-border: rgba(249, 115, 22, 0.3);
+    --glass-text: #f8fafc;
+    --glass-raised-bg: rgba(15, 23, 42, 0.75);
+    --glass-raised-border: rgba(249, 115, 22, 0.35);
+    --theme-ai-bg: rgba(15, 23, 42, 0.6);
+    --theme-ai-border: rgba(249, 115, 22, 0.35);
+    --theme-ai-text: #f8fafc;
+}
+
 /* Dark Mode Theme Overrides for Text & Layout */
 #landing-view.theme-flow,
 #landing-view.theme-glassflow,
-#landing-view.theme-waterflow {
+#landing-view.theme-waterflow,
+#landing-view.theme-6th {
     color: #f8fafc !important;
 }
 
 #landing-view.theme-flow .hero-main-title,
 #landing-view.theme-glassflow .hero-main-title,
-#landing-view.theme-waterflow .hero-main-title {
+#landing-view.theme-waterflow .hero-main-title,
+#landing-view.theme-6th .hero-main-title {
     color: #ffffff !important;
     text-shadow: 0 4px 20px rgba(129, 140, 248, 0.4);
 }
 
 #landing-view.theme-flow .divider-slogan,
 #landing-view.theme-glassflow .divider-slogan,
-#landing-view.theme-waterflow .divider-slogan {
+#landing-view.theme-waterflow .divider-slogan,
+#landing-view.theme-6th .divider-slogan {
     color: #ffffff !important;
     -webkit-text-fill-color: #ffffff !important;
     text-shadow: 0 4px 20px rgba(129, 140, 248, 0.4) !important;
@@ -6840,15 +6862,17 @@ input:checked + .slider:before {
 
 #landing-view.theme-flow .about-reveal-title,
 #landing-view.theme-glassflow .about-reveal-title,
-#landing-view.theme-waterflow .about-reveal-title {
-    background: linear-gradient(135deg, #ffffff 0%, #0ea5e9 100%) !important;
+#landing-view.theme-waterflow .about-reveal-title,
+#landing-view.theme-6th .about-reveal-title {
+    background: linear-gradient(135deg, #ffffff 0%, #ea580c 100%) !important;
     -webkit-background-clip: text !important;
     -webkit-text-fill-color: transparent !important;
 }
 
 #landing-view.theme-flow .about-reveal-textarea,
 #landing-view.theme-glassflow .about-reveal-textarea,
-#landing-view.theme-waterflow .about-reveal-textarea {
+#landing-view.theme-waterflow .about-reveal-textarea,
+#landing-view.theme-6th .about-reveal-textarea {
     background: rgba(15, 23, 42, 0.65) !important;
     border-color: rgba(129, 140, 248, 0.4) !important;
     color: #f8fafc !important;
@@ -6856,7 +6880,8 @@ input:checked + .slider:before {
 
 #landing-view.theme-flow .about-reveal-badge,
 #landing-view.theme-glassflow .about-reveal-badge,
-#landing-view.theme-waterflow .about-reveal-badge {
+#landing-view.theme-waterflow .about-reveal-badge,
+#landing-view.theme-6th .about-reveal-badge {
     background: rgba(255, 255, 255, 0.12) !important;
     border-color: rgba(255, 255, 255, 0.22) !important;
     color: #ffffff !important;
@@ -6864,20 +6889,23 @@ input:checked + .slider:before {
 
 #landing-view.theme-flow .landing-footer,
 #landing-view.theme-glassflow .landing-footer,
-#landing-view.theme-waterflow .landing-footer {
+#landing-view.theme-waterflow .landing-footer,
+#landing-view.theme-6th .landing-footer {
     border-top: 1px solid rgba(255, 255, 255, 0.12) !important;
 }
 
 #landing-view.theme-flow .landing-footer p,
 #landing-view.theme-glassflow .landing-footer p,
-#landing-view.theme-waterflow .landing-footer p {
+#landing-view.theme-waterflow .landing-footer p,
+#landing-view.theme-6th .landing-footer p {
     color: #94a3b8 !important;
 }
 
 /* Layer styles */
 .layer--flow,
 .layer--glassflow,
-.layer--waterflow {
+.layer--waterflow,
+.layer--6th {
     background: #060a12;
     overflow: hidden;
 }
