@@ -5041,6 +5041,12 @@ function initThemeLoops() {
                 const targetOffsetX = (mouseX - canvas.width / 2) * 0.05;
                 const targetOffsetY = (mouseY - canvas.height / 2) * 0.05;
 
+                // Parallax shift for background video
+                const bgVideo = document.querySelector(".theme-bg-video");
+                if (bgVideo) {
+                    bgVideo.style.transform = `translate(calc(-50% + ${targetOffsetX}px), calc(-50% + ${targetOffsetY}px)) scale(1.05)`;
+                }
+
                 // Initialize gold dust particles
                 if (goldDust.length === 0) {
                     for (let i = 0; i < maxGoldDust; i++) {

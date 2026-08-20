@@ -6809,10 +6809,23 @@ input:checked + .slider:before {
 
 /* Layer styles */
 .layer--flow {
-    background: url('/static/img/bg-flow.jpg') no-repeat center center;
-    background-size: cover;
+    background: #060a12;
+    overflow: hidden;
+}
+
+.theme-bg-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
     filter: brightness(0.62) saturate(1.15);
-    animation: backgroundBreathing 25s infinite alternate ease-in-out;
+    z-index: 1;
+    pointer-events: none;
 }
 
 @keyframes backgroundBreathing {
