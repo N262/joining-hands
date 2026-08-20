@@ -4934,7 +4934,7 @@ let themeAnimationIds = {};
 let canvasElements = {};
 let canvasContexts = {};
 
-const themeRotationList = ["water", "flow", "glassflow"];
+const themeRotationList = ["water", "flow", "glassflow", "waterflow"];
 let themeRotationIntervalId = null;
 let themeRotationIntervalTime = 5000; // 5 seconds default
 
@@ -4946,8 +4946,18 @@ document.addEventListener("DOMContentLoaded", () => {
         landingView.classList.add("theme-water");
     }
 
+    // Set initial dropdown values to match state
+    const themeDropdown = document.getElementById("themeSelectDropdown");
+    if (themeDropdown) {
+        themeDropdown.value = activeTheme;
+    }
+    const intervalDropdown = document.getElementById("intervalSelectDropdown");
+    if (intervalDropdown) {
+        intervalDropdown.value = (themeRotationIntervalTime / 1000).toString();
+    }
+
     // Set up canvas elements and listeners
-    const themeCanvases = ["flowCanvas", "glassflowCanvas"];
+    const themeCanvases = ["flowCanvas", "glassflowCanvas", "waterflowCanvas"];
     themeCanvases.forEach(id => {
         const canvas = document.getElementById(id);
         if (canvas) {
