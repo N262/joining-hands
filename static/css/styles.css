@@ -842,13 +842,32 @@ body {
     align-items: center;
     justify-content: center;
 }
-/* White wall pseudo-elements that stretch across the entire viewport to hide the background video */
+/* White wall pseudo-elements that stretch across the entire viewport horizontally */
 .cinematic-mask-slice::before, .cinematic-normal-slice::before {
     content: '';
     position: absolute;
-    top: 0; bottom: 0; left: -50vw; right: -50vw;
+    left: -50vw; right: -50vw;
     background: #ffffff;
     z-index: -1;
+}
+
+/* 
+  Tile the white walls perfectly vertically: 
+  Top mask covers everything above, bottom mask covers everything below, 
+  and middle normal slice covers exactly its own height. 
+  This prevents them from overlapping and erasing each other!
+*/
+.cinematic-mask-slice:first-of-type::before {
+    top: -100vh;
+    bottom: 0;
+}
+.cinematic-normal-slice::before {
+    top: 0;
+    bottom: 0;
+}
+.cinematic-mask-slice:last-of-type::before {
+    top: 0;
+    bottom: -100vh;
 }
 /* The mask slices blend their black text with the background video */
 .cinematic-mask-slice {
