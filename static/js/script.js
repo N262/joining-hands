@@ -1,6 +1,6 @@
 // Global App Access Controller
 // SET "IS_WEBSITE_LOCKED = true" to lock ecosystem apps, and "false" to unlock.
-const IS_WEBSITE_LOCKED = true;
+const IS_WEBSITE_LOCKED = false;
 
 function checkAppLock() {
     if (typeof IS_WEBSITE_LOCKED !== 'undefined' && IS_WEBSITE_LOCKED) {
