@@ -835,23 +835,19 @@ body {
     100% { background-position: 200% 200%, 0 0; }
 }
 
-/* Main Hero Title Heading - Midnight Blue */
+/* Main Hero Title Heading - Ultra Clean Look */
 .hero-main-title {
     font-family: var(--font-heading);
     font-size: 3.4rem;
-    font-weight: 800;
-    letter-spacing: -0.025em;
+    font-weight: 600; /* Sleek Semi-Bold */
+    letter-spacing: -0.01em;
     margin: 0 auto 24px;
     line-height: 1.15;
-    background: linear-gradient(135deg, transparent 0%, transparent 40%, rgba(255, 255, 255, 0.8) 50%, transparent 60%, transparent 100%), var(--theme-text-gradient);
-    background-size: 200% 200%, 100% 100%;
-    background-position: -200% -200%, 0 0;
-    background-repeat: no-repeat;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    filter: drop-shadow(var(--theme-text-shadow));
-    animation: premiumShimmerSweep 2.5s ease-in-out forwards,
-               fadeInUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards,
+    color: #ffffff;
+    background: none;
+    -webkit-text-fill-color: initial;
+    filter: drop-shadow(0 4px 24px rgba(0, 0, 0, 0.4)); /* Wide dark drop-shadow for pop */
+    animation: fadeInUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards,
                titleGentleFloat 4s ease-in-out infinite alternate;
 }
 
@@ -908,22 +904,24 @@ body {
 
 
 @media (max-width: 1024px) {
-    .hero-main-title,
-    .divider-slogan {
-        font-size: 2.7rem;
-    }
     .hero-main-title {
+        font-size: 2.7rem;
         margin-bottom: 22px;
+    }
+    .divider-slogan {
+        font-size: 1.0rem;
+        letter-spacing: 6px;
     }
 }
 
 @media (max-width: 768px) {
-    .hero-main-title,
-    .divider-slogan {
-        font-size: 2.0rem;
-    }
     .hero-main-title {
+        font-size: 2.0rem;
         margin-bottom: 18px;
+    }
+    .divider-slogan {
+        font-size: 0.85rem;
+        letter-spacing: 4px;
     }
 }
 
@@ -1691,20 +1689,17 @@ body {
 
 .divider-slogan {
     font-family: var(--font-heading);
-    font-size: 3.4rem;
-    font-weight: 800;
-    letter-spacing: -0.025em;
+    font-size: 1.15rem; /* Significantly smaller */
+    font-weight: 500;
+    letter-spacing: 8px; /* Wide luxury letter-spacing */
+    text-transform: uppercase;
     line-height: 1.15;
-    background: linear-gradient(135deg, transparent 0%, transparent 40%, rgba(255, 255, 255, 0.8) 50%, transparent 60%, transparent 100%), var(--theme-text-gradient);
-    background-size: 200% 200%, 100% 100%;
-    background-position: -200% -200%, 0 0;
-    background-repeat: no-repeat;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    filter: drop-shadow(var(--theme-text-shadow));
+    color: rgba(255, 255, 255, 0.7); /* Slightly transparent white */
+    background: none;
+    -webkit-text-fill-color: initial;
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4)); /* Soft shadow for contrast */
     opacity: 0;
-    animation: premiumShimmerSweep 2.5s ease-in-out 0.5s forwards,
-               fadeInUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards;
+    animation: fadeInUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards;
 }
 
 /* ==========================================================================
