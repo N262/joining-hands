@@ -6976,7 +6976,8 @@ input:checked + .slider:before {
 .layer--glassflow,
 .layer--waterflow,
 .layer--6th,
-.layer--7th {
+.layer--7th,
+.layer--8th {
     background: #060a12;
     overflow: hidden;
 }
