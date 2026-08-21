@@ -138,65 +138,27 @@
             </div>
 
 
-            <div class="container hero-container hero-overlap-grid">
-                
-                <!-- LAYER 1: CINEMATIC MASK (White Wall + Black Text) -->
-                <div class="hero-mask-layer">
-                    <!-- Revealed About Us Description Spacer -->
-                    <div class="landing-about-reveal invisible-spacer">
-                        <div class="about-reveal-badge">ABOUT US</div>
-                        <h3 class="about-reveal-title">Our Vision & Mission</h3>
-                        <div class="about-reveal-desc">
-                            <textarea class="about-reveal-textarea" id="aboutRevealTextarea" placeholder="Write your custom description, vision, mission, or note here... anybody can write anything!"></textarea>
-                        </div>
-                    </div>
-
-                    <div class="hero-text-wrap">
-                        <!-- Main Cinematic Title (Black Text = Transparent Window) -->
-                        <h1 class="hero-main-title cinematic-title">The Group of Joining Hands</h1>
-                    </div>
-
-                    <!-- Editorial Pointer Above Apps Spacer -->
-                    <div class="editorial-pointer editorial-pointer--top invisible-spacer"></div>
-
-                    <!-- Ecosystem Application Cards Hub Spacer -->
-                    <div class="apps-hub-wrap invisible-spacer" id="appsSectionMask">
-                        <div class="ecosystem-3d-tiles-container">
-                            <div class="ecosystem-tile ecosystem-tile--d"><div class="tile-3d-body"><div class="tile-3d-raised"><div class="tile-3d-circle"></div></div></div></div>
-                        </div>
-                    </div>
-
-                    <!-- Editorial Pointer Below Apps Spacer -->
-                    <div class="editorial-pointer editorial-pointer--bottom invisible-spacer"></div>
-
-                    <!-- Cinematic Slogan (Black Text = Transparent Window) -->
-                    <div class="ecosystem-divider cinematic-divider">
-                        <span class="divider-slogan cinematic-text">Together</span>
-                        <span class="divider-line cinematic-line"></span>
-                        <div class="divider-icon cinematic-icon">
-                            <i class="fa-solid fa-handshake-angle"></i>
-                        </div>
-                        <span class="divider-line cinematic-line"></span>
-                        <span class="divider-slogan cinematic-text">Forever</span>
+            <!-- Main Hero & Ecosystem Container -->
+            <div class="container hero-container">
+                <!-- Revealed About Us Description (Fades in when Menu is active) -->
+                <div class="landing-about-reveal">
+                    <div class="about-reveal-badge">ABOUT US</div>
+                    <h3 class="about-reveal-title">Our Vision & Mission</h3>
+                    <div class="about-reveal-desc">
+                        <textarea class="about-reveal-textarea" id="aboutRevealTextarea" placeholder="Write your custom description, vision, mission, or note here... anybody can write anything!"></textarea>
                     </div>
                 </div>
 
-                <!-- LAYER 2: NORMAL CONTENT (Colored 3D Tiles) -->
-                <div class="hero-content-layer">
-                    <!-- Revealed About Us Description (Actual) -->
-                    <div class="landing-about-reveal">
-                        <div class="about-reveal-badge">ABOUT US</div>
-                        <h3 class="about-reveal-title">Our Vision & Mission</h3>
-                        <div class="about-reveal-desc">
-                            <textarea class="about-reveal-textarea" id="aboutRevealTextareaContent" placeholder="Write your custom description, vision, mission, or note here... anybody can write anything!"></textarea>
-                        </div>
+                <!-- SLICE 1: TITLE MASK -->
+                <div class="cinematic-mask-slice">
+                    <div class="hero-text-wrap">
+                        <!-- Main Cinematic Title (Black Text = Transparent Window) -->
+                        <h1 class="hero-main-title cinematic-text">The Group of Joining Hands</h1>
                     </div>
+                </div>
 
-                    <div class="hero-text-wrap invisible-spacer">
-                        <!-- Invisible Title Spacer -->
-                        <h1 class="hero-main-title">The Group of Joining Hands</h1>
-                    </div>
-
+                <!-- SLICE 2: NORMAL CONTENT (Colored 3D Tiles) -->
+                <div class="cinematic-normal-slice">
                     <!-- Editorial Pointer Above Apps -->
                     <div class="editorial-pointer editorial-pointer--top"></div>
 
@@ -296,20 +258,24 @@
 
                         <!-- Editorial Pointer Below Apps -->
                         <div class="editorial-pointer editorial-pointer--bottom"></div>
-                        
-                    </div>
-
-                    <!-- Invisible Slogan Spacer -->
-                    <div class="ecosystem-divider invisible-spacer">
-                        <span class="divider-slogan">Together</span>
-                        <span class="divider-line"></span>
-                        <div class="divider-icon">
-                            <i class="fa-solid fa-handshake-angle"></i>
-                        </div>
-                        <span class="divider-line"></span>
-                        <span class="divider-slogan">Forever</span>
                     </div>
                 </div>
+
+                <!-- SLICE 3: SLOGAN MASK -->
+                <div class="cinematic-mask-slice">
+                    <!-- Subtle Handshake Divider with Split Slogan -->
+                    <div class="ecosystem-divider cinematic-divider">
+                        <span class="divider-slogan cinematic-text">Together</span>
+                        <span class="divider-line cinematic-line"></span>
+                        <div class="divider-icon cinematic-icon">
+                            <i class="fa-solid fa-handshake-angle"></i>
+                        </div>
+                        <span class="divider-line cinematic-line"></span>
+                        <span class="divider-slogan cinematic-text">Forever</span>
+                    </div>
+                </div>
+
+            </div>
         </section>
 
         <!-- Footer -->
