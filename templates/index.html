@@ -138,124 +138,169 @@
             </div>
 
 
-            <!-- Main Hero & Ecosystem Container -->
-            <div class="container hero-container">
-                <!-- Revealed About Us Description (Fades in when Menu is active) -->
-                <div class="landing-about-reveal">
-                    <div class="about-reveal-badge">ABOUT US</div>
-                    <h3 class="about-reveal-title">Our Vision & Mission</h3>
-                    <div class="about-reveal-desc">
-                        <textarea class="about-reveal-textarea" id="aboutRevealTextarea" placeholder="Write your custom description, vision, mission, or note here... anybody can write anything!"></textarea>
+            <div class="container hero-container hero-overlap-grid">
+                
+                <!-- LAYER 1: CINEMATIC MASK (White Wall + Black Text) -->
+                <div class="hero-mask-layer">
+                    <!-- Revealed About Us Description Spacer -->
+                    <div class="landing-about-reveal invisible-spacer">
+                        <div class="about-reveal-badge">ABOUT US</div>
+                        <h3 class="about-reveal-title">Our Vision & Mission</h3>
+                        <div class="about-reveal-desc">
+                            <textarea class="about-reveal-textarea" id="aboutRevealTextarea" placeholder="Write your custom description, vision, mission, or note here... anybody can write anything!"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="hero-text-wrap">
+                        <!-- Main Cinematic Title (Black Text = Transparent Window) -->
+                        <h1 class="hero-main-title cinematic-title">The Group of Joining Hands</h1>
+                    </div>
+
+                    <!-- Editorial Pointer Above Apps Spacer -->
+                    <div class="editorial-pointer editorial-pointer--top invisible-spacer"></div>
+
+                    <!-- Ecosystem Application Cards Hub Spacer -->
+                    <div class="apps-hub-wrap invisible-spacer" id="appsSectionMask">
+                        <div class="ecosystem-3d-tiles-container">
+                            <div class="ecosystem-tile ecosystem-tile--d"><div class="tile-3d-body"><div class="tile-3d-raised"><div class="tile-3d-circle"></div></div></div></div>
+                        </div>
+                    </div>
+
+                    <!-- Editorial Pointer Below Apps Spacer -->
+                    <div class="editorial-pointer editorial-pointer--bottom invisible-spacer"></div>
+
+                    <!-- Cinematic Slogan (Black Text = Transparent Window) -->
+                    <div class="ecosystem-divider cinematic-divider">
+                        <span class="divider-slogan cinematic-text">Together</span>
+                        <span class="divider-line cinematic-line"></span>
+                        <div class="divider-icon cinematic-icon">
+                            <i class="fa-solid fa-handshake-angle"></i>
+                        </div>
+                        <span class="divider-line cinematic-line"></span>
+                        <span class="divider-slogan cinematic-text">Forever</span>
                     </div>
                 </div>
 
-                <div class="hero-text-wrap">
-                    <!-- Main Purple Title Heading -->
-                    <h1 class="hero-main-title">The Group of Joining Hands</h1>
-                </div>
+                <!-- LAYER 2: NORMAL CONTENT (Colored 3D Tiles) -->
+                <div class="hero-content-layer">
+                    <!-- Revealed About Us Description (Actual) -->
+                    <div class="landing-about-reveal">
+                        <div class="about-reveal-badge">ABOUT US</div>
+                        <h3 class="about-reveal-title">Our Vision & Mission</h3>
+                        <div class="about-reveal-desc">
+                            <textarea class="about-reveal-textarea" id="aboutRevealTextareaContent" placeholder="Write your custom description, vision, mission, or note here... anybody can write anything!"></textarea>
+                        </div>
+                    </div>
 
-                <!-- Editorial Pointer Above Apps -->
-                <div class="editorial-pointer editorial-pointer--top"></div>
+                    <div class="hero-text-wrap invisible-spacer">
+                        <!-- Invisible Title Spacer -->
+                        <h1 class="hero-main-title">The Group of Joining Hands</h1>
+                    </div>
 
-                <!-- Ecosystem Application Cards Hub (Brought to the top) -->
-                <div class="apps-hub-wrap" id="appsSection">
+                    <!-- Editorial Pointer Above Apps -->
+                    <div class="editorial-pointer editorial-pointer--top"></div>
 
-                    <!-- 5 Compact 3D Interactive Tiles (D, H, I, P, E) -->
-                    <div class="ecosystem-3d-tiles-container" role="navigation" aria-label="Ecosystem Applications">
+                    <!-- Ecosystem Application Cards Hub (Brought to the top) -->
+                    <div class="apps-hub-wrap" id="appsSection">
+
+                        <!-- 5 Compact 3D Interactive Tiles (D, H, I, P, E) -->
+                        <div class="ecosystem-3d-tiles-container" role="navigation" aria-label="Ecosystem Applications">
+                            
+                            <!-- 1. D TILE (Purple with Traditional Indian Swastik + D) -->
+                            <div class="ecosystem-tile ecosystem-tile--d" role="button" tabindex="0" onclick="openLinkedinClone()" onkeydown="if(event.key==='Enter'||event.key===' ')openLinkedinClone()" aria-label="D Connect - Professional Network">
+                                <div class="tile-3d-body">
+                                    <div class="tile-3d-raised">
+                                        <div class="tile-3d-circle">
+                                            <!-- Traditional Indian Swastik with D in center and 4 decorative dots -->
+                                            <svg class="tile-symbol-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <!-- Upright, symmetrical traditional Indian Swastik -->
+                                                <g stroke="#ffffff" stroke-width="8.5" stroke-linecap="round" stroke-linejoin="round">
+                                                    <!-- Center cross -->
+                                                    <path d="M 50 14 L 50 86" />
+                                                    <path d="M 14 50 L 86 50" />
+                                                    <!-- 4 Traditional Right-bent Arms -->
+                                                    <path d="M 50 14 L 84 14" />
+                                                    <path d="M 86 50 L 86 84" />
+                                                    <path d="M 50 86 L 16 86" />
+                                                    <path d="M 14 50 L 14 16" />
+                                                </g>
+                                                <!-- 4 Traditional Auspicious Dots in quadrants -->
+                                                <circle cx="32" cy="32" r="3.5" fill="#ffffff" />
+                                                <circle cx="68" cy="32" r="3.5" fill="#ffffff" />
+                                                <circle cx="32" cy="68" r="3.5" fill="#ffffff" />
+                                                <circle cx="68" cy="68" r="3.5" fill="#ffffff" />
+                                                <!-- Center D letter -->
+                                                <text x="50" y="58" font-family="'Plus Jakarta Sans', 'Inter', sans-serif" font-size="24" font-weight="900" fill="#ffffff" text-anchor="middle" dominant-baseline="central" style="filter: drop-shadow(0 2px 4px rgba(0,0,0,0.4));">D</text>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 2. H TILE (Kesari / Saffron with White H) -->
+                            <div class="ecosystem-tile ecosystem-tile--h" role="button" tabindex="0" onclick="openRapidoClone()" onkeydown="if(event.key==='Enter'||event.key===' ')openRapidoClone()" aria-label="H Rides - Rapido Booking Portal">
+                                <div class="tile-3d-body">
+                                    <div class="tile-3d-raised">
+                                        <div class="tile-3d-circle">
+                                            <span class="tile-letter">H</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 3. I TILE (Red with White I) -->
+                            <div class="ecosystem-tile ecosystem-tile--i" role="button" tabindex="0" onclick="openLinkedinClone()" onkeydown="if(event.key==='Enter'||event.key===' ')openLinkedinClone()" aria-label="I Initiatives - Youth & Welfare">
+                                <div class="tile-3d-body">
+                                    <div class="tile-3d-raised">
+                                        <div class="tile-3d-circle">
+                                            <span class="tile-letter">I</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 4. P TILE (Kesari / Saffron with White P) -->
+                            <div class="ecosystem-tile ecosystem-tile--p" role="button" tabindex="0" onclick="openLinkedinClone()" onkeydown="if(event.key==='Enter'||event.key===' ')openLinkedinClone()" aria-label="P Connect - Career & Community">
+                                <div class="tile-3d-body">
+                                    <div class="tile-3d-raised">
+                                        <div class="tile-3d-circle">
+                                            <span class="tile-letter">P</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 5. E TILE (Green with White E - GramConnect / Instagram) -->
+                            <div class="ecosystem-tile ecosystem-tile--e" role="button" tabindex="0" onclick="openInstagramClone()" onkeydown="if(event.key==='Enter'||event.key===' ')openInstagramClone()" aria-label="E Media - GramConnect Visual Stories">
+                                <div class="tile-3d-body">
+                                    <div class="tile-3d-raised">
+                                        <div class="tile-3d-circle">
+                                            <span class="tile-letter">E</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 6. O TILE (Bright Electric Orange with White O) -->
+                            <div class="ecosystem-tile ecosystem-tile--o" role="button" tabindex="0" aria-label="O Portal - Orange Initiative">
+                                <div class="tile-3d-body">
+                                    <div class="tile-3d-raised">
+                                        <div class="tile-3d-circle">
+                                            <span class="tile-letter">O</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- Editorial Pointer Below Apps -->
+                        <div class="editorial-pointer editorial-pointer--bottom"></div>
                         
-                        <!-- 1. D TILE (Purple with Traditional Indian Swastik + D) -->
-                        <div class="ecosystem-tile ecosystem-tile--d" role="button" tabindex="0" onclick="openLinkedinClone()" onkeydown="if(event.key==='Enter'||event.key===' ')openLinkedinClone()" aria-label="D Connect - Professional Network">
-                            <div class="tile-3d-body">
-                                <div class="tile-3d-raised">
-                                    <div class="tile-3d-circle">
-                                        <!-- Traditional Indian Swastik with D in center and 4 decorative dots -->
-                                        <svg class="tile-symbol-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <!-- Upright, symmetrical traditional Indian Swastik -->
-                                            <g stroke="#ffffff" stroke-width="8.5" stroke-linecap="round" stroke-linejoin="round">
-                                                <!-- Center cross -->
-                                                <path d="M 50 14 L 50 86" />
-                                                <path d="M 14 50 L 86 50" />
-                                                <!-- 4 Traditional Right-bent Arms -->
-                                                <path d="M 50 14 L 84 14" />
-                                                <path d="M 86 50 L 86 84" />
-                                                <path d="M 50 86 L 16 86" />
-                                                <path d="M 14 50 L 14 16" />
-                                            </g>
-                                            <!-- 4 Traditional Auspicious Dots in quadrants -->
-                                            <circle cx="32" cy="32" r="3.5" fill="#ffffff" />
-                                            <circle cx="68" cy="32" r="3.5" fill="#ffffff" />
-                                            <circle cx="32" cy="68" r="3.5" fill="#ffffff" />
-                                            <circle cx="68" cy="68" r="3.5" fill="#ffffff" />
-                                            <!-- Center D letter -->
-                                            <text x="50" y="58" font-family="'Plus Jakarta Sans', 'Inter', sans-serif" font-size="24" font-weight="900" fill="#ffffff" text-anchor="middle" dominant-baseline="central" style="filter: drop-shadow(0 2px 4px rgba(0,0,0,0.4));">D</text>
-                                        </svg>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- 2. H TILE (Kesari / Saffron with White H) -->
-                        <div class="ecosystem-tile ecosystem-tile--h" role="button" tabindex="0" onclick="openRapidoClone()" onkeydown="if(event.key==='Enter'||event.key===' ')openRapidoClone()" aria-label="H Rides - Rapido Booking Portal">
-                            <div class="tile-3d-body">
-                                <div class="tile-3d-raised">
-                                    <div class="tile-3d-circle">
-                                        <span class="tile-letter">H</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- 3. I TILE (Red with White I) -->
-                        <div class="ecosystem-tile ecosystem-tile--i" role="button" tabindex="0" onclick="openLinkedinClone()" onkeydown="if(event.key==='Enter'||event.key===' ')openLinkedinClone()" aria-label="I Initiatives - Youth & Welfare">
-                            <div class="tile-3d-body">
-                                <div class="tile-3d-raised">
-                                    <div class="tile-3d-circle">
-                                        <span class="tile-letter">I</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- 4. P TILE (Kesari / Saffron with White P) -->
-                        <div class="ecosystem-tile ecosystem-tile--p" role="button" tabindex="0" onclick="openLinkedinClone()" onkeydown="if(event.key==='Enter'||event.key===' ')openLinkedinClone()" aria-label="P Connect - Career & Community">
-                            <div class="tile-3d-body">
-                                <div class="tile-3d-raised">
-                                    <div class="tile-3d-circle">
-                                        <span class="tile-letter">P</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- 5. E TILE (Green with White E - GramConnect / Instagram) -->
-                        <div class="ecosystem-tile ecosystem-tile--e" role="button" tabindex="0" onclick="openInstagramClone()" onkeydown="if(event.key==='Enter'||event.key===' ')openInstagramClone()" aria-label="E Media - GramConnect Visual Stories">
-                            <div class="tile-3d-body">
-                                <div class="tile-3d-raised">
-                                    <div class="tile-3d-circle">
-                                        <span class="tile-letter">E</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- 6. O TILE (Bright Electric Orange with White O) -->
-                        <div class="ecosystem-tile ecosystem-tile--o" role="button" tabindex="0" aria-label="O Portal - Orange Initiative">
-                            <div class="tile-3d-body">
-                                <div class="tile-3d-raised">
-                                    <div class="tile-3d-circle">
-                                        <span class="tile-letter">O</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
                     </div>
 
-                    <!-- Editorial Pointer Below Apps -->
-                    <div class="editorial-pointer editorial-pointer--bottom"></div>
-
-                    <!-- Subtle Handshake Divider with Split Slogan -->
-                    <div class="ecosystem-divider">
+                    <!-- Invisible Slogan Spacer -->
+                    <div class="ecosystem-divider invisible-spacer">
                         <span class="divider-slogan">Together</span>
                         <span class="divider-line"></span>
                         <div class="divider-icon">
@@ -265,8 +310,6 @@
                         <span class="divider-slogan">Forever</span>
                     </div>
                 </div>
-
-            </div>
         </section>
 
         <!-- Footer -->
