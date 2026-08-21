@@ -28,6 +28,7 @@ window.addEventListener('DOMContentLoaded', () => {
 // Global State & Data Store
 let isProLoggedIn = false;
 let selectedImageFile = null;
+let intendedApp = "linkedin"; // Tracks which app to open after login
 
 // Initial Posts Data for ProConnect Feed
 let proPosts = [
@@ -390,6 +391,7 @@ function returnToLanding() {
 
 function openLinkedinClone() {
     if (checkAppLock()) return;
+    intendedApp = "linkedin";
     showView("pro-network-view");
     if (isProLoggedIn) {
         showProStage("pro-main-stage");
@@ -1376,7 +1378,13 @@ async function handleProLogin(event) {
             updateUserProfileUI(currentUser);
             startRealtimePolling();
             showToast(`Welcome back, ${currentUser.fullName}!`);
-            showProStage("pro-main-stage");
+            
+            // Route to intended app instead of hardcoding pro-main-stage
+            if (intendedApp === "rapido") {
+                openRapidoClone();
+            } else {
+                showProStage("pro-main-stage");
+            }
         } else {
             showAuthError(data.error || "Login failed. Please check credentials.");
         }
@@ -1409,7 +1417,13 @@ async function handleProSignup(event) {
             updateUserProfileUI(currentUser);
             startRealtimePolling();
             showToast(`Account created successfully! Welcome, ${currentUser.fullName}.`);
-            showProStage("pro-main-stage");
+            
+            // Route to intended app instead of hardcoding pro-main-stage
+            if (intendedApp === "rapido") {
+                openRapidoClone();
+            } else {
+                showProStage("pro-main-stage");
+            }
         } else {
             showAuthError(data.error || "Signup failed. Please try again.");
         }
@@ -1492,7 +1506,13 @@ async function handleCredentialResponse(response) {
             updateUserProfileUI(currentUser);
             startRealtimePolling();
             showToast(`Signed in successfully as ${currentUser.fullName}!`);
-            showProStage("pro-main-stage");
+            
+            // Route to intended app instead of hardcoding pro-main-stage
+            if (intendedApp === "rapido") {
+                openRapidoClone();
+            } else {
+                showProStage("pro-main-stage");
+            }
         } else {
             showAuthError(data.error || "Google authentication failed.");
         }
@@ -3359,14 +3379,18 @@ function playSingleBeep(freq, gainVal, duration) {
 // Show view controller trigger
 async function openRapidoClone() {
     if (checkAppLock()) return;
-    showView("rapido-view");
     
     const token = localStorage.getItem("pro_auth_token");
     if (!token) {
+        intendedApp = "rapido";
         showToast("Please log in to your ProConnect account to access rides.");
-        openLinkedinClone(); // redirect to login screen
+        showView("pro-network-view");
+        showProStage("pro-login-stage");
         return;
     }
+    
+    intendedApp = "rapido";
+    showView("rapido-view");
 
     // Cache the user full name from API profile on boot
     try {
