@@ -860,6 +860,7 @@ body {
     z-index: -1;
 }
 .hero-content-layer {
+    position: relative;
     z-index: 3;
 }
 .invisible-spacer {
