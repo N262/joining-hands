@@ -6772,7 +6772,8 @@ input:checked + .slider:before {
 #landing-view.theme-glassflow .layer--glassflow,
 #landing-view.theme-waterflow .layer--waterflow,
 #landing-view.theme-6th .layer--6th,
-#landing-view.theme-7th .layer--7th {
+#landing-view.theme-7th .layer--7th,
+#landing-view.theme-8th .layer--8th {
     opacity: 1;
     visibility: visible;
     pointer-events: all;
@@ -6889,12 +6890,33 @@ input:checked + .slider:before {
     --theme-ai-text: #f8fafc;
 }
 
+#landing-view.theme-8th {
+    --theme-accent-gradient: linear-gradient(135deg, rgba(56, 189, 248, 0.45) 0%, rgba(59, 130, 246, 0.4) 100%);
+    --theme-text-gradient: linear-gradient(135deg, #a7f3d0 0%, #3b82f6 100%);
+    --theme-text-shadow: 0 4px 20px rgba(56, 189, 248, 0.38);
+    --theme-raised-gradient: linear-gradient(135deg, rgba(167, 243, 208, 0.5) 0%, rgba(59, 130, 246, 0.45) 100%);
+    --theme-ai-gradient: linear-gradient(135deg, rgba(56, 189, 248, 0.45) 0%, rgba(167, 243, 208, 0.45) 100%);
+    --theme-divider-color: #3b82f6;
+    --theme-divider-line: rgba(56, 189, 248, 0.4);
+
+    /* Glass overrides */
+    --glass-bg: rgba(15, 23, 42, 0.6);
+    --glass-border: rgba(56, 189, 248, 0.3);
+    --glass-text: #f8fafc;
+    --glass-raised-bg: rgba(15, 23, 42, 0.75);
+    --glass-raised-border: rgba(56, 189, 248, 0.35);
+    --theme-ai-bg: rgba(15, 23, 42, 0.6);
+    --theme-ai-border: rgba(56, 189, 248, 0.35);
+    --theme-ai-text: #f8fafc;
+}
+
 /* Dark Mode Theme Overrides for Text & Layout */
 #landing-view.theme-flow,
 #landing-view.theme-glassflow,
 #landing-view.theme-waterflow,
 #landing-view.theme-6th,
-#landing-view.theme-7th {
+#landing-view.theme-7th,
+#landing-view.theme-8th {
     color: #f8fafc !important;
 }
 
@@ -6903,7 +6925,8 @@ input:checked + .slider:before {
 #landing-view.theme-glassflow .about-reveal-title,
 #landing-view.theme-waterflow .about-reveal-title,
 #landing-view.theme-6th .about-reveal-title,
-#landing-view.theme-7th .about-reveal-title {
+#landing-view.theme-7th .about-reveal-title,
+#landing-view.theme-8th .about-reveal-title {
     background: linear-gradient(135deg, #ffffff 0%, #ea580c 100%) !important;
     -webkit-background-clip: text !important;
     -webkit-text-fill-color: transparent !important;
@@ -6913,7 +6936,8 @@ input:checked + .slider:before {
 #landing-view.theme-glassflow .about-reveal-textarea,
 #landing-view.theme-waterflow .about-reveal-textarea,
 #landing-view.theme-6th .about-reveal-textarea,
-#landing-view.theme-7th .about-reveal-textarea {
+#landing-view.theme-7th .about-reveal-textarea,
+#landing-view.theme-8th .about-reveal-textarea {
     background: rgba(15, 23, 42, 0.65) !important;
     border-color: rgba(129, 140, 248, 0.4) !important;
     color: #f8fafc !important;
@@ -6923,7 +6947,8 @@ input:checked + .slider:before {
 #landing-view.theme-glassflow .about-reveal-badge,
 #landing-view.theme-waterflow .about-reveal-badge,
 #landing-view.theme-6th .about-reveal-badge,
-#landing-view.theme-7th .about-reveal-badge {
+#landing-view.theme-7th .about-reveal-badge,
+#landing-view.theme-8th .about-reveal-badge {
     background: rgba(255, 255, 255, 0.12) !important;
     border-color: rgba(255, 255, 255, 0.22) !important;
     color: #ffffff !important;
@@ -6933,7 +6958,8 @@ input:checked + .slider:before {
 #landing-view.theme-glassflow .landing-footer,
 #landing-view.theme-waterflow .landing-footer,
 #landing-view.theme-6th .landing-footer,
-#landing-view.theme-7th .landing-footer {
+#landing-view.theme-7th .landing-footer,
+#landing-view.theme-8th .landing-footer {
     border-top: 1px solid rgba(255, 255, 255, 0.12) !important;
 }
 
