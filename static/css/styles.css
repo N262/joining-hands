@@ -851,6 +851,29 @@ body {
                titleGentleFloat 4s ease-in-out infinite alternate;
 }
 
+/* Modern Compromise Pill for Elegant Title */
+.title-highlight-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0px 24px;
+    margin: 0 4px;
+    background: rgba(255, 255, 255, 0.12); /* Subtle frosted glass */
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 40px; /* Full pill shape */
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    color: #ffffff;
+    vertical-align: middle;
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.title-highlight-pill:hover {
+    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.2);
+}
+
 /* Main Hero Title - Flex Container for Word Icons */
 .icon-title-wrapper {
     display: flex;
