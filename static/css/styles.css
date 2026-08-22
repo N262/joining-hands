@@ -7686,3 +7686,44 @@ input:checked + .slider:before {
     filter: drop-shadow(var(--theme-text-shadow)) brightness(1.12);
     cursor: default;
 }
+
+/* Unified Word Tiles that map exactly to Ecosystem Tiles */
+.unified-word-tile {
+    width: auto !important;
+    min-width: 90px;
+    height: 90px !important;
+    padding: 0 10px;
+    pointer-events: none; /* purely decorative */
+    animation: none !important; /* disable float animation to keep text readable */
+    opacity: 1 !important;
+}
+.unified-word-tile .tile-3d-body {
+    width: 100% !important;
+    height: 100% !important;
+    border-radius: 20px !important;
+}
+.unified-word-tile .tile-3d-raised {
+    width: calc(100% - 28px) !important;
+    height: 62px !important;
+    border-radius: 12px !important;
+}
+.unified-word-tile .tile-3d-circle {
+    width: calc(100% - 12px) !important;
+    height: 50px !important;
+    border-radius: 8px !important;
+}
+.unified-text {
+    font-family: "Plus Jakarta Sans", var(--font-heading), sans-serif;
+    font-size: 1.15rem;
+    font-weight: 900;
+    color: #ffffff;
+    transform: translateZ(12px);
+    letter-spacing: 1px;
+}
+@media (max-width: 768px) {
+    .unified-word-tile { height: 70px !important; min-width: 70px; padding: 0 8px; }
+    .unified-word-tile .tile-3d-raised { height: 48px !important; width: calc(100% - 22px) !important; }
+    .unified-word-tile .tile-3d-circle { height: 38px !important; width: calc(100% - 10px) !important; }
+    .unified-text { font-size: 0.85rem; }
+}
+
