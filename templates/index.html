@@ -163,12 +163,21 @@
                     </h1>
                     
                     <!-- Radium Layout (3D App Icons) -->
-                    <h1 class="hero-main-title icon-title-wrapper radium-title-layout" style="display: flex;">
+                    <h1 class="hero-main-title icon-title-wrapper radium-title-layout" style="display: none;">
                         <span class="radium-word-icon">The</span>
                         <span class="radium-word-icon">Group</span>
                         <span class="radium-word-icon">of</span>
                         <span class="radium-word-icon">Joining</span>
                         <span class="radium-word-icon">Hands</span>
+                    </h1>
+
+                    <!-- Unified Layout (All Caps, Exactly Same Style) -->
+                    <h1 class="hero-main-title icon-title-wrapper unified-title-layout" style="display: flex;">
+                        <span class="radium-word-icon" style="text-transform: uppercase;">The</span>
+                        <span class="radium-word-icon" style="text-transform: uppercase;">Group</span>
+                        <span class="radium-word-icon" style="text-transform: uppercase;">Of</span>
+                        <span class="radium-word-icon" style="text-transform: uppercase;">Joining</span>
+                        <span class="radium-word-icon" style="text-transform: uppercase;">Hands</span>
                     </h1>
                 </div>
 
@@ -295,7 +304,7 @@
                     </div>
 
                     <!-- Radium Slogan Layout (3D App Icons) -->
-                    <div class="ecosystem-divider radium-slogan-layout" style="display: flex;">
+                    <div class="ecosystem-divider radium-slogan-layout" style="display: none;">
                         <span class="divider-slogan radium-slogan-icon">Together</span>
                         <span class="divider-line"></span>
                         <div class="divider-icon">
@@ -303,6 +312,18 @@
                         </div>
                         <span class="divider-line"></span>
                         <span class="divider-slogan radium-slogan-icon">Forever</span>
+                    </div>
+
+                    <!-- Unified Slogan Layout (All Caps, Uses Title Word Icon) -->
+                    <div class="ecosystem-divider unified-slogan-layout" style="display: flex;">
+                        <!-- Using radium-word-icon here so it is literally the exact same style as the title -->
+                        <span class="radium-word-icon" style="text-transform: uppercase;">Together</span>
+                        <span class="divider-line"></span>
+                        <div class="divider-icon">
+                            <i class="fa-solid fa-handshake-angle"></i>
+                        </div>
+                        <span class="divider-line"></span>
+                        <span class="radium-word-icon" style="text-transform: uppercase;">Forever</span>
                     </div>
                 </div>
 
@@ -366,10 +387,11 @@
                 </div>
                 <div class="settings-timer-section" style="margin-top: 16px;">
                     <div class="settings-timer-label">Typography Style</div>
-                    <div class="settings-timer-options" style="grid-template-columns: 1fr 1fr 1fr;">
+                    <div class="settings-timer-options" style="grid-template-columns: 1fr 1fr 1fr 1fr;">
                         <button class="timer-opt-btn" id="btnStyleSplit" onclick="setTypographyStyle('split')">Elegant</button>
                         <button class="timer-opt-btn" id="btnStyleDefault" onclick="setTypographyStyle('default')">Classic</button>
-                        <button class="timer-opt-btn active" id="btnStyleRadium" onclick="setTypographyStyle('radium')">Radium</button>
+                        <button class="timer-opt-btn" id="btnStyleRadium" onclick="setTypographyStyle('radium')">Radium</button>
+                        <button class="timer-opt-btn active" id="btnStyleUnified" onclick="setTypographyStyle('unified')">Unified</button>
                     </div>
                 </div>
             </div>
