@@ -2,6 +2,10 @@
 // SET "IS_WEBSITE_LOCKED = true" to lock ecosystem apps, and "false" to unlock.
 const IS_WEBSITE_LOCKED = false;
 
+// SET "ADMIN_ONLY_MODE = true" to allow only super users (admins) to log in.
+// SET "ADMIN_ONLY_MODE = false" to allow everybody to log in.
+const ADMIN_ONLY_MODE = true;
+
 function checkAppLock() {
     if (typeof IS_WEBSITE_LOCKED !== 'undefined' && IS_WEBSITE_LOCKED) {
         showView("locked-view");
@@ -1372,6 +1376,10 @@ async function handleProLogin(event) {
         const data = await res.json();
 
         if (data.success) {
+            if (ADMIN_ONLY_MODE && !data.user.isAdmin) {
+                showAuthError("Only admin tracking is enabled right now. Regular user login is temporarily disabled.");
+                return;
+            }
             localStorage.setItem("pro_auth_token", data.token);
             currentUser = data.user;
             isProLoggedIn = true;
@@ -1411,6 +1419,10 @@ async function handleProSignup(event) {
         const data = await res.json();
 
         if (data.success) {
+            if (ADMIN_ONLY_MODE && !data.user.isAdmin) {
+                showAuthError("Only admin tracking is enabled right now. Regular user login is temporarily disabled.");
+                return;
+            }
             localStorage.setItem("pro_auth_token", data.token);
             currentUser = data.user;
             isProLoggedIn = true;
@@ -1500,6 +1512,10 @@ async function handleCredentialResponse(response) {
 
         const data = await res.json();
         if (data.success) {
+            if (ADMIN_ONLY_MODE && !data.user.isAdmin) {
+                showAuthError("Only admin tracking is enabled right now. Regular user login is temporarily disabled.");
+                return;
+            }
             localStorage.setItem("pro_auth_token", data.token);
             currentUser = data.user;
             isProLoggedIn = true;
@@ -1535,6 +1551,10 @@ async function quickLoginPro() {
         });
         const data = await res.json();
         if (data.success) {
+            if (ADMIN_ONLY_MODE && !data.user.isAdmin) {
+                showAuthError("Only admin tracking is enabled right now. Regular user login is temporarily disabled.");
+                return;
+            }
             localStorage.setItem("pro_auth_token", data.token);
             currentUser = data.user;
             isProLoggedIn = true;
@@ -5393,5 +5413,6 @@ function setTypographyStyle(style) {
         document.querySelector('.unified-slogan-layout').style.display = 'flex';
     }
 }
+
 
 
