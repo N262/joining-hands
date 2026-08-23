@@ -350,11 +350,16 @@
                     </button>
                 </div>
                 <div class="settings-timer-section">
-                    <div class="settings-timer-label">Auto-Rotate Interval</div>
-                    <div class="settings-timer-options">
-                        <button class="timer-opt-btn active" data-interval="5" onclick="changeThemeInterval(5)">5s</button>
-                        <button class="timer-opt-btn" data-interval="10" onclick="changeThemeInterval(10)">10s</button>
-                        <button class="timer-opt-btn" data-interval="0" onclick="changeThemeInterval(0)">None</button>
+                    <div class="settings-timer-label" style="display: flex; justify-content: space-between;">
+                        <span>Auto-Rotate Interval</span>
+                        <span id="sliderValueDisplay" style="color: #7c3aed; font-weight: 800;">5s</span>
+                    </div>
+                    <div class="settings-slider-wrapper" style="margin-top: 12px; padding: 0 4px;">
+                        <input type="range" id="themeIntervalSlider" min="0" max="7" value="1" step="1" style="width: 100%; cursor: pointer; accent-color: #7c3aed;" oninput="updateSliderDisplay(this.value)" onchange="applySliderInterval(this.value)">
+                        <div style="display: flex; justify-content: space-between; font-size: 0.65rem; color: #94a3b8; margin-top: 6px; font-weight: 600;">
+                            <span>None</span>
+                            <span>5m</span>
+                        </div>
                     </div>
                 </div>
                 <div class="settings-timer-section" style="margin-top: 16px;">

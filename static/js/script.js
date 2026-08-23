@@ -5316,25 +5316,31 @@ function stopThemeRotation() {
     }
 }
 
+const intervalMap = [
+    { value: 0, label: "None" },
+    { value: 5, label: "5s" },
+    { value: 10, label: "10s" },
+    { value: 30, label: "30s" },
+    { value: 60, label: "1 min" },
+    { value: 120, label: "2 min" },
+    { value: 180, label: "3 min" },
+    { value: 300, label: "5 min" }
+];
+
+function updateSliderDisplay(sliderIndex) {
+    const display = document.getElementById("sliderValueDisplay");
+    if (display) {
+        display.innerText = intervalMap[sliderIndex].label;
+    }
+}
+
+function applySliderInterval(sliderIndex) {
+    const seconds = intervalMap[sliderIndex].value;
+    changeThemeInterval(seconds);
+}
+
 function changeThemeInterval(seconds) {
     themeRotationIntervalTime = seconds * 1000;
-    
-    // Update interval select dropdown value if exists
-    const intervalDropdown = document.getElementById("intervalSelectDropdown");
-    if (intervalDropdown) {
-        intervalDropdown.value = seconds.toString();
-    }
-    
-    // Update UI active state for interval buttons
-    const buttons = document.querySelectorAll(".timer-opt-btn");
-    buttons.forEach(btn => {
-        const val = parseInt(btn.getAttribute("data-interval"), 10);
-        if (val === seconds) {
-            btn.classList.add("active");
-        } else {
-            btn.classList.remove("active");
-        }
-    });
     
     if (seconds > 0) {
         startThemeRotation();
