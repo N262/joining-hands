@@ -1087,6 +1087,18 @@ body {
     }
 }
 
+/* Magic String Animation */
+.magic-string {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 140%; /* Overshoots the container gracefully */
+    height: 180px;
+    pointer-events: none;
+    z-index: 1; /* Sits right behind the text but in front of background */
+}
+
 
 @media (max-width: 1024px) {
     .title-word-icon {
