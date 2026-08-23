@@ -350,15 +350,15 @@
                     </button>
                 </div>
                 <div class="settings-timer-section">
-                    <div class="settings-timer-label" style="display: flex; justify-content: space-between;">
-                        <span>Auto-Rotate Interval</span>
-                        <span id="sliderValueDisplay" style="color: #7c3aed; font-weight: 800;">5s</span>
+                    <div class="settings-timer-label" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
+                        <span style="font-size: 0.75rem; letter-spacing: 1px; color: #64748b; font-weight: 800; text-transform: uppercase;">Auto-Rotate</span>
+                        <span id="sliderValueDisplay" style="background: rgba(124, 58, 237, 0.1); color: #7c3aed; padding: 4px 12px; border-radius: 12px; font-weight: 800; font-size: 0.75rem; box-shadow: inset 0 1px 2px rgba(124, 58, 237, 0.1); min-width: 50px; text-align: center;">5s</span>
                     </div>
-                    <div class="settings-slider-wrapper" style="margin-top: 12px; padding: 0 4px;">
-                        <input type="range" id="themeIntervalSlider" min="0" max="7" value="1" step="1" style="width: 100%; cursor: pointer; accent-color: #7c3aed;" oninput="updateSliderDisplay(this.value)" onchange="applySliderInterval(this.value)">
-                        <div style="display: flex; justify-content: space-between; font-size: 0.65rem; color: #94a3b8; margin-top: 6px; font-weight: 600;">
-                            <span>None</span>
-                            <span>5m</span>
+                    <div class="settings-slider-wrapper" style="padding: 0 4px;">
+                        <input type="range" id="themeIntervalSlider" class="premium-slider" min="0" max="7" value="1" step="1" oninput="updateSliderDisplay(this.value)" onchange="applySliderInterval(this.value)">
+                        <div style="display: flex; justify-content: space-between; font-size: 0.6rem; color: #94a3b8; margin-top: 10px; font-weight: 700; letter-spacing: 0.5px;">
+                            <span>NONE</span>
+                            <span>5 MIN</span>
                         </div>
                     </div>
                 </div>
