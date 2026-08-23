@@ -304,9 +304,15 @@
         </footer>
         <!-- Floating Settings Button and Backdrop Theme Popover (Downside) -->
         <div class="landing-settings-container">
-            <button class="settings-floating-btn" id="settingsFloatingBtn" onclick="toggleSettingsPanel(event)" aria-label="Configure Backdrop Themes" title="Theme Settings">
-                <i class="fa-solid fa-gear"></i>
-            </button>
+            <div class="vertical-menu-trigger ecosystem-tile ecosystem-tile--menu" id="settingsFloatingBtn" onclick="toggleSettingsPanel(event)" role="button" tabindex="0" aria-label="Configure Backdrop Themes" title="Theme Settings" style="position: relative; top: auto; left: auto; right: auto; margin: 0; transform: none; animation: none;">
+                <div class="tile-3d-body">
+                    <div class="tile-3d-raised">
+                        <div class="tile-3d-circle">
+                            <span class="menu-tile-text" style="font-size: 0.6rem; letter-spacing: 0;">SETTING</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
             
             <div class="settings-popover-panel" id="settingsPopoverPanel" onclick="event.stopPropagation()">
                 <div class="settings-panel-header">

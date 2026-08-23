@@ -7372,7 +7372,7 @@ input:checked + .slider:before {
 
 .settings-popover-panel {
     position: absolute;
-    bottom: 64px;
+    bottom: 116px;
     right: 0;
     width: 320px;
     background: rgba(255, 255, 255, 0.82);
