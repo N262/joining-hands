@@ -5323,8 +5323,10 @@ function startThemeRotation() {
     }
     if (themeRotationIntervalTime <= 0) return;
     themeRotationIntervalId = setInterval(() => {
-        const currentIdx = themeRotationList.indexOf(activeTheme);
-        const nextIdx = (currentIdx + 1) % themeRotationList.length;
+        let nextIdx;
+        do {
+            nextIdx = Math.floor(Math.random() * themeRotationList.length);
+        } while (themeRotationList[nextIdx] === activeTheme && themeRotationList.length > 1);
         switchBackdropTheme(themeRotationList[nextIdx], true);
     }, themeRotationIntervalTime);
 }
@@ -5413,6 +5415,7 @@ function setTypographyStyle(style) {
         document.querySelector('.unified-slogan-layout').style.display = 'flex';
     }
 }
+
 
 
 
