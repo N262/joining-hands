@@ -7894,3 +7894,129 @@ input:checked + .slider:before {
 
 
 
+/* ==========================================================================
+   ULTRA-OPTIMIZED MOBILE LAYOUT OVERRIDES (Fixing the "Squished" Screen)
+   ========================================================================== */
+@media (max-width: 768px) {
+    /* 1. Prevent Floating Buttons from Squishing the Center Content */
+    /* Move MENU to bottom-left */
+    .vertical-menu-trigger.ecosystem-tile--menu {
+        top: auto !important;
+        bottom: 24px !important;
+        left: 16px !important;
+        width: 65px !important;
+        height: 65px !important;
+    }
+    /* Move AI to top-right, but much smaller and out of the way */
+    .vertical-ai-trigger.ecosystem-tile--ai {
+        top: 65px !important;
+        right: 16px !important;
+        width: 65px !important;
+        height: 65px !important;
+    }
+    
+    /* Shrink the inner 3D elements of the floating triggers */
+    .vertical-menu-trigger.ecosystem-tile--menu .tile-3d-raised,
+    .vertical-ai-trigger.ecosystem-tile--ai .tile-3d-raised,
+    .landing-settings-container .ecosystem-tile--menu .tile-3d-raised {
+        width: 48px !important;
+        height: 48px !important;
+        transform: translateZ(8px) !important;
+    }
+    .vertical-menu-trigger.ecosystem-tile--menu .tile-3d-circle,
+    .vertical-ai-trigger.ecosystem-tile--ai .tile-3d-circle,
+    .landing-settings-container .ecosystem-tile--menu .tile-3d-circle {
+        width: 38px !important;
+        height: 38px !important;
+    }
+    .menu-tile-text { font-size: 0.55rem !important; }
+    .ai-tile-text { font-size: 0.45rem !important; padding: 0 !important; }
+
+    /* 2. Settings Floating Button (Bottom Right) */
+    .landing-settings-container {
+        bottom: 24px !important;
+        right: 16px !important;
+    }
+    .landing-settings-container .ecosystem-tile--menu {
+        width: 65px !important;
+        height: 65px !important;
+    }
+    /* Fix Settings Popover escaping the screen */
+    .settings-popover-panel {
+        right: 0 !important;
+        width: 85vw !important;
+        max-width: 290px !important;
+        bottom: 80px !important;
+        padding: 14px !important;
+    }
+
+    /* 3. Scale down the Massive "Unified" Typography layout */
+    .unified-slogan-layout {
+        flex-wrap: wrap !important;
+        gap: 12px !important;
+    }
+    .radium-word-icon {
+        font-size: 1.1rem !important;
+        padding: 8px 24px !important;
+        letter-spacing: 2px !important;
+    }
+    .divider-icon {
+        width: 45px !important;
+        height: 45px !important;
+        font-size: 1.1rem !important;
+    }
+    .hero-main-title {
+        font-size: 1.6rem !important;
+        margin-top: 10px !important;
+    }
+
+    /* 4. Ensure Ecosystem Tiles fit perfectly in rows */
+    .ecosystem-3d-tiles-container {
+        gap: 12px !important;
+        padding: 10px 4px !important;
+    }
+    .ecosystem-tile {
+        width: 78px !important;
+        height: 78px !important;
+    }
+    .ecosystem-tile .tile-3d-raised {
+        width: 52px !important;
+        height: 52px !important;
+    }
+    .ecosystem-tile .tile-3d-circle {
+        width: 42px !important;
+        height: 42px !important;
+    }
+    .tile-letter {
+        font-size: 1.25rem !important;
+    }
+    .tile-symbol-svg {
+        width: 22px !important;
+        height: 22px !important;
+    }
+    
+    /* 5. Clean up main body padding so it doesn't collide with the moved bottom buttons */
+    .apps-hub-wrap {
+        margin-bottom: 90px !important; /* Space for the bottom buttons */
+    }
+}
+
+/* Extra small devices (very narrow phones) */
+@media (max-width: 360px) {
+    .ecosystem-tile {
+        width: 70px !important;
+        height: 70px !important;
+    }
+    .ecosystem-tile .tile-3d-raised {
+        width: 46px !important;
+        height: 46px !important;
+    }
+    .ecosystem-tile .tile-3d-circle {
+        width: 36px !important;
+        height: 36px !important;
+    }
+    .radium-word-icon {
+        font-size: 0.95rem !important;
+        padding: 6px 18px !important;
+    }
+}
