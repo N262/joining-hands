@@ -7899,38 +7899,37 @@ input:checked + .slider:before {
    ========================================================================== */
 @media (max-width: 768px) {
     /* 1. Prevent Floating Buttons from Squishing the Center Content */
-    /* Move MENU to bottom-left */
+    /* Keep MENU and AI exactly at the top where they are on PC, just perfectly scaled down */
     .vertical-menu-trigger.ecosystem-tile--menu {
-        top: auto !important;
-        bottom: 24px !important;
-        left: 16px !important;
-        width: 65px !important;
-        height: 65px !important;
+        top: 80px !important;
+        bottom: auto !important;
+        left: 8px !important;
+        width: 55px !important;
+        height: 55px !important;
     }
-    /* Move AI to top-right, but much smaller and out of the way */
     .vertical-ai-trigger.ecosystem-tile--ai {
-        top: 65px !important;
-        right: 16px !important;
-        width: 65px !important;
-        height: 65px !important;
+        top: 80px !important;
+        right: 8px !important;
+        width: 55px !important;
+        height: 55px !important;
     }
     
     /* Shrink the inner 3D elements of the floating triggers */
     .vertical-menu-trigger.ecosystem-tile--menu .tile-3d-raised,
     .vertical-ai-trigger.ecosystem-tile--ai .tile-3d-raised,
     .landing-settings-container .ecosystem-tile--menu .tile-3d-raised {
-        width: 48px !important;
-        height: 48px !important;
-        transform: translateZ(8px) !important;
+        width: 40px !important;
+        height: 40px !important;
+        transform: translateZ(6px) !important;
     }
     .vertical-menu-trigger.ecosystem-tile--menu .tile-3d-circle,
     .vertical-ai-trigger.ecosystem-tile--ai .tile-3d-circle,
     .landing-settings-container .ecosystem-tile--menu .tile-3d-circle {
-        width: 38px !important;
-        height: 38px !important;
+        width: 32px !important;
+        height: 32px !important;
     }
-    .menu-tile-text { font-size: 0.55rem !important; }
-    .ai-tile-text { font-size: 0.45rem !important; padding: 0 !important; }
+    .menu-tile-text { font-size: 0.45rem !important; }
+    .ai-tile-text { font-size: 0.35rem !important; padding: 0 !important; }
 
     /* 2. Settings Floating Button (Bottom Right) */
     .landing-settings-container {
@@ -8020,3 +8019,4 @@ input:checked + .slider:before {
         padding: 6px 18px !important;
     }
 }
+
