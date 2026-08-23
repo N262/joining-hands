@@ -1805,9 +1805,12 @@ body {
     height: 200%;
     background: radial-gradient(circle at top left, rgba(255,255,255,0.4) 0%, transparent 60%);
     pointer-events: none;
+    z-index: 1;
 }
 
 .divider-icon i {
+    position: relative;
+    z-index: 2;
     filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
     transition: all 0.3s ease;
 }
