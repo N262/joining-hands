@@ -5081,6 +5081,7 @@ function resizeThemeCanvas(canvas) {
 
 function switchBackdropTheme(theme, isAuto = false) {
     activeTheme = theme;
+    if(typeof UIAudio !== 'undefined') UIAudio.playThemeSwoosh();
     
     // Toggle active class on landing view container
     const landingView = document.getElementById("landing-view");
@@ -5419,4 +5420,112 @@ function setTypographyStyle(style) {
 
 
 
+
+
+// ==========================================================================
+// PREMIUM UI SOUND EFFECTS (WEB AUDIO API)
+// ==========================================================================
+const UIAudio = {
+    ctx: null,
+    enabled: true, // Default ON
+    init() {
+        if (!this.enabled) return;
+        if (!this.ctx) {
+            const AudioContext = window.AudioContext || window.webkitAudioContext;
+            if (AudioContext) {
+                this.ctx = new AudioContext();
+            }
+        }
+        if (this.ctx && this.ctx.state === 'suspended') {
+            this.ctx.resume();
+        }
+    },
+    playHoverTick() {
+        if (!this.enabled || !this.ctx) return;
+        try {
+            const t = this.ctx.currentTime;
+            const osc = this.ctx.createOscillator();
+            const gain = this.ctx.createGain();
+            
+            // Soft wood-like click
+            osc.type = 'triangle';
+            osc.frequency.setValueAtTime(800, t);
+            osc.frequency.exponentialRampToValueAtTime(300, t + 0.05);
+            
+            gain.gain.setValueAtTime(0, t);
+            gain.gain.linearRampToValueAtTime(0.2, t + 0.01);
+            gain.gain.exponentialRampToValueAtTime(0.001, t + 0.05);
+            
+            osc.connect(gain);
+            gain.connect(this.ctx.destination);
+            
+            osc.start(t);
+            osc.stop(t + 0.06);
+        } catch (e) {}
+    },
+    playThemeSwoosh() {
+        if (!this.enabled || !this.ctx) return;
+        try {
+            const t = this.ctx.currentTime;
+            const osc = this.ctx.createOscillator();
+            const gain = this.ctx.createGain();
+            
+            // Modern digital swoosh
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(150, t);
+            osc.frequency.exponentialRampToValueAtTime(40, t + 0.5);
+            
+            gain.gain.setValueAtTime(0, t);
+            gain.gain.linearRampToValueAtTime(0.15, t + 0.1);
+            gain.gain.linearRampToValueAtTime(0, t + 0.6);
+            
+            osc.connect(gain);
+            gain.connect(this.ctx.destination);
+            
+            osc.start(t);
+            osc.stop(t + 0.65);
+        } catch (e) {}
+    }
+};
+
+function toggleUISounds() {
+    UIAudio.enabled = !UIAudio.enabled;
+    const btn = document.getElementById("uiSoundToggleBtn");
+    if (btn) {
+        if (UIAudio.enabled) {
+            btn.innerText = "ON";
+            btn.style.background = "rgba(124, 58, 237, 0.9)";
+            btn.style.color = "#ffffff";
+            UIAudio.init();
+            UIAudio.playHoverTick();
+        } else {
+            btn.innerText = "OFF";
+            btn.style.background = "rgba(124, 58, 237, 0.1)";
+            btn.style.color = "#7c3aed";
+        }
+    }
+}
+
+// Attach hover sound to ecosystem tiles globally
+document.addEventListener("DOMContentLoaded", () => {
+    // Attempt to initialize on first click anywhere
+    document.body.addEventListener('click', () => {
+        if(UIAudio.enabled && !UIAudio.ctx) UIAudio.init();
+    }, { once: true });
+    
+    // Set initial button state
+    const btn = document.getElementById("uiSoundToggleBtn");
+    if (btn && UIAudio.enabled) {
+        btn.innerText = "ON";
+        btn.style.background = "rgba(124, 58, 237, 0.9)";
+        btn.style.color = "#ffffff";
+    }
+
+    const tiles = document.querySelectorAll(".ecosystem-tile, .theme-select-btn");
+    tiles.forEach(tile => {
+        tile.addEventListener("mouseenter", () => {
+            UIAudio.playHoverTick();
+        });
+    });
+});
 
