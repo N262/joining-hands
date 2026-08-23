@@ -83,7 +83,7 @@ const ANNOUNCEMENT_CONFIG = {
         {
             badge: "SLOGAN PLEDGE",
             text: "United in shared vision and cultural preservation • <em>Together Forever</em>",
-            linkText: "Join ProConnect",
+            linkText: "Join now",
             action: () => openLinkedinClone()
         },
         {
@@ -1324,7 +1324,7 @@ function switchAuthTab(mode) {
         loginForm.style.display = "block";
         tabSignUpBtn.classList.remove("active");
         tabSignInBtn.classList.add("active");
-        if (footerText) footerText.innerHTML = 'New to ProConnect? <a href="#" onclick="switchAuthTab(\'signup\')">Join now</a>';
+        if (footerText) footerText.innerHTML = 'New here? <a href="#" onclick="switchAuthTab(\'signup\')">Join now</a>';
     }
 }
 
@@ -3403,7 +3403,7 @@ async function openRapidoClone() {
     const token = localStorage.getItem("pro_auth_token");
     if (!token) {
         intendedApp = "rapido";
-        showToast("Please log in to your ProConnect account to access rides.");
+        showToast("Please log in to your account to access rides.");
         showView("pro-network-view");
         showProStage("pro-login-stage");
         return;
@@ -5413,6 +5413,7 @@ function setTypographyStyle(style) {
         document.querySelector('.unified-slogan-layout').style.display = 'flex';
     }
 }
+
 
 
 
