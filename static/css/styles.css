@@ -7088,7 +7088,9 @@ input:checked + .slider:before {
 #landing-view.theme-waterflow .layer--waterflow,
 #landing-view.theme-6th .layer--6th,
 #landing-view.theme-7th .layer--7th,
-#landing-view.theme-8th .layer--8th {
+#landing-view.theme-8th .layer--8th,
+#landing-view.theme-9th .layer--9th,
+#landing-view.theme-10th .layer--10th {
     opacity: 1;
     visibility: visible;
     pointer-events: all;
@@ -7205,7 +7207,9 @@ input:checked + .slider:before {
     --theme-ai-text: #f8fafc;
 }
 
-#landing-view.theme-8th {
+#landing-view.theme-8th,
+#landing-view.theme-9th,
+#landing-view.theme-10th {
     --theme-accent-gradient: linear-gradient(135deg, rgba(56, 189, 248, 0.45) 0%, rgba(59, 130, 246, 0.4) 100%);
     --theme-text-gradient: linear-gradient(135deg, #a7f3d0 0%, #3b82f6 100%);
     --theme-text-shadow: 0 4px 20px rgba(56, 189, 248, 0.38);
@@ -7231,7 +7235,9 @@ input:checked + .slider:before {
 #landing-view.theme-waterflow,
 #landing-view.theme-6th,
 #landing-view.theme-7th,
-#landing-view.theme-8th {
+#landing-view.theme-8th,
+#landing-view.theme-9th,
+#landing-view.theme-10th {
     color: #f8fafc !important;
 }
 
@@ -7241,7 +7247,9 @@ input:checked + .slider:before {
 #landing-view.theme-waterflow .about-reveal-title,
 #landing-view.theme-6th .about-reveal-title,
 #landing-view.theme-7th .about-reveal-title,
-#landing-view.theme-8th .about-reveal-title {
+#landing-view.theme-8th .about-reveal-title,
+#landing-view.theme-9th .about-reveal-title,
+#landing-view.theme-10th .about-reveal-title {
     background: linear-gradient(135deg, #ffffff 0%, #ea580c 100%) !important;
     -webkit-background-clip: text !important;
     -webkit-text-fill-color: transparent !important;
@@ -7252,7 +7260,9 @@ input:checked + .slider:before {
 #landing-view.theme-waterflow .about-reveal-textarea,
 #landing-view.theme-6th .about-reveal-textarea,
 #landing-view.theme-7th .about-reveal-textarea,
-#landing-view.theme-8th .about-reveal-textarea {
+#landing-view.theme-8th .about-reveal-textarea,
+#landing-view.theme-9th .about-reveal-textarea,
+#landing-view.theme-10th .about-reveal-textarea {
     background: rgba(15, 23, 42, 0.65) !important;
     border-color: rgba(129, 140, 248, 0.4) !important;
     color: #f8fafc !important;
@@ -7263,7 +7273,9 @@ input:checked + .slider:before {
 #landing-view.theme-waterflow .about-reveal-badge,
 #landing-view.theme-6th .about-reveal-badge,
 #landing-view.theme-7th .about-reveal-badge,
-#landing-view.theme-8th .about-reveal-badge {
+#landing-view.theme-8th .about-reveal-badge,
+#landing-view.theme-9th .about-reveal-badge,
+#landing-view.theme-10th .about-reveal-badge {
     background: rgba(255, 255, 255, 0.12) !important;
     border-color: rgba(255, 255, 255, 0.22) !important;
     color: #ffffff !important;
@@ -7274,7 +7286,9 @@ input:checked + .slider:before {
 #landing-view.theme-waterflow .landing-footer,
 #landing-view.theme-6th .landing-footer,
 #landing-view.theme-7th .landing-footer,
-#landing-view.theme-8th .landing-footer {
+#landing-view.theme-8th .landing-footer,
+#landing-view.theme-9th .landing-footer,
+#landing-view.theme-10th .landing-footer {
     border-top: 1px solid rgba(255, 255, 255, 0.12) !important;
 }
 
@@ -7292,7 +7306,9 @@ input:checked + .slider:before {
 .layer--waterflow,
 .layer--6th,
 .layer--7th,
-.layer--8th {
+.layer--8th,
+.layer--9th,
+.layer--10th {
     background: #060a12;
     overflow: hidden;
 }
@@ -7875,4 +7891,6 @@ input:checked + .slider:before {
     .unified-word-tile .tile-3d-circle { height: 38px !important; width: calc(100% - 10px) !important; }
     .unified-text { font-size: 0.85rem; }
 }
+
+
 
