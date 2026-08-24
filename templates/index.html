@@ -164,6 +164,11 @@
                 </div>
 
                 <div class="hero-text-wrap">
+                    <!-- Default Layout (Simple Bold Text) -->
+                    <h1 class="hero-main-title default-title-layout" style="display: flex; font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 900; color: #1e293b; text-shadow: 0 4px 15px rgba(255,255,255,0.4); justify-content: center; margin-top: 10px; margin-bottom: 0;">
+                        The Group of Joining Hands
+                    </h1>
+
                     <!-- Split Layout (Modular) -->
                     <h1 class="hero-main-title icon-title-wrapper split-title-layout" style="display: none;">
                         <span class="title-word-icon">The</span>
@@ -174,7 +179,7 @@
                     </h1>
 
                     <!-- Unified Layout (All Caps, Exactly Same Style) -->
-                    <h1 class="hero-main-title icon-title-wrapper unified-title-layout" style="display: flex;">
+                    <h1 class="hero-main-title icon-title-wrapper unified-title-layout" style="display: none;">
                         <span class="radium-word-icon" style="text-transform: uppercase;">The</span>
                         <span class="radium-word-icon" style="text-transform: uppercase;">Group</span>
                         <span class="radium-word-icon" style="text-transform: uppercase;">Of</span>
@@ -277,6 +282,17 @@
 
                     </div>
 
+                    <!-- Default Slogan Layout (Simple Bold Text) -->
+                    <div class="ecosystem-divider default-slogan-layout" style="display: flex;">
+                        <span style="font-size: clamp(1.2rem, 3vw, 1.8rem); font-weight: 800; color: #475569; letter-spacing: 1px;">Together</span>
+                        <span class="divider-line"></span>
+                        <div class="divider-icon">
+                            <i class="fa-solid fa-handshake-angle"></i>
+                        </div>
+                        <span class="divider-line"></span>
+                        <span style="font-size: clamp(1.2rem, 3vw, 1.8rem); font-weight: 800; color: #475569; letter-spacing: 1px;">Forever</span>
+                    </div>
+
                     <!-- Split Slogan Layout (Modular Icons) -->
                     <div class="ecosystem-divider split-slogan-layout" style="display: none;">
                         <span class="divider-slogan slogan-word-icon">Together</span>
@@ -289,7 +305,7 @@
                     </div>
 
                     <!-- Unified Slogan Layout (All Caps, Uses Title Word Icon) -->
-                    <div class="ecosystem-divider unified-slogan-layout" style="display: flex;">
+                    <div class="ecosystem-divider unified-slogan-layout" style="display: none;">
                         <!-- Using radium-word-icon here so it is literally the exact same style as the title -->
                         <span class="radium-word-icon" style="text-transform: uppercase;">Together</span>
                         <span class="divider-line"></span>
@@ -380,9 +396,10 @@
                 </div>
                 <div class="settings-timer-section" style="margin-top: 16px;">
                     <div class="settings-timer-label">Typography Style</div>
-                    <div class="settings-timer-options" style="grid-template-columns: 1fr 1fr;">
+                    <div class="settings-timer-options" style="grid-template-columns: 1fr 1fr 1fr;">
+                        <button class="timer-opt-btn active" id="btnStyleDefault" onclick="setTypographyStyle('default')">Default</button>
                         <button class="timer-opt-btn" id="btnStyleSplit" onclick="setTypographyStyle('split')">Elegant</button>
-                        <button class="timer-opt-btn active" id="btnStyleUnified" onclick="setTypographyStyle('unified')">Unified</button>
+                        <button class="timer-opt-btn" id="btnStyleUnified" onclick="setTypographyStyle('unified')">Unified</button>
                     </div>
                 </div>
             </div>

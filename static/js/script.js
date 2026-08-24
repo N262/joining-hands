@@ -5402,13 +5402,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function setTypographyStyle(style) {
     document.querySelectorAll('.timer-opt-btn').forEach(b => {
-        if(b.id === 'btnStyleSplit' || b.id === 'btnStyleUnified') b.classList.remove('active');
+        if(b.id === 'btnStyleSplit' || b.id === 'btnStyleUnified' || b.id === 'btnStyleDefault') b.classList.remove('active');
     });
     
     // Hide all layouts first
     const layouts = [
-        '.split-title-layout', '.unified-title-layout',
-        '.split-slogan-layout', '.unified-slogan-layout'
+        '.split-title-layout', '.unified-title-layout', '.default-title-layout',
+        '.split-slogan-layout', '.unified-slogan-layout', '.default-slogan-layout'
     ];
     layouts.forEach(selector => {
         const el = document.querySelector(selector);
@@ -5425,6 +5425,11 @@ function setTypographyStyle(style) {
         if(btn) btn.classList.add('active');
         document.querySelector('.unified-title-layout').style.display = 'flex';
         document.querySelector('.unified-slogan-layout').style.display = 'flex';
+    } else if (style === 'default') {
+        const btn = document.getElementById('btnStyleDefault');
+        if(btn) btn.classList.add('active');
+        document.querySelector('.default-title-layout').style.display = 'flex';
+        document.querySelector('.default-slogan-layout').style.display = 'flex';
     }
 }
 
