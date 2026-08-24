@@ -1,10 +1,10 @@
 // Global App Access Controller
 // SET "IS_WEBSITE_LOCKED = true" to lock ecosystem apps, and "false" to unlock.
-const IS_WEBSITE_LOCKED = false;
+const IS_WEBSITE_LOCKED = true;
 
 // SET "ADMIN_ONLY_MODE = true" to allow only super users (admins) to log in.
 // SET "ADMIN_ONLY_MODE = false" to allow everybody to log in.
-const ADMIN_ONLY_MODE = true;
+const ADMIN_ONLY_MODE = false;
 
 // Super Admin Unlock State
 let sessionUnlocked = false;
@@ -5427,6 +5427,7 @@ function setTypographyStyle(style) {
         document.querySelector('.unified-slogan-layout').style.display = 'flex';
     }
 }
+
 
 
 
