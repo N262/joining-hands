@@ -6,8 +6,20 @@ const IS_WEBSITE_LOCKED = true;
 // SET "ADMIN_ONLY_MODE = false" to allow everybody to log in.
 const ADMIN_ONLY_MODE = true;
 
+// Super Admin Unlock State
+let sessionUnlocked = false;
+
+function checkUnlockPassword(event) {
+    if (event.target.value === "demo1234") {
+        sessionUnlocked = true;
+        showToast("Access Granted. Ecosystem apps unlocked.");
+        event.target.value = ""; // clear password field
+        returnToLanding(); // go back to the main landing view
+    }
+}
+
 function checkAppLock() {
-    if (typeof IS_WEBSITE_LOCKED !== 'undefined' && IS_WEBSITE_LOCKED) {
+    if (typeof IS_WEBSITE_LOCKED !== 'undefined' && IS_WEBSITE_LOCKED && !sessionUnlocked) {
         showView("locked-view");
         return true;
     }
