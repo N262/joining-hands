@@ -339,42 +339,33 @@
                     <h4>Themes</h4>
                     <button class="settings-close-btn" onclick="closeSettingsPanel()" aria-label="Close Settings Panel">&times;</button>
                 </div>
-                <div class="sidebar-themes-grid">
+                <div class="sidebar-themes-grid preview-boxes-grid">
                     <button class="theme-select-btn active" data-theme="water" onclick="switchBackdropTheme('water')" title="Water Light">
-                        <span class="theme-color-dot theme-dot--water"></span>
-                        <span class="theme-btn-label">Water Light</span>
+                        <div class="theme-preview-fallback water-fallback"></div>
                     </button>
                     <button class="theme-select-btn" data-theme="flow" onclick="switchBackdropTheme('flow')" title="Flow">
-                        <span class="theme-color-dot" style="background: linear-gradient(135deg, #0284c7 0%, #d97706 100%);"></span>
-                        <span class="theme-btn-label">Flow</span>
+                        <video class="theme-preview-video" src="/themes/bg-flow.mp4" autoplay loop muted playsinline></video>
                     </button>
                     <button class="theme-select-btn" data-theme="glassflow" onclick="switchBackdropTheme('glassflow')" title="Glass Flow">
-                        <span class="theme-color-dot" style="background: linear-gradient(135deg, #818cf8 0%, #c084fc 100%);"></span>
-                        <span class="theme-btn-label">Glass Flow</span>
+                        <video class="theme-preview-video" src="/themes/bg-glassflow.mp4" autoplay loop muted playsinline></video>
                     </button>
                     <button class="theme-select-btn" data-theme="waterflow" onclick="switchBackdropTheme('waterflow')" title="Water Flow">
-                        <span class="theme-color-dot" style="background: linear-gradient(135deg, #06b6d4 0%, #10b881 100%);"></span>
-                        <span class="theme-btn-label">Water Flow</span>
+                        <video class="theme-preview-video" src="/themes/bg-waterflow.mp4" autoplay loop muted playsinline></video>
                     </button>
                     <button class="theme-select-btn" data-theme="6th" onclick="switchBackdropTheme('6th')" title="Solar">
-                        <span class="theme-color-dot" style="background: linear-gradient(135deg, #ffa000 0%, #e65100 100%);"></span>
-                        <span class="theme-btn-label">Solar</span>
+                        <video class="theme-preview-video" src="/themes/bg-6th.mp4" autoplay loop muted playsinline></video>
                     </button>
                     <button class="theme-select-btn" data-theme="7th" onclick="switchBackdropTheme('7th')" title="Cosmic">
-                        <span class="theme-color-dot" style="background: linear-gradient(135deg, #d946ef 0%, #4f46e5 100%);"></span>
-                        <span class="theme-btn-label">Cosmic</span>
+                        <video class="theme-preview-video" src="/themes/bg-7th.mp4" autoplay loop muted playsinline></video>
                     </button>
                     <button class="theme-select-btn" data-theme="8th" onclick="switchBackdropTheme('8th')" title="Air">
-                        <span class="theme-color-dot" style="background: linear-gradient(135deg, #a7f3d0 0%, #3b82f6 100%);"></span>
-                        <span class="theme-btn-label">Air</span>
+                        <video class="theme-preview-video" src="/themes/8th.mp4" autoplay loop muted playsinline></video>
                     </button>
                     <button class="theme-select-btn" data-theme="9th" onclick="switchBackdropTheme('9th')" title="Aura">
-                        <span class="theme-color-dot" style="background: linear-gradient(135deg, #f43f5e 0%, #fbbf24 100%);"></span>
-                        <span class="theme-btn-label">Aura</span>
+                        <video class="theme-preview-video" src="/themes/9th.mp4" autoplay loop muted playsinline></video>
                     </button>
                     <button class="theme-select-btn" data-theme="10th" onclick="switchBackdropTheme('10th')" title="Nova">
-                        <span class="theme-color-dot" style="background: linear-gradient(135deg, #2dd4bf 0%, #a855f7 100%);"></span>
-                        <span class="theme-btn-label">Nova</span>
+                        <video class="theme-preview-video" src="/themes/10th.mp4" autoplay loop muted playsinline></video>
                     </button>
                 </div>
                 <div class="settings-timer-section">
