@@ -6790,9 +6790,9 @@ input:checked + .slider:before {
 }
 
 #landing-view.menu-active .apps-hub-wrap {
-    transform: translateY(130px);
-    opacity: 0.2;
-    pointer-events: none;
+    transform: translateY(320px);
+    opacity: 1;
+    pointer-events: auto;
 }
 
 .landing-about-reveal {
@@ -8046,8 +8046,11 @@ input:checked + .slider:before {
 .landing-about-overlay {
     position: fixed;
     top: 90px;
-    left: 140px;
-    max-width: 65vw;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90vw;
+    max-width: 1000px;
+    text-align: center;
     z-index: 1000;
     opacity: 0;
     pointer-events: none;
@@ -8081,11 +8084,12 @@ input:checked + .slider:before {
 }
 @media (max-width: 768px) {
     .landing-about-overlay {
-        top: 150px;
-        left: 20px;
-        right: 20px;
+        top: 140px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 95vw;
         max-width: none;
-        height: 60vh;
+        height: 55vh;
         overflow-y: auto;
     }
     .about-overlay-title {
@@ -8097,3 +8101,8 @@ input:checked + .slider:before {
     }
 }
 .hero-text-wrap { transition: opacity 0.5s ease; }
+@media (max-width: 768px) {
+    #landing-view.menu-active .apps-hub-wrap {
+        transform: translateY(400px) scale(0.9);
+    }
+}
