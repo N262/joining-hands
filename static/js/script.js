@@ -222,43 +222,32 @@ let aboutTypewriterTimer = null;
 let isAboutTyping = false;
 let aboutCurrentCharIndex = 0;
 
-const ABOUT_SENTENCE_PARTS = [
-    { text: "The Group of Joining Hands", style: "bold" },
-    { text: " is a purpose-driven community ecosystem devoted to mutual empowerment, cultural unity, and shared social welfare under our sacred motto: ", style: "normal" },
-    { text: "\u201cTogether Forever\u201d", style: "motto" },
-    { text: ".", style: "normal" }
+const ABOUT_PARAGRAPHS = [
+    "We have come together with a clear vision and created opportunities to serve our nation, driven by a shared commitment to empower people and build a stronger, united, and prosperous future.",
+    "We believe the right Debit should meet the right Credit, and the right Credit should meet the right Debit—creating a meaningful balance built on Respect, Values, Peace, Love, Trust, Equality, Opportunity, Responsibility, and Prosperity.",
+    "Join hands with us on this meaningful journey to serve our nation, uplift one another, and create a better future for generations to come."
 ];
 
 function getAboutTotalLength() {
-    return ABOUT_SENTENCE_PARTS.reduce((sum, p) => sum + p.text.length, 0);
+    return ABOUT_PARAGRAPHS.join("").length;
 }
 
 function renderTypedAboutHTML(charCount) {
     let html = '';
     let remaining = charCount;
-    for (let i = 0; i < ABOUT_SENTENCE_PARTS.length; i++) {
+    for (let i = 0; i < ABOUT_PARAGRAPHS.length; i++) {
         if (remaining <= 0) break;
-        const part = ABOUT_SENTENCE_PARTS[i];
-        const sliceLen = Math.min(remaining, part.text.length);
-        const textSlice = part.text.substring(0, sliceLen);
+        const part = ABOUT_PARAGRAPHS[i];
+        const sliceLen = Math.min(remaining, part.length);
+        const textSlice = part.substring(0, sliceLen);
         remaining -= sliceLen;
-
-        if (part.style === 'bold') {
-            html += `<strong class="typo-strong">${textSlice}</strong>`;
-        } else if (part.style === 'motto') {
-            html += `<em class="sidebar-typo-motto">${textSlice}</em>`;
-        } else {
-            html += `<span>${textSlice}</span>`;
-        }
+        html += `<p>${textSlice}</p>`;
     }
     return html;
 }
 
 function startAboutTypewriter(forceRestart = false) {
-    const textEl = document.getElementById("sidebarAboutText");
-    const container = document.getElementById("sidebar-sec-about");
-    const badgeEl = document.getElementById("aboutTypingBadge");
-    
+    const textEl = document.getElementById("landingAboutTypewriter");
     if (!textEl) return;
     
     if (aboutTypewriterTimer) {
@@ -270,15 +259,7 @@ function startAboutTypewriter(forceRestart = false) {
     aboutCurrentCharIndex = 0;
     isAboutTyping = true;
     
-    if (badgeEl) {
-        badgeEl.classList.add("active");
-        badgeEl.innerHTML = '<span class="typing-pulse-dot"></span> Typing...';
-    }
-    if (container) {
-        container.classList.add("is-typing");
-    }
-    
-    textEl.innerHTML = '<span class="typing-caret" aria-hidden="true"></span>';
+    textEl.innerHTML = '<span class="typing-caret" aria-hidden="true" style="background: #ffffff;"></span>';
     
     function typeStep() {
         if (!isAboutTyping) return;
@@ -286,27 +267,27 @@ function startAboutTypewriter(forceRestart = false) {
         if (aboutCurrentCharIndex < totalChars) {
             aboutCurrentCharIndex++;
             const renderedHtml = renderTypedAboutHTML(aboutCurrentCharIndex);
-            textEl.innerHTML = renderedHtml + '<span class="typing-caret" aria-hidden="true"></span>';
+            textEl.innerHTML = renderedHtml + '<span class="typing-caret" aria-hidden="true" style="background: #ffffff;"></span>';
             
-            // Punctuation cadence
-            let delay = 20;
+            // Fast typewriter feel
+            let delay = 15;
             let count = 0;
             let lastChar = '';
-            for (let i = 0; i < ABOUT_SENTENCE_PARTS.length; i++) {
-                const p = ABOUT_SENTENCE_PARTS[i];
-                if (count + p.text.length >= aboutCurrentCharIndex) {
-                    lastChar = p.text[aboutCurrentCharIndex - count - 1];
+            for (let i = 0; i < ABOUT_PARAGRAPHS.length; i++) {
+                const p = ABOUT_PARAGRAPHS[i];
+                if (count + p.length >= aboutCurrentCharIndex) {
+                    lastChar = p[aboutCurrentCharIndex - count - 1];
                     break;
                 }
-                count += p.text.length;
+                count += p.length;
             }
             
             if (lastChar === '.' || lastChar === '!' || lastChar === '?') {
-                delay = 140;
-            } else if (lastChar === ',' || lastChar === ':') {
                 delay = 80;
+            } else if (lastChar === ',' || lastChar === ':') {
+                delay = 40;
             } else if (lastChar === ' ') {
-                delay = 24;
+                delay = 10;
             }
             
             aboutTypewriterTimer = setTimeout(typeStep, delay);
@@ -315,7 +296,7 @@ function startAboutTypewriter(forceRestart = false) {
         }
     }
     
-    aboutTypewriterTimer = setTimeout(typeStep, forceRestart ? 50 : 200);
+    aboutTypewriterTimer = setTimeout(typeStep, forceRestart ? 50 : 300);
 }
 
 function finishAboutTypewriter() {
@@ -326,19 +307,9 @@ function finishAboutTypewriter() {
     isAboutTyping = false;
     aboutCurrentCharIndex = getAboutTotalLength();
     
-    const textEl = document.getElementById("sidebarAboutText");
-    const container = document.getElementById("sidebar-sec-about");
-    const badgeEl = document.getElementById("aboutTypingBadge");
-    
+    const textEl = document.getElementById("landingAboutTypewriter");
     if (textEl) {
-        textEl.innerHTML = renderTypedAboutHTML(aboutCurrentCharIndex) + '<span class="typing-caret typing-caret--idle" aria-hidden="true"></span>';
-    }
-    if (container) {
-        container.classList.remove("is-typing");
-    }
-    if (badgeEl) {
-        badgeEl.classList.remove("active");
-        badgeEl.innerHTML = '<i class="fa-solid fa-check text-green"></i> Ready';
+        textEl.innerHTML = renderTypedAboutHTML(aboutCurrentCharIndex);
     }
 }
 
