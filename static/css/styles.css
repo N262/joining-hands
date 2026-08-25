@@ -8182,6 +8182,11 @@ input:checked + .slider:before {
         top: 30px !important;
         width: calc(100vw - 320px) !important; /* 160px safe margin on both sides */
         max-width: 1400px !important;
+        text-align: left !important; /* Start words strictly from the left boundary */
+    }
+    .about-overlay-text {
+        font-size: 1.4rem !important; /* Increased font size */
+        line-height: 1.85 !important;
     }
 }
 @media (max-width: 768px) {
