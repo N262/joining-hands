@@ -8160,3 +8160,19 @@ input:checked + .slider:before {
 .landing-footer {
     margin-top: auto !important;
 }
+.vertical-menu-trigger, .vertical-ai-trigger {
+    z-index: 2000 !important;
+}
+.apps-hub-wrap {
+    position: relative !important;
+    z-index: 1001 !important;
+}
+.landing-about-overlay {
+    pointer-events: none !important;
+}
+#landing-view.menu-active .landing-about-overlay {
+    pointer-events: none !important;
+}
+.about-overlay-title, .about-overlay-text {
+    pointer-events: auto !important;
+}
