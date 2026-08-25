@@ -8150,3 +8150,13 @@ input:checked + .slider:before {
     border-color: rgba(124, 58, 237, 0.8);
     transform: scale(1.02);
 }
+#landing-view {
+    display: flex !important;
+    flex-direction: column !important;
+}
+.hero-section {
+    flex: 1 0 auto !important;
+}
+.landing-footer {
+    margin-top: auto !important;
+}
