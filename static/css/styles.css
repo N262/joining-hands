@@ -8194,3 +8194,15 @@ input:checked + .slider:before {
         width: 90vw !important; /* Revert mobile width */
     }
 }
+
+/* Adaptive Contrast: Dark text on light background theme (Water) */
+#landing-view.theme-water .about-overlay-title,
+#landing-view.theme-water .about-overlay-text {
+    color: #1e1b4b !important;
+    text-shadow: none !important;
+}
+
+#landing-view.theme-water .ai-tile-text {
+    color: #4f46e5 !important;
+    text-shadow: none !important;
+}
