@@ -5141,6 +5141,9 @@ function initThemeLoops() {
         mouseY = e.clientY;
     });
 
+    let currentOffsetX = 0;
+    let currentOffsetY = 0;
+
     function runGlobalThemeLoop() {
         const canvasId = getCanvasIdForTheme(activeTheme);
         if (canvasId) {
@@ -5216,57 +5219,25 @@ function initThemeLoops() {
             }
         }
 
-        if (activeTheme === "flow") {
-            const canvas = canvasElements["flowCanvas"];
-            if (canvas) {
-                const targetOffsetX = (mouseX - canvas.width / 2) * 0.05;
-                const targetOffsetY = (mouseY - canvas.height / 2) * 0.05;
-                const bgVideo = document.querySelector(".theme-layer.layer--flow .theme-bg-video");
-                if (bgVideo) {
-                    bgVideo.style.transform = `translate(calc(-50% + ${targetOffsetX}px), calc(-50% + ${targetOffsetY}px)) scale(1.05)`;
-                }
+        // Smooth Lerp for Parallax (Crucial for performance feel)
+        const targetOffsetX = (mouseX - window.innerWidth / 2) * 0.04;
+        const targetOffsetY = (mouseY - window.innerHeight / 2) * 0.04;
+        currentOffsetX += (targetOffsetX - currentOffsetX) * 0.08;
+        currentOffsetY += (targetOffsetY - currentOffsetY) * 0.08;
+
+        // Apply smooth parallax universally
+        if (activeTheme === "water") {
+            const waterLayer = document.querySelector(".layer--water");
+            if (waterLayer) {
+                waterLayer.style.transform = `translate(${currentOffsetX}px, ${currentOffsetY}px) scale(1.05)`;
             }
-        } else if (activeTheme === "glassflow") {
-            const canvas = canvasElements["glassflowCanvas"];
-            if (canvas) {
-                const targetOffsetX = (mouseX - canvas.width / 2) * 0.05;
-                const targetOffsetY = (mouseY - canvas.height / 2) * 0.05;
-                const bgVideo = document.querySelector(".theme-layer.layer--glassflow .theme-bg-video");
-                if (bgVideo) {
-                    bgVideo.style.transform = `translate(calc(-50% + ${targetOffsetX}px), calc(-50% + ${targetOffsetY}px)) scale(1.05)`;
-                }
-            }
-        } else if (activeTheme === "waterflow") {
-            const canvas = canvasElements["waterflowCanvas"];
-            if (canvas) {
-                const targetOffsetX = (mouseX - canvas.width / 2) * 0.05;
-                const targetOffsetY = (mouseY - canvas.height / 2) * 0.05;
-                const bgVideo = document.querySelector(".theme-layer.layer--waterflow .theme-bg-video");
-                if (bgVideo) {
-                    bgVideo.style.transform = `translate(calc(-50% + ${targetOffsetX}px), calc(-50% + ${targetOffsetY}px)) scale(1.05)`;
-                }
-            }
-        } else if (activeTheme === "6th") {
-            const canvas = canvasElements["6thCanvas"];
-            if (canvas) {
-                const targetOffsetX = (mouseX - canvas.width / 2) * 0.05;
-                const targetOffsetY = (mouseY - canvas.height / 2) * 0.05;
-                const bgVideo = document.querySelector(".theme-layer.layer--6th .theme-bg-video");
-                if (bgVideo) {
-                    bgVideo.style.transform = `translate(calc(-50% + ${targetOffsetX}px), calc(-50% + ${targetOffsetY}px)) scale(1.05)`;
-                }
-            }
-        } else if (activeTheme === "7th") {
-            const canvas = canvasElements["7thCanvas"];
-            if (canvas) {
-                const targetOffsetX = (mouseX - canvas.width / 2) * 0.05;
-                const targetOffsetY = (mouseY - canvas.height / 2) * 0.05;
-                const bgVideo = document.querySelector(".theme-layer.layer--7th .theme-bg-video");
-                if (bgVideo) {
-                    bgVideo.style.transform = `translate(calc(-50% + ${targetOffsetX}px), calc(-50% + ${targetOffsetY}px)) scale(1.05)`;
-                }
+        } else {
+            const bgVideo = document.querySelector(`.theme-layer.layer--${activeTheme} .theme-bg-video`);
+            if (bgVideo) {
+                bgVideo.style.transform = `translate(calc(-50% + ${currentOffsetX}px), calc(-50% + ${currentOffsetY}px)) scale(1.05)`;
             }
         }
+
         requestAnimationFrame(runGlobalThemeLoop);
     }
     runGlobalThemeLoop();
@@ -5411,3 +5382,15 @@ function setTypographyStyle(style) {
 
 
 
+// Add hover play for theme preview videos
+document.addEventListener("DOMContentLoaded", () => {
+    const previewVideos = document.querySelectorAll(".theme-preview-video");
+    previewVideos.forEach(video => {
+        video.parentElement.addEventListener("mouseenter", () => {
+            try { video.play(); } catch(e) {}
+        });
+        video.parentElement.addEventListener("mouseleave", () => {
+            try { video.pause(); } catch(e) {}
+        });
+    });
+});
