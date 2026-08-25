@@ -4982,7 +4982,7 @@ function initParticles(canvas) {
     }
 }
 
-const themeRotationList = ["water", "flow", "glassflow", "waterflow", "6th", "7th", "8th", "9th", "10th"];
+const themeRotationList = ["water", "flow", "glassflow", "waterflow", "6th", "7th", "8th", "10th"];
 let themeRotationIntervalId = null;
 let themeRotationIntervalTime = 5000; // 5 seconds default
 
