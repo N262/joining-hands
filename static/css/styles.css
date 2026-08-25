@@ -8214,3 +8214,24 @@ input:checked + .slider:before {
 .ecosystem-divider {
     gap: 12px !important;
 }
+
+/* Prevent Settings Popover from overflowing the top of the screen */
+.settings-popover-panel {
+    max-height: calc(100vh - 160px) !important;
+    overflow-y: auto !important;
+}
+
+/* Ensure smooth scrolling inside the popover */
+.settings-popover-panel::-webkit-scrollbar {
+    width: 6px;
+}
+.settings-popover-panel::-webkit-scrollbar-track {
+    background: transparent;
+}
+.settings-popover-panel::-webkit-scrollbar-thumb {
+    background: rgba(124, 58, 237, 0.2);
+    border-radius: 10px;
+}
+.settings-popover-panel::-webkit-scrollbar-thumb:hover {
+    background: rgba(124, 58, 237, 0.4);
+}
