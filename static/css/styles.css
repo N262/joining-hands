@@ -8066,7 +8066,7 @@ input:checked + .slider:before {
 }
 .about-overlay-title {
     color: #ffffff;
-    font-size: 3.5rem;
+    font-size: 2.8rem;
     font-family: var(--font-heading);
     margin-bottom: 20px;
     text-shadow: 0 4px 15px rgba(0,0,0,0.6);
@@ -8080,7 +8080,7 @@ input:checked + .slider:before {
     font-weight: 500;
 }
 .about-overlay-text p {
-    margin-bottom: 15px;
+    margin-bottom: 8px;
 }
 @media (max-width: 768px) {
     .landing-about-overlay {
@@ -8179,14 +8179,14 @@ input:checked + .slider:before {
 /* Desktop safe-zone for About text */
 @media (min-width: 769px) {
     .landing-about-overlay {
-        top: 30px !important;
+        top: 75px !important;
         width: calc(100vw - 320px) !important; /* 160px safe margin on both sides */
         max-width: 1400px !important;
         text-align: left !important; /* Start words strictly from the left boundary */
     }
     .about-overlay-text {
-        font-size: 1.4rem !important; /* Increased font size */
-        line-height: 1.85 !important;
+        font-size: 1.4rem !important;
+        line-height: 1.4 !important; /* Removed line spacing */
     }
 }
 @media (max-width: 768px) {

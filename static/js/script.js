@@ -224,7 +224,7 @@ let aboutCurrentCharIndex = 0;
 
 const ABOUT_PARAGRAPHS = [
     "We have come together with a clear vision and created opportunities to serve our nation, driven by a shared commitment to empower people and build a stronger, united, and prosperous future.",
-    "We believe the right Debit should meet the right Credit, and the right Credit should meet the right Debit—creating a meaningful balance built on Respect, Values, Peace, Love, Trust, Equality, Opportunity, Responsibility, and Prosperity.",
+    "We believe the right Debit should meet the right Credit, and the right Credit should meet the right Debit creating a meaningful balance built on Respect, Values, Peace, Love, Trust, Loyalty, Equality, Opportunity, Responsibility, and Prosperity.",
     "Join hands with us on this meaningful journey to serve our nation, uplift one another, and create a better future for generations to come."
 ];
 
