@@ -8176,3 +8176,8 @@ input:checked + .slider:before {
 .about-overlay-title, .about-overlay-text {
     pointer-events: auto !important;
 }
+.landing-about-overlay {
+    top: 30px !important;
+    width: 96vw !important;
+    max-width: 1600px !important;
+}
