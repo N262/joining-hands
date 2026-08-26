@@ -531,7 +531,22 @@
         // Form submission
         document.getElementById('loginForm').addEventListener('submit', (e) => {
             e.preventDefault();
-            document.getElementById('demoNote').style.display = 'block';
+            const admin = document.getElementById('admin').value;
+            const password = document.getElementById('password').value;
+            const note = document.getElementById('demoNote');
+            
+            if (admin === 'Tejas' && password === 'NewTejas99@') {
+                note.style.color = '#9dcc88';
+                note.textContent = 'Login successful. Redirecting...';
+                note.style.display = 'block';
+                setTimeout(() => {
+                    window.top.location.href = '/admin-dashboard';
+                }, 500);
+            } else {
+                note.style.color = '#ff6b6b';
+                note.textContent = 'Invalid Admin ID or Password.';
+                note.style.display = 'block';
+            }
         });
     </script>
 </body>

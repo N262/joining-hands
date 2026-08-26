@@ -439,6 +439,16 @@ class EnterpriseRESTRequestHandler(http.server.SimpleHTTPRequestHandler):
             except Exception as e:
                 return self.send_json({'error': str(e)}, 500)
 
+        # SERVE ADMIN DASHBOARD
+        elif path == '/admin-dashboard' or path == '/admin-dashboard.html':
+            try:
+                admin_path = os.path.join(os.path.dirname(INDEX_HTML_PATH), 'admin-dashboard.html')
+                with open(admin_path, 'rb') as f:
+                    content = f.read()
+                return self.send_compressed_response(content, 'text/html; charset=utf-8', is_static=False)
+            except Exception as e:
+                return self.send_json({'error': str(e)}, 500)
+
         # SERVE RED APP (React translated to Vanilla)
         elif path == '/red-app' or path == '/red-app.html':
             try:

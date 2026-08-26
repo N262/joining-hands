@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'DM Sans', sans-serif;
+            background-color: #ffffff;
+            color: #1e293b;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .nav-buttons {
+            display: flex;
+            gap: 15px;
+        }
+        .btn {
+            padding: 10px 20px;
+            border-radius: 50px;
+            border: 1px solid #e2e8f0;
+            background: #ffffff;
+            color: #1e293b;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .btn:hover {
+            background: #f8fafc;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .btn-primary {
+            background: #1e293b;
+            color: #ffffff;
+            border: none;
+        }
+        .btn-primary:hover {
+            background: #0f172a;
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 40px;
+        }
+        .gallery img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h2>Admin Portal</h2>
+        <div class="nav-buttons">
+            <button class="btn" onclick="alert('About section coming soon!')">About</button>
+            <button class="btn" onclick="alert('Story section coming soon!')">Story</button>
+            <button class="btn btn-primary" onclick="window.location.href='/'">Log Out</button>
+        </div>
+    </div>
+    <div class="gallery">
+        <img src="/static/images/bharatamata.jpg" alt="Bharata Mata">
+        <img src="/static/images/bharatamata_lion.png" alt="Bharata Mata with Lion">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/e/e0/Bal_Gangadhar_Tilak.jpg" alt="Tilak">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Subhas_Chandra_Bose_NRB.jpg" alt="Bose">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Bharat_Mata_by_Abanindranath_Tagore.jpg" alt="Tagore Bharata Mata">
+    </div>
+</body>
+</html>
