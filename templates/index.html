@@ -882,72 +882,29 @@
     </div>
 
     <!-- INSTAGRAM CLONE VIEW -->
-    <div id="insta-view" class="app-view">
-        <div class="insta-container">
-            <header class="insta-header">
-                <div class="insta-logo">
-                    <i class="fa-brands fa-instagram"></i>
-                    <span>GramConnect</span>
-                </div>
-                <div class="insta-search">
-                    <input type="text" placeholder="Search photos...">
-                </div>
-                <div class="insta-actions">
-                    <button onclick="returnToLanding()" class="btn-round"><i class="fa-solid fa-house"></i></button>
-                </div>
-            </header>
-
-            <div class="insta-body">
-                <!-- Stories Carousel -->
-                <div class="insta-stories">
-                    <div class="story-item">
-                        <div class="story-ring active">
-                            <img src="hero.jpg" alt="Story">
-                        </div>
-                        <span>Your Story</span>
-                    </div>
-                    <div class="story-item">
-                        <div class="story-ring">
-                            <img src="hero.jpg" alt="Story">
-                        </div>
-                        <span>Festival</span>
-                    </div>
-                    <div class="story-item">
-                        <div class="story-ring">
-                            <img src="hero.jpg" alt="Story">
-                        </div>
-                        <span>Culture</span>
-                    </div>
-                </div>
-
-                <!-- Feed Posts -->
-                <div class="insta-feed">
-                    <div class="insta-card">
-                        <div class="insta-card-header">
-                            <img src="hero.jpg" alt="Avatar" class="avatar-sm">
-                            <span class="insta-username">joining_hands_official</span>
-                        </div>
-                        <div class="insta-card-media">
-                            <img src="hero.jpg" alt="Feed photo">
-                        </div>
-                        <div class="insta-card-actions">
-                            <button onclick="toggleInstaLike(this)"><i class="fa-regular fa-heart"></i></button>
-                            <button><i class="fa-regular fa-comment"></i></button>
-                            <button><i class="fa-regular fa-paper-plane"></i></button>
-                        </div>
-                        <div class="insta-card-likes">
-                            <strong>842 likes</strong>
-                        </div>
-                        <div class="insta-card-caption">
-                            <strong>joining_hands_official</strong> Together Forever - Celebrating pure togetherness and strength.
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div id="insta-view" class="app-view" style="background-color: #ffffff; display: flex; justify-content: center; align-items: center; min-height: 100vh;">
+    <div style="position: absolute; top: 20px; left: 20px;">
+        <button onclick="returnToLanding()" style="background: none; border: none; font-size: 24px; cursor: pointer; color: #1e293b;"><i class="fa-solid fa-house"></i></button>
     </div>
+    <div class="pro-login-card" style="box-shadow: 0 4px 20px rgba(0,0,0,0.05); padding: 40px; width: 100%; max-width: 400px; margin: 0 auto; text-align: center; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff;">
+        <h2 style="margin-top: 0; margin-bottom: 30px; font-size: 24px; color: #1e293b;">Admin Login</h2>
+        
+        <form action="#" method="POST" onsubmit="alert('Login successful!'); returnToLanding(); return false;" style="text-align: left;">
+            <div class="input-group" style="margin-bottom: 20px;">
+                <label for="instaAdminId" style="display: block; margin-bottom: 8px; font-weight: 500; color: #475569;">Admin ID</label>
+                <input type="text" id="instaAdminId" required placeholder="Enter Admin ID" style="width: 100%; padding: 12px; border: 1px solid #cbd5e1; border-radius: 8px; box-sizing: border-box; outline: none; font-family: inherit;">
+            </div>
+            <div class="input-group" style="margin-bottom: 30px;">
+                <label for="instaPass" style="display: block; margin-bottom: 8px; font-weight: 500; color: #475569;">Password</label>
+                <input type="password" id="instaPass" required placeholder="Enter password" style="width: 100%; padding: 12px; border: 1px solid #cbd5e1; border-radius: 8px; box-sizing: border-box; outline: none; font-family: inherit;">
+            </div>
 
-    <!-- CREATE POST MODAL FOR PRO CONNECT -->
+            <button type="submit" style="width: 100%; padding: 14px; background-color: #10b981; color: white; border: none; border-radius: 8px; font-weight: 700; font-size: 16px; cursor: pointer; transition: background-color 0.2s;">Login</button>
+        </form>
+    </div>
+</div>
+
+<!-- CREATE POST MODAL FOR PRO CONNECT -->
     <div id="createPostModal" class="modal-backdrop">
         <div class="modal-box">
             <div class="modal-header">
