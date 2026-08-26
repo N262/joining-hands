@@ -171,8 +171,7 @@
             z-index: 2;
             inset: 0;
             background:
-                linear-gradient(180deg, rgba(255,153,51,.10), transparent 35%),
-                linear-gradient(180deg, transparent 42%, rgba(3,5,8,.92) 100%);
+                linear-gradient(180deg, transparent 70%, rgba(3,5,8,.6) 100%);
         }
 
         .portrait::after {
@@ -180,8 +179,7 @@
             position: absolute;
             z-index: 3;
             inset: 0;
-            border: 1px solid rgba(255,255,255,.08);
-            box-shadow: inset 0 0 80px rgba(0,0,0,.35);
+            border: 1px solid rgba(255,255,255,.15);
         }
 
         .portrait figcaption {
@@ -389,11 +387,12 @@
 
         @keyframes procession {
             0% { opacity: 0; transform: translate3d(58vw, var(--start-y), 0) scale(calc(var(--depth) * .72)) rotate(-4deg); }
-            12% { opacity: 0; }
-            24% { opacity: 0.8; transform: translate3d(22vw, 0, 0) scale(calc(var(--depth) * .88)) rotate(-2deg); }
+            12% { opacity: 0.8; }
+            24% { opacity: 1; transform: translate3d(22vw, 0, 0) scale(calc(var(--depth) * .88)) rotate(-2deg); }
             42% { opacity: 1; transform: translate3d(0, 0, 0) scale(var(--depth)) rotate(0deg); }
-            62% { opacity: 0.9; transform: translate3d(-25vw, -2vh, 0) scale(calc(var(--depth) * .92)) rotate(2deg); }
-            78% { opacity: 0.5; transform: translate3d(-54vw, -4vh, 0) scale(calc(var(--depth) * .78)) rotate(4deg); }
+            62% { opacity: 1; transform: translate3d(-25vw, -2vh, 0) scale(calc(var(--depth) * .92)) rotate(2deg); }
+            78% { opacity: 1; transform: translate3d(-54vw, -4vh, 0) scale(calc(var(--depth) * .78)) rotate(4deg); }
+            90% { opacity: 0.8; }
             100% { opacity: 0; transform: translate3d(-80vw, -6vh, 0) scale(calc(var(--depth) * .66)) rotate(5deg); }
         }
 
@@ -424,7 +423,7 @@
 
         @media (max-width: 650px) {
             .login-shell { margin-left: 0; width: min(390px, calc(100% - 28px)); padding: 35px 27px 27px; }
-            .cinematic-stream { opacity: .42; }
+            .cinematic-stream { opacity: 1; }
             .portrait { width: 160px; }
             .portrait-bhagat { left: 0; }
             .portrait-azad { left: 58%; }
