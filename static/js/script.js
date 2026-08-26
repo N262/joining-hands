@@ -4987,7 +4987,7 @@ function initParticles(canvas) {
     }
 }
 
-const themeRotationList = ["water", "flow", "glassflow", "waterflow", "6th", "7th"];
+const themeRotationList = ["water", "flow", "glassflow", "waterflow"];
 let themeRotationIntervalId = null;
 let themeRotationIntervalTime = 5000; // 5 seconds default
 
@@ -5074,7 +5074,7 @@ function switchBackdropTheme(theme, isAuto = false) {
     const landingView = document.getElementById("landing-view");
     if (landingView) {
         // Remove all previous theme classes
-        const themes = ["water", "flow", "glassflow", "waterflow", "6th", "7th"];
+        const themes = ["water", "flow", "glassflow", "waterflow"];
         themes.forEach(t => landingView.classList.remove(`theme-${t}`));
         landingView.classList.add(`theme-${theme}`);
     }
@@ -5399,4 +5399,5 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 });
+
 
