@@ -13,70 +13,125 @@
             font-family: 'DM Sans', sans-serif;
             background-color: #ffffff;
             color: #1e293b;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
         .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
             padding: 20px 40px;
             border-bottom: 1px solid #e2e8f0;
         }
-        .nav-buttons {
-            display: flex;
-            gap: 15px;
-        }
-        .btn {
-            padding: 10px 20px;
-            border-radius: 50px;
-            border: 1px solid #e2e8f0;
-            background: #ffffff;
-            color: #1e293b;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-        .btn:hover {
-            background: #f8fafc;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        }
-        .btn-primary {
-            background: #1e293b;
-            color: #ffffff;
-            border: none;
-        }
-        .btn-primary:hover {
-            background: #0f172a;
+        .header h2 {
+            margin: 0;
+            font-size: 24px;
         }
         .gallery {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 20px;
             padding: 40px;
         }
         .gallery img {
             width: 100%;
-            height: 300px;
+            height: 350px;
             object-fit: cover;
             border-radius: 12px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .action-bar-container {
+            display: flex;
+            justify-content: center;
+            padding: 10px 40px 60px;
+            margin-top: auto;
+        }
+        .action-bar {
+            display: flex;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            width: 100%;
+            max-width: 1000px;
+        }
+        .action-bar button {
+            flex: 1;
+            padding: 20px 20px;
+            border: none;
+            background: #ffffff;
+            border-right: 1px solid #e2e8f0;
+            color: #1e293b;
+            font-weight: 700;
+            font-size: 15px;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        .action-bar button:last-child {
+            border-right: none;
+        }
+        .action-bar button:hover {
+            background: #f8fafc;
+            transform: translateY(-2px);
+        }
+        .action-bar button.logout {
+            color: #e11d48;
+        }
+        .action-bar i {
+            font-size: 20px;
+            color: #64748b;
+        }
+        .action-bar button:hover i {
+            color: #1e293b;
+        }
+        .action-bar button.logout i {
+            color: #e11d48;
         }
     </style>
 </head>
 <body>
     <div class="header">
         <h2>Admin Portal</h2>
-        <div class="nav-buttons">
-            <button class="btn" onclick="alert('About section coming soon!')">About</button>
-            <button class="btn" onclick="alert('Story section coming soon!')">Story</button>
-            <button class="btn btn-primary" onclick="window.location.href='/'">Log Out</button>
-        </div>
     </div>
+    
     <div class="gallery">
         <img src="/static/images/bharatamata.jpg" alt="Bharata Mata">
         <img src="/static/images/bharatamata_lion.png" alt="Bharata Mata with Lion">
         <img src="/static/images/tilak.webp" alt="Tilak">
         <img src="/static/images/bose.jpg" alt="Bose">
         <img src="/static/images/tagore.jpg" alt="Tagore Bharata Mata">
+    </div>
+
+    <div class="action-bar-container">
+        <div class="action-bar">
+            <button onclick="alert('About section coming soon!')">
+                <i class="fa-solid fa-circle-info"></i>
+                About
+            </button>
+            <button onclick="alert('History section coming soon!')">
+                <i class="fa-solid fa-landmark"></i>
+                History
+            </button>
+            <button onclick="alert('Story section coming soon!')">
+                <i class="fa-solid fa-book-open"></i>
+                Story
+            </button>
+            <button onclick="alert('Reels section coming soon!')">
+                <i class="fa-solid fa-clapperboard"></i>
+                Reels
+            </button>
+            <button onclick="alert('Settings coming soon!')">
+                <i class="fa-solid fa-gear"></i>
+                Settings
+            </button>
+            <button class="logout" onclick="window.location.href='/'">
+                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                Log Out
+            </button>
+        </div>
     </div>
 </body>
 </html>
