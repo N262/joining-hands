@@ -4987,7 +4987,7 @@ function initParticles(canvas) {
     }
 }
 
-const themeRotationList = ["water", "flow", "glassflow", "waterflow"];
+const themeRotationList = ["water", "flow", "glassflow", "waterflow", "8th"];
 let themeRotationIntervalId = null;
 let themeRotationIntervalTime = 5000; // 5 seconds default
 
@@ -5074,7 +5074,7 @@ function switchBackdropTheme(theme, isAuto = false) {
     const landingView = document.getElementById("landing-view");
     if (landingView) {
         // Remove all previous theme classes
-        const themes = ["water", "flow", "glassflow", "waterflow"];
+        const themes = ["water", "flow", "glassflow", "waterflow", "8th"];
         themes.forEach(t => landingView.classList.remove(`theme-${t}`));
         landingView.classList.add(`theme-${theme}`);
     }
