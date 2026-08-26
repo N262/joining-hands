@@ -161,7 +161,7 @@
             display: block;
             object-fit: cover;
             object-position: center top;
-            filter: grayscale(.72) sepia(.18) contrast(1.16) brightness(.82);
+            /* filter removed for clearer photos */
             transform: scale(1.03);
         }
 
@@ -388,13 +388,13 @@
         }
 
         @keyframes procession {
-            0% { opacity: 0; transform: translate3d(58vw, var(--start-y), 0) scale(calc(var(--depth) * .72)) rotate(-4deg); filter: blur(9px); }
+            0% { opacity: 0; transform: translate3d(58vw, var(--start-y), 0) scale(calc(var(--depth) * .72)) rotate(-4deg); }
             12% { opacity: 0; }
-            24% { opacity: .46; transform: translate3d(22vw, 0, 0) scale(calc(var(--depth) * .88)) rotate(-2deg); filter: blur(2px); }
-            42% { opacity: .68; transform: translate3d(0, 0, 0) scale(var(--depth)) rotate(0deg); filter: blur(0); }
-            62% { opacity: .50; transform: translate3d(-25vw, -2vh, 0) scale(calc(var(--depth) * .92)) rotate(2deg); filter: blur(1px); }
-            78% { opacity: .18; transform: translate3d(-54vw, -4vh, 0) scale(calc(var(--depth) * .78)) rotate(4deg); filter: blur(5px); }
-            100% { opacity: 0; transform: translate3d(-80vw, -6vh, 0) scale(calc(var(--depth) * .66)) rotate(5deg); filter: blur(11px); }
+            24% { opacity: 0.8; transform: translate3d(22vw, 0, 0) scale(calc(var(--depth) * .88)) rotate(-2deg); }
+            42% { opacity: 1; transform: translate3d(0, 0, 0) scale(var(--depth)) rotate(0deg); }
+            62% { opacity: 0.9; transform: translate3d(-25vw, -2vh, 0) scale(calc(var(--depth) * .92)) rotate(2deg); }
+            78% { opacity: 0.5; transform: translate3d(-54vw, -4vh, 0) scale(calc(var(--depth) * .78)) rotate(4deg); }
+            100% { opacity: 0; transform: translate3d(-80vw, -6vh, 0) scale(calc(var(--depth) * .66)) rotate(5deg); }
         }
 
         @keyframes reveal {
