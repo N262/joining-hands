@@ -485,12 +485,18 @@
             will-change: transform, opacity, filter;
             pointer-events: none;
             animation: slideUpBharata 4s cubic-bezier(0.1, 0.9, 0.2, 1) forwards 3.8s;
+            image-rendering: -webkit-optimize-contrast;
+            image-rendering: high-quality;
         }
 
         @keyframes slideUpBharata {
-            0% { opacity: 0; transform: translate(-50%, 50%); filter: blur(15px); }
-            40% { opacity: 0.8; filter: blur(5px); }
-            100% { opacity: 1; transform: translate(-50%, 0); filter: blur(0); }
+            0% { opacity: 0; transform: translate(-50%, 50%); filter: blur(15px) contrast(1) saturate(1); }
+            40% { opacity: 0.8; filter: blur(5px) contrast(1.1) saturate(1.1); }
+            100% { 
+                opacity: 1; 
+                transform: translate(-50%, 0); 
+                filter: blur(0) contrast(1.25) saturate(1.35) brightness(1.08) drop-shadow(0 0 30px rgba(255, 153, 51, 0.35)); 
+            }
         }
 
         @keyframes smokeSlideLTR {
