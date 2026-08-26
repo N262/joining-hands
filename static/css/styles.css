@@ -8176,10 +8176,10 @@ input:checked + .slider:before {
 /* Desktop safe-zone for About text */
 @media (min-width: 769px) {
     .landing-about-overlay {
-        top: 72px !important;
+        top: 55px !important;
         left: 135px !important;
         transform: none !important;
-        width: calc(100vw - 180px) !important;
+        width: calc(100vw - 290px) !important; /* Stop text before right button */
         max-width: 1600px !important;
         text-align: left !important;
         margin: 0 !important;
@@ -8188,7 +8188,7 @@ input:checked + .slider:before {
     .about-overlay-title {
         margin-top: 0 !important;
         line-height: 1 !important;
-        margin-bottom: 2px !important; /* Extremely tight to pull the paragraph up */
+        margin-bottom: 2px !important;
     }
     .about-overlay-text {
         font-size: 1.4rem !important;
