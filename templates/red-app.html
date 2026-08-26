@@ -44,10 +44,7 @@
             isolation: isolate;
             display: grid;
             place-items: center;
-            background:
-                radial-gradient(circle at 72% 45%, rgba(255, 153, 51, 0.15), transparent 40%),
-                radial-gradient(circle at 25% 80%, rgba(19, 136, 8, 0.12), transparent 45%),
-                linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
+            background: transparent;
         }
 
         .mesh {
@@ -435,10 +432,48 @@
             .portrait, .mesh, .particle-field span, .login-shell { animation: none; }
             .portrait { opacity: .45; }
         }
+
+        .tricolor-bg {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            z-index: -1;
+            overflow: hidden;
+        }
+        .band {
+            flex: 1;
+            width: 100%;
+            will-change: transform;
+        }
+        .band-saffron {
+            background-color: #FF9933;
+            transform: translateX(-100%);
+            animation: slideInBand 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+        }
+        .band-white {
+            background-color: #FFFFFF;
+            transform: translateX(100%);
+            animation: slideInBand 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards 0.4s;
+        }
+        .band-green {
+            background-color: #138808;
+            transform: translateX(100%);
+            animation: slideInBand 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards 0.8s;
+        }
+        @keyframes slideInBand {
+            to { transform: translateX(0); }
+        }
     </style>
 </head>
 <body>
     <main class="portal" style="--pointer-x: 0; --pointer-y: 0;">
+        <div class="tricolor-bg">
+            <div class="band band-saffron"></div>
+            <div class="band band-white"></div>
+            <div class="band band-green"></div>
+        </div>
+
         
         
         <div class="particle-field" aria-hidden="true" id="particles"></div>
