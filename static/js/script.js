@@ -376,6 +376,11 @@ function returnToLanding() {
     document.getElementById("landing-view").style.display = "block";
 }
 
+function openRedApp() {
+    if (checkAppLock()) return;
+    showView("red-app-view");
+}
+
 function openLinkedinClone() {
     if (checkAppLock()) return;
     intendedApp = "linkedin";

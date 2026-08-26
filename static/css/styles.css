@@ -8235,3 +8235,254 @@ input:checked + .slider:before {
 .settings-popover-panel::-webkit-scrollbar-thumb:hover {
     background: rgba(124, 58, 237, 0.4);
 }
+
+/* ==========================================================================
+   RED APP VIEW (3rd Tile)
+   ========================================================================== */
+#red-app-view {
+    font-family: 'Calibri', sans-serif;
+    color: #0f172a;
+}
+
+.red-app-layout {
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
+}
+
+/* Left Hero Section */
+.red-app-hero {
+    flex: 1;
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Flowing Flag Animation */
+.flag-wrapper {
+    display: flex;
+    height: 200px;
+    transform: perspective(600px) rotateY(-15deg);
+    filter: drop-shadow(0 15px 25px rgba(0,0,0,0.15));
+}
+
+.flag-pole {
+    width: 8px;
+    height: 300px;
+    background: linear-gradient(90deg, #94a3b8, #cbd5e1);
+    border-radius: 4px;
+    position: relative;
+    top: -20px;
+}
+
+.indian-flag {
+    width: 300px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    transform-origin: left center;
+    animation: flagWave 3s ease-in-out infinite alternate;
+}
+
+.stripe {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.saffron { background-color: #FF9933; }
+.white { background-color: #FFFFFF; }
+.green { background-color: #138808; }
+
+.chakra-img {
+    height: 90%;
+    animation: chakraSpin 10s linear infinite;
+}
+
+@keyframes flagWave {
+    0% { transform: perspective(600px) rotateY(-15deg) rotateZ(2deg) skewY(2deg); }
+    100% { transform: perspective(600px) rotateY(15deg) rotateZ(-2deg) skewY(-2deg); }
+}
+
+@keyframes chakraSpin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.bharathamata-text {
+    margin-top: 60px;
+    font-size: 3.5rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    text-align: center;
+    color: #1e293b;
+    letter-spacing: 2px;
+    line-height: 1.1;
+    background: linear-gradient(135deg, #FF9933 0%, #138808 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: fadeInUp 1s ease 0.5s both;
+}
+
+/* Right Auth Section */
+.red-app-auth {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+    padding: 40px;
+}
+
+.auth-card {
+    width: 100%;
+    max-width: 420px;
+    background: #ffffff;
+    border-radius: 24px;
+    padding: 48px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.04), border: 1px solid rgba(0,0,0,0.02);
+}
+
+.auth-card h2 {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #0f172a;
+    margin-bottom: 8px;
+}
+
+.auth-card p {
+    color: #64748b;
+    margin-bottom: 32px;
+    font-size: 1rem;
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.input-group label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #475569;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 14px 16px;
+    border-radius: 12px;
+    border: 2px solid #f1f5f9;
+    background: #f8fafc;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: all 0.3s ease;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: #ef4444; /* Red accent for the Red App */
+    background: #ffffff;
+    box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.1);
+}
+
+.auth-primary-btn {
+    margin-top: 8px;
+    padding: 16px;
+    border-radius: 12px;
+    border: none;
+    background: #ef4444; /* Red color matching the tile */
+    color: #ffffff;
+    font-size: 1.05rem;
+    font-weight: 800;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 8px 20px rgba(239, 68, 68, 0.25);
+}
+
+.auth-primary-btn:hover {
+    background: #dc2626;
+    transform: translateY(-2px);
+}
+
+.auth-divider {
+    margin: 32px 0;
+    text-align: center;
+    position: relative;
+}
+
+.auth-divider::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: #e2e8f0;
+}
+
+.auth-divider span {
+    position: relative;
+    background: #ffffff;
+    padding: 0 16px;
+    color: #94a3b8;
+    font-weight: 700;
+    font-size: 0.85rem;
+}
+
+.auth-google-btn {
+    width: 100%;
+    padding: 14px;
+    border-radius: 12px;
+    border: 2px solid #e2e8f0;
+    background: #ffffff;
+    color: #334155;
+    font-size: 1.05rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    transition: all 0.3s ease;
+}
+
+.auth-google-btn img {
+    width: 24px;
+    height: 24px;
+}
+
+.auth-google-btn:hover {
+    background: #f8fafc;
+    border-color: #cbd5e1;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+    .red-app-layout {
+        flex-direction: column;
+    }
+    .red-app-hero {
+        padding: 60px 20px 40px;
+        min-height: 45vh;
+    }
+    .bharathamata-text {
+        font-size: 2.5rem;
+        margin-top: 40px;
+    }
+    .auth-card {
+        padding: 32px 24px;
+        box-shadow: none;
+    }
+}
