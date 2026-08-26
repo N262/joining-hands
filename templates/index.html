@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -397,7 +397,7 @@
             </p>
             <div style="margin-bottom: 32px; display: flex; flex-direction: column; align-items: center; gap: 8px;">
                 <label for="adminUnlockPassword" style="font-size: 0.85rem; color: #64748b; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">admin password to login</label>
-                <input type="password" id="adminUnlockPassword" placeholder="••••••••" onkeyup="checkUnlockPassword(event)" style="padding: 12px 16px; border: 2px solid #e2e8f0; border-radius: 12px; font-size: 1rem; outline: none; text-align: center; width: 240px; transition: all 0.3s ease; box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);" onfocus="this.style.borderColor='#7c3aed'; this.style.boxShadow='0 0 0 3px rgba(124, 58, 237, 0.15)'" onblur="this.style.borderColor='#e2e8f0'; this.style.boxShadow='inset 0 2px 4px rgba(0,0,0,0.02)'">
+                <input type="password" id="adminUnlockPassword" placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢" onkeyup="checkUnlockPassword(event)" style="padding: 12px 16px; border: 2px solid #e2e8f0; border-radius: 12px; font-size: 1rem; outline: none; text-align: center; width: 240px; transition: all 0.3s ease; box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);" onfocus="this.style.borderColor='#7c3aed'; this.style.boxShadow='0 0 0 3px rgba(124, 58, 237, 0.15)'" onblur="this.style.borderColor='#e2e8f0'; this.style.boxShadow='inset 0 2px 4px rgba(0,0,0,0.02)'">
             </div>
             <button onclick="returnToLanding()" class="hero-pill-btn hero-pill-btn--menu" style="min-height: 44px; padding: 10px 24px;">
                 <i class="fa-solid fa-arrow-left"></i> Go Back
@@ -671,7 +671,7 @@
                                     <img src="hero.jpg" alt="Avatar" id="chatUserAvatar" class="mini-avatar">
                                     <div>
                                         <strong id="chatUserName">Dr. Ramesh Kumar</strong>
-                                        <span id="chatUserStatus">Online • Community Lead</span>
+                                        <span id="chatUserStatus">Online â€¢ Community Lead</span>
                                         <small class="text-purple" id="chatTypingStatus" style="display:none; margin-left: 8px; font-weight: 600;">Typing...</small>
                                     </div>
                                 </div>
@@ -822,15 +822,15 @@
                             <ul class="news-list">
                                 <li>
                                     <span class="news-head">The Group of Joining Hands Launches New Portal</span>
-                                    <span class="news-meta">Top story • 1,240 readers</span>
+                                    <span class="news-meta">Top story â€¢ 1,240 readers</span>
                                 </li>
                                 <li>
                                     <span class="news-head">Annual Sacred & Cultural Celebration</span>
-                                    <span class="news-meta">2h ago • 895 readers</span>
+                                    <span class="news-meta">2h ago â€¢ 895 readers</span>
                                 </li>
                                 <li>
                                     <span class="news-head">Expanding Network Connections Globally</span>
-                                    <span class="news-meta">5h ago • 430 readers</span>
+                                    <span class="news-meta">5h ago â€¢ 430 readers</span>
                                 </li>
                             </ul>
                         </div>
@@ -842,11 +842,11 @@
                             <ul class="news-list" id="trendingHashtagsList">
                                 <li onclick="openHashtagDiscovery('JoiningHands')" style="cursor:pointer;">
                                     <span class="news-head text-purple">#JoiningHands</span>
-                                    <span class="news-meta">Official • Community</span>
+                                    <span class="news-meta">Official â€¢ Community</span>
                                 </li>
                                 <li onclick="openHashtagDiscovery('Technology')" style="cursor:pointer;">
                                     <span class="news-head text-purple">#Technology</span>
-                                    <span class="news-meta">Popular • Tech</span>
+                                    <span class="news-meta">Popular â€¢ Tech</span>
                                 </li>
                             </ul>
                         </div>
@@ -1207,9 +1207,9 @@
                                 <label>Preferred Language</label>
                                 <select id="settingLang">
                                     <option value="en">English (US)</option>
-                                    <option value="hi">Hindi (हिन्दी)</option>
-                                    <option value="es">Spanish (Español)</option>
-                                    <option value="fr">French (Français)</option>
+                                    <option value="hi">Hindi (à¤¹à¤¿à¤¨à¥à¤¦à¥€)</option>
+                                    <option value="es">Spanish (EspaÃ±ol)</option>
+                                    <option value="fr">French (FranÃ§ais)</option>
                                 </select>
                             </div>
                         </div>
@@ -1234,7 +1234,7 @@
                             <h4>Change Password & Active Sessions</h4>
                             <div class="form-group">
                                 <label>Current Password</label>
-                                <input type="password" id="oldPassInput" placeholder="••••••••">
+                                <input type="password" id="oldPassInput" placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢">
                             </div>
                             <div class="form-group">
                                 <label>New Password</label>
@@ -1248,7 +1248,7 @@
                                 <i class="fa-solid fa-desktop text-blue"></i>
                                 <div>
                                     <strong>Current Windows Browser Session</strong>
-                                    <p>Active now • IP: 127.0.0.1 (Localhost)</p>
+                                    <p>Active now â€¢ IP: 127.0.0.1 (Localhost)</p>
                                 </div>
                             </div>
                         </div>
@@ -1290,27 +1290,27 @@
                 <div class="module-status-grid">
                     <div class="mod-card">
                         <span>Core System</span>
-                        <strong class="mod-status status-green"><i class="fa-solid fa-circle-check"></i> ✅ Completed</strong>
+                        <strong class="mod-status status-green"><i class="fa-solid fa-circle-check"></i> âœ… Completed</strong>
                     </div>
                     <div class="mod-card">
                         <span>Social Engine</span>
-                        <strong class="mod-status status-green"><i class="fa-solid fa-circle-check"></i> 🟢 Stable</strong>
+                        <strong class="mod-status status-green"><i class="fa-solid fa-circle-check"></i> ðŸŸ¢ Stable</strong>
                     </div>
                     <div class="mod-card">
                         <span>Network Engine</span>
-                        <strong class="mod-status status-green"><i class="fa-solid fa-circle-check"></i> 🟢 Stable</strong>
+                        <strong class="mod-status status-green"><i class="fa-solid fa-circle-check"></i> ðŸŸ¢ Stable</strong>
                     </div>
                     <div class="mod-card">
                         <span>Communication</span>
-                        <strong class="mod-status status-green"><i class="fa-solid fa-circle-check"></i> 🟢 Stable</strong>
+                        <strong class="mod-status status-green"><i class="fa-solid fa-circle-check"></i> ðŸŸ¢ Stable</strong>
                     </div>
                     <div class="mod-card">
                         <span>Content Engine</span>
-                        <strong class="mod-status status-green"><i class="fa-solid fa-circle-check"></i> 🟢 Stable</strong>
+                        <strong class="mod-status status-green"><i class="fa-solid fa-circle-check"></i> ðŸŸ¢ Stable</strong>
                     </div>
                     <div class="mod-card">
                         <span>Analytics Engine</span>
-                        <strong class="mod-status status-green"><i class="fa-solid fa-circle-check"></i> 🟢 Stable</strong>
+                        <strong class="mod-status status-green"><i class="fa-solid fa-circle-check"></i> ðŸŸ¢ Stable</strong>
                     </div>
                 </div>
 
@@ -1551,7 +1551,7 @@
                                 <span class="service-desc">Beating the traffic instantly</span>
                             </div>
                             <div class="service-price">
-                                <span class="price-val" id="price-bike">₹48</span>
+                                <span class="price-val" id="price-bike">â‚¹48</span>
                                 <span class="price-eta">2 mins away</span>
                             </div>
                         </div>
@@ -1565,7 +1565,7 @@
                                 <span class="service-desc">Comfortable covered travel</span>
                             </div>
                             <div class="service-price">
-                                <span class="price-val" id="price-auto">₹78</span>
+                                <span class="price-val" id="price-auto">â‚¹78</span>
                                 <span class="price-eta">3 mins away</span>
                             </div>
                         </div>
@@ -1579,7 +1579,7 @@
                                 <span class="service-desc">Air-conditioned spacious cars</span>
                             </div>
                             <div class="service-price">
-                                <span class="price-val" id="price-cab">₹132</span>
+                                <span class="price-val" id="price-cab">â‚¹132</span>
                                 <span class="price-eta">5 mins away</span>
                             </div>
                         </div>
@@ -1607,7 +1607,7 @@
                         </div>
                         <h3>Finding a Captain...</h3>
                         <p class="matching-status-text">Matching you with the nearest captain. Please hold on.</p>
-                        <p class="fare-summary-text">Selected Service: <span id="match-service">Bike Taxi</span> &bull; Fare: <span id="match-fare">₹48</span></p>
+                        <p class="fare-summary-text">Selected Service: <span id="match-service">Bike Taxi</span> &bull; Fare: <span id="match-fare">â‚¹48</span></p>
                         <button class="rapido-btn-cancel" onclick="cancelRapidoBooking()">
                             Cancel Request
                         </button>
@@ -1763,7 +1763,7 @@
                 <div class="captain-metrics-grid">
                     <div class="captain-metric-card">
                         <span class="label">Today's Earnings</span>
-                        <strong class="val text-yellow" id="driverEarnings">₹0.00</strong>
+                        <strong class="val text-yellow" id="driverEarnings">â‚¹0.00</strong>
                     </div>
                     <div class="captain-metric-card">
                         <span class="label">Rides Completed</span>
@@ -1808,7 +1808,7 @@
                         <div class="request-financials">
                             <div>
                                 <small>EST. EARNINGS</small>
-                                <strong class="text-yellow" id="req-earning-text">₹48.00</strong>
+                                <strong class="text-yellow" id="req-earning-text">â‚¹48.00</strong>
                             </div>
                             <div>
                                 <small>DISTANCE</small>
@@ -1930,7 +1930,7 @@
         <div class="red-app-layout">
             <!-- Left Side: Bharathamata & Flag -->
             <div class="red-app-hero" style="padding: 0;">
-                <img src="static/img/bharatamata.jpg" alt="Bharata Mata" style="width: 100%; height: 100%; object-fit: cover; object-position: center;">
+                <img src="static/images/bharatamata.jpg" alt="Bharata Mata" style="width: 100%; height: 100%; object-fit: cover; object-position: center;">
             </div>
 
             <!-- Right Side: Login -->
@@ -1946,7 +1946,7 @@
                         </div>
                         <div class="input-group">
                             <label>Password</label>
-                            <input type="password" placeholder="••••••••" required>
+                            <input type="password" placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢" required>
                         </div>
                         
                         <button type="submit" class="auth-primary-btn">Sign In</button>
@@ -1968,6 +1968,7 @@
     <script src="script.js?v=23"></script>
 </body>
 </html>
+
 
 
 
