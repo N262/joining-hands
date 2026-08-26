@@ -7,15 +7,86 @@
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body {
+body {
             margin: 0;
             padding: 0;
             font-family: 'DM Sans', sans-serif;
-            background-color: #ffffff;
+            background-color: #cbd5e1;
             color: #1e293b;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        #app-wrapper {
+            background-color: #ffffff;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
+            transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), border-radius 0.6s ease, opacity 0.6s ease;
+            transform-origin: center left;
+            position: relative;
+            box-shadow: 0 0 50px rgba(0,0,0,0.1);
+        }
+        body.reels-active #app-wrapper {
+            transform: scale(0.88) translateX(-2%);
+            border-radius: 30px;
+            pointer-events: none;
+            opacity: 0.7;
+        }
+        
+        #reels-panel {
+            position: fixed;
+            top: 0;
+            right: -450px;
+            width: 420px;
+            height: 100vh;
+            background: #ffffff;
+            box-shadow: -15px 0 50px rgba(0,0,0,0.15);
+            z-index: 2000;
+            transition: right 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+        }
+        body.reels-active #reels-panel {
+            right: 0;
+        }
+        .reels-header {
+            padding: 24px 30px;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .reels-header h3 {
+            margin: 0;
+            font-size: 22px;
+        }
+        .reels-header button {
+            background: #f1f5f9;
+            border: none;
+            width: 40px; height: 40px;
+            border-radius: 50%;
+            font-size: 18px;
+            cursor: pointer;
+            color: #64748b;
+            transition: background 0.2s;
+        }
+        .reels-header button:hover {
+            background: #e2e8f0;
+            color: #1e293b;
+        }
+        .reels-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: #f8fafc;
+            color: #64748b;
+            gap: 15px;
+        }
+        .reels-content i {
+            font-size: 48px;
+            color: #cbd5e1;
         }
         .header {
             padding: 20px 40px;
@@ -193,6 +264,7 @@
     </style>
 </head>
 <body>
+    <div id="app-wrapper">
     <div class="header">
         <h2>Admin Portal</h2>
     </div>
@@ -219,7 +291,7 @@
                 <i class="fa-solid fa-book-open"></i>
                 Story
             </button>
-            <button onclick="alert('Reels section coming soon!')">
+            <button onclick="toggleReels()">
                 <i class="fa-solid fa-clapperboard"></i>
                 Reels
             </button>
@@ -242,7 +314,44 @@
     <div id="profile-label">Ganga</div>
     <div id="ganga-message">"I am Ganga. This feature will come soon."</div>
 
+    </div> <!-- end app-wrapper -->
+
+    <!-- Reels Panel -->
+    <div id="reels-panel">
+        <div class="reels-header">
+            <h3>Reels</h3>
+            <button onclick="toggleReels()"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="reels-content">
+            <i class="fa-solid fa-film"></i>
+            <p>Reels Feed Coming Soon</p>
+        </div>
+    </div>
     <script>
+function toggleReels() {
+            document.body.classList.toggle('reels-active');
+        }
+
+        let femaleVoice = null;
+        function loadVoices() {
+            const voices = window.speechSynthesis.getVoices();
+            // Look for common female voice names
+            femaleVoice = voices.find(v => 
+                v.name.includes('Zira') || 
+                v.name.includes('Female') || 
+                v.name.includes('Samantha') || 
+                v.name.includes('Google UK English Female') || 
+                v.name.includes('Victoria')
+            );
+            if (!femaleVoice && voices.length > 0) {
+                // Fallback to the first voice if no female identifier found
+                femaleVoice = voices[0];
+            }
+        }
+        window.speechSynthesis.onvoiceschanged = loadVoices;
+        // Call immediately in case voices are already loaded
+        loadVoices();
+
         function toggleProfile() {
             const widget = document.getElementById('profile-widget');
             const overlay = document.getElementById('blur-overlay');
@@ -253,18 +362,17 @@
             overlay.classList.toggle('active');
 
             if (isExpanding) {
-                // Cancel any ongoing speech
                 window.speechSynthesis.cancel();
                 
-                // Create speech utterance
                 const utterance = new SpeechSynthesisUtterance("I am Ganga. This feature will come soon.");
-                utterance.pitch = 1.3; // Slightly higher pitch
-                utterance.rate = 0.95; // Slightly slower, clearer pacing
+                if (femaleVoice) {
+                    utterance.voice = femaleVoice;
+                }
+                utterance.pitch = 1.4; // Higher pitch for female/child
+                utterance.rate = 0.95; 
                 
-                // Speak
                 window.speechSynthesis.speak(utterance);
             } else {
-                // Stop speech if closed early
                 window.speechSynthesis.cancel();
             }
         }
