@@ -416,82 +416,27 @@
             </div>
 
             <div class="pro-login-container">
-                <div class="pro-login-card">
-                    <!-- Auth Mode Tabs -->
-                    <div class="auth-tabs">
-                        <button type="button" class="auth-tab-btn active" id="tabSignInBtn" onclick="switchAuthTab('signin')">Sign In</button>
-                        <button type="button" class="auth-tab-btn" id="tabSignUpBtn" onclick="switchAuthTab('signup')">Create Account</button>
-                    </div>
-
+                <div class="pro-login-card" style="box-shadow: 0 4px 20px rgba(0,0,0,0.05); padding: 40px; width: 100%; max-width: 400px; margin: 0 auto; text-align: center;">
+                    <h2 style="margin-top: 0; margin-bottom: 30px; font-size: 24px; color: #1e293b;">Admin Login</h2>
                     <div id="authErrorAlert" class="auth-error-banner" style="display:none;"></div>
 
-                    <!-- SIGN IN FORM -->
-                    <form id="proLoginForm" action="#" method="POST" onsubmit="handleProLogin(event)">
-                        <div class="input-group">
-                            <label for="proEmail">Email Address</label>
-                            <input type="email" id="proEmail" required placeholder="Enter your email">
+                    <!-- ADMIN SIGN IN FORM -->
+                    <form id="proLoginForm" action="#" method="POST" onsubmit="handleProLogin(event)" style="text-align: left;">
+                        <div class="input-group" style="margin-bottom: 20px;">
+                            <label for="proEmail" style="display: block; margin-bottom: 8px; font-weight: 500; color: #475569;">Admin ID</label>
+                            <input type="text" id="proEmail" required placeholder="Enter Admin ID" style="width: 100%; padding: 12px; border: 1px solid #cbd5e1; border-radius: 8px; box-sizing: border-box; outline: none; font-family: inherit;">
                         </div>
-                        <div class="input-group">
-                            <label for="proPass">Password</label>
-                            <input type="password" id="proPass" required placeholder="Enter password">
-                        </div>
-
-                        <div class="login-options">
-                            <label class="remember-me">
-                                <input type="checkbox" checked> Remember session
-                            </label>
-                            <a href="#" onclick="requestPasswordResetPrompt(); return false;">Forgot password?</a>
+                        <div class="input-group" style="margin-bottom: 30px;">
+                            <label for="proPass" style="display: block; margin-bottom: 8px; font-weight: 500; color: #475569;">Password</label>
+                            <input type="password" id="proPass" required placeholder="Enter password" style="width: 100%; padding: 12px; border: 1px solid #cbd5e1; border-radius: 8px; box-sizing: border-box; outline: none; font-family: inherit;">
                         </div>
 
-                        <button type="submit" class="pro-btn-primary">Sign In</button>
+                        <button type="submit" class="pro-btn-primary" style="width: 100%; padding: 14px; background-color: #1e293b; color: white; border: none; border-radius: 8px; font-weight: 700; font-size: 16px; cursor: pointer; transition: background-color 0.2s;">Login</button>
                     </form>
-
-                    <!-- CREATE ACCOUNT FORM (SIGNUP) -->
-                    <form id="proSignupForm" action="#" method="POST" onsubmit="handleProSignup(event)" style="display:none;">
-                        <div class="input-group">
-                            <label for="proFullName">Full Name</label>
-                            <input type="text" id="proFullName" required placeholder="e.g. Ramesh Kumar">
-                        </div>
-                        <div class="input-group">
-                            <label for="proSignupEmail">Email Address</label>
-                            <input type="email" id="proSignupEmail" required placeholder="name@joininghands.org">
-                        </div>
-                        <div class="input-group">
-                            <label for="proHeadline">Professional Headline / Role</label>
-                            <input type="text" id="proHeadline" placeholder="e.g. Software Engineer / Community Lead">
-                        </div>
-                        <div class="input-group">
-                            <label for="proSignupPassword">Password</label>
-                            <input type="password" id="proSignupPassword" required placeholder="Choose password">
-                        </div>
-
-                        <button type="submit" class="pro-btn-primary">Create Account</button>
-                    </form>
-
-                    <div class="divider"><span>OR</span></div>
-
-                    <div id="google-signin-btn-container" style="width: 100%; display: flex; justify-content: center; margin-bottom: 10px;"></div>
-
-                    <div class="login-footer-text">
-                        <span id="footerToggleText">New here? <a href="#" onclick="switchAuthTab('signup')">Join now</a></span>
-                    </div>
                 </div>
 
-                <div class="pro-login-banner">
-                    <div class="banner-content">
-                        <h3>Empowering Professionals in The Group of Joining Hands</h3>
-                        <p>Discover opportunities, collaborate with peers, and foster meaningful professional growth.</p>
-                        <div class="banner-stats">
-                            <div class="stat-item">
-                                <span class="stat-num">500+</span>
-                                <span class="stat-label">Active Members</span>
-                            </div>
-                            <div class="stat-item">
-                                <span class="stat-num">100%</span>
-                                <span class="stat-label">Verified Network</span>
-                            </div>
-                        </div>
-                    </div>
+                </div>
+        </div>
                 </div>
             </div>
         </div>
