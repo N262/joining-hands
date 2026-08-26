@@ -146,7 +146,7 @@
             opacity: 0;
             will-change: transform, opacity;
             animation: procession 16s cubic-bezier(.45,0,.2,1) infinite;
-            animation-delay: calc(var(--portrait-index) * 4s - 1s);
+            animation-delay: calc(var(--portrait-index) * 2.28s - 1s);
         }
 
         .portrait-image-wrap {
@@ -213,6 +213,9 @@
         .portrait-bhagat { top: 43%; left: 28%; --start-y: 10vh; --depth: .86; }
         .portrait-azad { top: 7%; left: 51%; --start-y: -7vh; --depth: .76; }
         .portrait-bose { top: 52%; left: 67%; --start-y: 7vh; --depth: .67; }
+        .portrait-mother-2 { top: 18%; left: 82%; --start-y: -4vh; --depth: 0.92; }
+        .portrait-bose-2 { top: 48%; left: 12%; --start-y: 9vh; --depth: 0.81; }
+        .portrait-mother-3 { top: 30%; left: 45%; --start-y: -1vh; --depth: 0.78; }
 
         .top-meta, .bottom-meta {
             position: absolute;
@@ -444,7 +447,7 @@
         </section>
         <div class="vignette"></div>
         <div class="top-meta">
-            <span class="number">01 / 04</span>
+            <span class="number">01 / 07</span>
             <span class="meta-line"></span>
             <span>REMEMBER THE COURAGE</span>
         </div>
@@ -490,7 +493,10 @@
           { name: "Bharata Mata", role: "The Motherland", image: "https://images.unsplash.com/photo-1597058712635-3182d1eacc1e?auto=format&fit=crop&w=1400&q=90", className: "portrait-mother" },
           { name: "Bhagat Singh", role: "Revolutionary", image: "https://commons.wikimedia.org/wiki/Special:FilePath/Bhagat%20Singh%201929.jpg?width=1200", className: "portrait-bhagat" },
           { name: "Chandrashekhar Azad", role: "Revolutionary", image: "https://commons.wikimedia.org/wiki/Special:FilePath/Chandrashekhar%20Azad.jpg?width=1200", className: "portrait-azad" },
-          { name: "Subhash Chandra Bose", role: "Nationalist Leader", image: "https://commons.wikimedia.org/wiki/Special:FilePath/Subhas%20Chandra%20Bose.jpg?width=1200", className: "portrait-bose" }
+          { name: "Subhash Chandra Bose", role: "Nationalist Leader", image: "https://commons.wikimedia.org/wiki/Special:FilePath/Subhas%20Chandra%20Bose.jpg?width=1200", className: "portrait-bose" },
+          { name: "Bharata Mata", role: "Divine Mother", image: "https://upload.wikimedia.org/wikipedia/commons/4/4e/Bharat_Mata_by_Abanindranath_Tagore.jpg", className: "portrait-mother-2" },
+          { name: "Netaji Bose", role: "Azad Hind Fauj", image: "https://upload.wikimedia.org/wikipedia/commons/4/44/Subhas_Chandra_Bose_NRB.jpg", className: "portrait-bose-2" },
+          { name: "Bharata Mata", role: "Vande Mataram", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Bharat_Mata_Temple_statue.jpg/800px-Bharat_Mata_Temple_statue.jpg", className: "portrait-mother-3" }
         ];
         const streamContainer = document.getElementById('portraits');
         portraitsData.forEach((p, index) => {
