@@ -513,7 +513,108 @@
             0% { opacity: 0; transform: rotate(-180deg) scale(0.4); filter: blur(10px); }
             100% { opacity: 1; transform: rotate(0) scale(1); filter: blur(0); }
         }
-    </style>
+    
+/* Blur Overlay */
+        #blur-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            z-index: 998;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.5s ease;
+        }
+        #blur-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        /* Interactive Profile Widget */
+        #profile-widget {
+            position: fixed;
+            bottom: 40px;
+            left: 40px;
+            width: 60px;
+            height: 60px;
+            margin-bottom: 0;
+            margin-left: 0;
+            border-radius: 50%;
+            z-index: 1000;
+            cursor: pointer;
+            transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            border: 3px solid #ffffff;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #fff;
+        }
+        #profile-widget img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        /* Expanded State */
+        #profile-widget.expanded {
+            bottom: 50%;
+            left: 50%;
+            width: 280px;
+            height: 280px;
+            margin-bottom: -140px;
+            margin-left: -140px;
+            border-width: 6px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+        }
+        
+        /* Small label below the widget when small */
+        #profile-label {
+            position: fixed;
+            bottom: 15px;
+            left: 40px;
+            width: 60px;
+            text-align: center;
+            font-size: 12px;
+            font-weight: 700;
+            color: #1e293b;
+            z-index: 999;
+            transition: opacity 0.3s;
+            pointer-events: none;
+        }
+        #profile-widget.expanded ~ #profile-label {
+            opacity: 0;
+        }
+
+        /* Message when expanded */
+        #ganga-message {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, 140px);
+            color: #1e293b;
+            font-size: 20px;
+            font-weight: 700;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 12px 24px;
+            border-radius: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            opacity: 0;
+            pointer-events: none;
+            z-index: 1001;
+            transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+            transition-delay: 0.1s;
+            white-space: nowrap;
+            letter-spacing: -0.02em;
+        }
+        #profile-widget.expanded ~ #ganga-message {
+            opacity: 1;
+            transform: translate(-50%, 170px);
+        }
+</style>
 </head>
 <body>
     <main class="portal" style="--pointer-x: 0; --pointer-y: 0;">
@@ -568,7 +669,14 @@
         
     </main>
 
-    <script>
+    <!-- Interactive Profile Widget & Blur Overlay -->
+    <div id="blur-overlay" onclick="toggleProfile()"></div>
+    <div id="profile-widget" onclick="toggleProfile()">
+        <img src="/static/images/ganga.jpg" alt="Ganga">
+    </div>
+    <div id="profile-label">Ganga</div>
+    <div id="ganga-message">"Stay tuned - Ganga’s announcement is coming soon"</div>
+<script>
         // Setup Particles
         const particlesContainer = document.getElementById('particles');
         for (let i = 0; i < 42; i++) {
@@ -651,6 +759,51 @@
                 note.style.display = 'block';
             }
         });
-    </script>
+    
+let femaleVoice = null;
+        function loadVoices() {
+            const voices = window.speechSynthesis.getVoices();
+            // Look for common female voice names
+            femaleVoice = voices.find(v => 
+                v.name.includes('Zira') || 
+                v.name.includes('Female') || 
+                v.name.includes('Samantha') || 
+                v.name.includes('Google UK English Female') || 
+                v.name.includes('Victoria')
+            );
+            if (!femaleVoice && voices.length > 0) {
+                // Fallback to the first voice if no female identifier found
+                femaleVoice = voices[0];
+            }
+        }
+        window.speechSynthesis.onvoiceschanged = loadVoices;
+        // Call immediately in case voices are already loaded
+        loadVoices();
+
+        function toggleProfile() {
+            const widget = document.getElementById('profile-widget');
+            const overlay = document.getElementById('blur-overlay');
+            
+            const isExpanding = !widget.classList.contains('expanded');
+            
+            widget.classList.toggle('expanded');
+            overlay.classList.toggle('active');
+
+            if (isExpanding) {
+                window.speechSynthesis.cancel();
+                
+                const utterance = new SpeechSynthesisUtterance("Stay tuned - Ganga’s announcement is coming soon");
+                if (femaleVoice) {
+                    utterance.voice = femaleVoice;
+                }
+                utterance.pitch = 1.4; // Higher pitch for female/child
+                utterance.rate = 0.95; 
+                
+                window.speechSynthesis.speak(utterance);
+            } else {
+                window.speechSynthesis.cancel();
+            }
+        }
+</script>
 </body>
 </html>
