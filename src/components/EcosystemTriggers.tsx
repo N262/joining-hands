@@ -1,0 +1,1 @@
+export default function EcosystemTriggers() { return <div className='absolute top-24 left-6 z-50 p-4 bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl shadow-2xl cursor-pointer hover:-translate-y-1 transition-transform'>MENU</div>; }
