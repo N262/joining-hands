@@ -5069,7 +5069,7 @@ function switchBackdropTheme(theme, isAuto = false) {
     const landingView = document.getElementById("landing-view");
     if (landingView) {
         // Remove all previous theme classes
-        const themes = ["water", "flow", "glassflow", "waterflow", "6th", "7th", "8th", "9th", "10th"];
+        const themes = ["water", "flow", "glassflow", "waterflow", "6th", "7th", "8th", "10th"];
         themes.forEach(t => landingView.classList.remove(`theme-${t}`));
         landingView.classList.add(`theme-${theme}`);
     }

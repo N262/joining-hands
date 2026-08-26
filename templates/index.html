@@ -55,7 +55,7 @@
                 <!-- Theme 2: Flow (Golden Flute & Peacock Feathers in 3D Motion) -->
                 <div class="theme-layer layer--flow">
                     <video class="theme-bg-video theme-bg-video--flow" loop muted playsinline preload="metadata">
-                        <source src="/themes/bg-flow.mp4" type="video/mp4">
+                        <source src="/themes/flow.mp4" type="video/mp4">
                     </video>
                     <canvas id="flowCanvas"></canvas>
                 </div>
@@ -63,7 +63,7 @@
                 <!-- Theme 3: Glass Flow (Iridescent glass refractions in motion) -->
                 <div class="theme-layer layer--glassflow">
                     <video class="theme-bg-video theme-bg-video--glass" loop muted playsinline preload="metadata">
-                        <source src="/themes/bg-glassflow.mp4" type="video/mp4">
+                        <source src="/themes/glassflow.mp4" type="video/mp4">
                     </video>
                     <canvas id="glassflowCanvas"></canvas>
                 </div>
@@ -71,7 +71,7 @@
                 <!-- Theme 4: Water Flow (Realistic water flow in motion) -->
                 <div class="theme-layer layer--waterflow">
                     <video class="theme-bg-video theme-bg-video--waterflow" loop muted playsinline preload="metadata">
-                        <source src="/themes/bg-waterflow.mp4" type="video/mp4">
+                        <source src="/themes/waterflow.mp4" type="video/mp4">
                     </video>
                     <canvas id="waterflowCanvas"></canvas>
                 </div>
@@ -79,7 +79,7 @@
                 <!-- Theme 5: 6th (Looping premium background video) -->
                 <div class="theme-layer layer--6th">
                     <video class="theme-bg-video theme-bg-video--6th" loop muted playsinline preload="metadata">
-                        <source src="/themes/bg-6th.mp4" type="video/mp4">
+                        <source src="/themes/solar.mp4" type="video/mp4">
                     </video>
                     <canvas id="6thCanvas"></canvas>
                 </div>
@@ -87,7 +87,7 @@
                 <!-- Theme 6: 7th (Looping premium background video) -->
                 <div class="theme-layer layer--7th">
                     <video class="theme-bg-video theme-bg-video--7th" loop muted playsinline preload="metadata">
-                        <source src="/themes/bg-7th.mp4" type="video/mp4">
+                        <source src="/themes/cosmic.mp4" type="video/mp4">
                     </video>
                     <canvas id="7thCanvas"></canvas>
                 </div>
@@ -95,21 +95,14 @@
                 <!-- Theme 7: 8th / Air (Looping premium background video) -->
                 <div class="theme-layer layer--8th">
                     <video class="theme-bg-video theme-bg-video--8th" loop muted playsinline preload="metadata">
-                        <source src="/themes/8th.mp4" type="video/mp4">
+                        <source src="/themes/air.mp4" type="video/mp4">
                     </video>
                     <canvas id="8thCanvas"></canvas>
-                </div>
-                <!-- Theme 8: 9th / Aura (Looping premium background video) -->
-                <div class="theme-layer layer--9th">
-                    <video class="theme-bg-video theme-bg-video--9th" loop muted playsinline preload="metadata">
-                        <source src="/themes/9th.mp4" type="video/mp4">
-                    </video>
-                    <canvas id="9thCanvas"></canvas>
                 </div>
                 <!-- Theme 9: 10th / Nova (Looping premium background video) -->
                 <div class="theme-layer layer--10th">
                     <video class="theme-bg-video theme-bg-video--10th" loop muted playsinline preload="metadata">
-                        <source src="/themes/10th.mp4" type="video/mp4">
+                        <source src="/themes/nova.mp4" type="video/mp4">
                     </video>
                     <canvas id="10thCanvas"></canvas>
                 </div>
@@ -344,28 +337,25 @@
                         <div class="theme-preview-fallback water-fallback"></div>
                     </button>
                     <button class="theme-select-btn" data-theme="flow" onclick="switchBackdropTheme('flow')" title="Flow">
-                        <video class="theme-preview-video" src="/themes/bg-flow.mp4" preload="metadata" muted playsinline></video>
+                        <video class="theme-preview-video" src="/themes/flow.mp4" preload="metadata" muted playsinline></video>
                     </button>
                     <button class="theme-select-btn" data-theme="glassflow" onclick="switchBackdropTheme('glassflow')" title="Glass Flow">
-                        <video class="theme-preview-video" src="/themes/bg-glassflow.mp4" preload="metadata" muted playsinline></video>
+                        <video class="theme-preview-video" src="/themes/glassflow.mp4" preload="metadata" muted playsinline></video>
                     </button>
                     <button class="theme-select-btn" data-theme="waterflow" onclick="switchBackdropTheme('waterflow')" title="Water Flow">
-                        <video class="theme-preview-video" src="/themes/bg-waterflow.mp4" preload="metadata" muted playsinline></video>
+                        <video class="theme-preview-video" src="/themes/waterflow.mp4" preload="metadata" muted playsinline></video>
                     </button>
                     <button class="theme-select-btn" data-theme="6th" onclick="switchBackdropTheme('6th')" title="Solar">
-                        <video class="theme-preview-video" src="/themes/bg-6th.mp4" preload="metadata" muted playsinline></video>
+                        <video class="theme-preview-video" src="/themes/solar.mp4" preload="metadata" muted playsinline></video>
                     </button>
                     <button class="theme-select-btn" data-theme="7th" onclick="switchBackdropTheme('7th')" title="Cosmic">
-                        <video class="theme-preview-video" src="/themes/bg-7th.mp4" preload="metadata" muted playsinline></video>
+                        <video class="theme-preview-video" src="/themes/cosmic.mp4" preload="metadata" muted playsinline></video>
                     </button>
                     <button class="theme-select-btn" data-theme="8th" onclick="switchBackdropTheme('8th')" title="Air">
-                        <video class="theme-preview-video" src="/themes/8th.mp4" preload="metadata" muted playsinline></video>
-                    </button>
-                    <button class="theme-select-btn" data-theme="9th" onclick="switchBackdropTheme('9th')" title="Aura">
-                        <video class="theme-preview-video" src="/themes/9th.mp4" preload="metadata" muted playsinline></video>
+                        <video class="theme-preview-video" src="/themes/air.mp4" preload="metadata" muted playsinline></video>
                     </button>
                     <button class="theme-select-btn" data-theme="10th" onclick="switchBackdropTheme('10th')" title="Nova">
-                        <video class="theme-preview-video" src="/themes/10th.mp4" preload="metadata" muted playsinline></video>
+                        <video class="theme-preview-video" src="/themes/nova.mp4" preload="metadata" muted playsinline></video>
                     </button>
                 </div>
                 <div class="settings-timer-section">
