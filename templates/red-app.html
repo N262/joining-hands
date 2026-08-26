@@ -45,9 +45,9 @@
             display: grid;
             place-items: center;
             background:
-                radial-gradient(circle at 72% 45%, rgba(255, 147, 57, .09), transparent 30%),
-                radial-gradient(circle at 25% 80%, rgba(25, 118, 61, .08), transparent 32%),
-                #06090d;
+                radial-gradient(circle at 72% 45%, rgba(255, 153, 51, 0.15), transparent 40%),
+                radial-gradient(circle at 25% 80%, rgba(19, 136, 8, 0.12), transparent 45%),
+                linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
         }
 
         .mesh {
@@ -170,8 +170,7 @@
             position: absolute;
             z-index: 2;
             inset: 0;
-            background:
-                linear-gradient(180deg, transparent 70%, rgba(3,5,8,.6) 100%);
+            background: linear-gradient(180deg, transparent 60%, rgba(255,255,255,0.8) 100%);
         }
 
         .portrait::after {
@@ -201,7 +200,7 @@
         }
 
         .portrait figcaption span {
-            color: var(--saffron);
+            color: #ea580c;
             font-size: 8px;
             font-weight: 600;
             letter-spacing: .22em;
@@ -223,7 +222,7 @@
             font-size: 8px;
             letter-spacing: .24em;
             text-transform: uppercase;
-            color: #64748b;
+            color: #334155;
         }
 
         .top-meta {
@@ -234,7 +233,7 @@
             gap: 14px;
         }
 
-        .top-meta .number { color: var(--saffron); }
+        .top-meta .number { color: #ea580c; }
 
         .meta-line {
             width: 42px;
@@ -269,14 +268,14 @@
             margin-bottom: 26px;
             border: 1px solid rgba(255,157,69,.58);
             border-radius: 50%;
-            color: var(--saffron);
+            color: #ea580c;
             font-size: 17px;
             box-shadow: 0 0 25px rgba(255,153,51,.08);
         }
 
         .eyebrow {
             margin: 0 0 13px;
-            color: var(--saffron);
+            color: #ea580c;
             font-size: 9px;
             font-weight: 600;
             letter-spacing: .31em;
@@ -292,7 +291,7 @@
         }
 
         h1 em {
-            color: var(--saffron);
+            color: #ea580c;
             font-style: italic;
         }
 
@@ -341,7 +340,7 @@
             border: 0;
             border-radius: 0;
             padding: 16px 17px;
-            color: #ffffff;
+            color: #0f172a;
             background: var(--saffron);
             cursor: pointer;
             font-size: 10px;
@@ -463,7 +462,7 @@
                 <label for="password">Password</label>
                 <div style="position: relative; width: 100%;">
                     <input id="password" type="password" placeholder="Enter your password" autocomplete="current-password" required style="width: 100%; padding-right: 40px; box-sizing: border-box;">
-                    <button type="button" id="togglePassword" style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); background: none; border: none; color: #64748b; cursor: pointer; padding: 0; display: flex; align-items: center; justify-content: center; height: 100%;">
+                    <button type="button" id="togglePassword" style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); background: none; border: none; color: #334155; cursor: pointer; padding: 0; display: flex; align-items: center; justify-content: center; height: 100%;">
                         <svg id="eyeIcon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
                     </button>
                 </div>
