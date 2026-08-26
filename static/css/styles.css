@@ -8176,14 +8176,23 @@ input:checked + .slider:before {
 /* Desktop safe-zone for About text */
 @media (min-width: 769px) {
     .landing-about-overlay {
-        top: 75px !important;
-        width: calc(100vw - 320px) !important; /* 160px safe margin on both sides */
-        max-width: 1400px !important;
-        text-align: left !important; /* Start words strictly from the left boundary */
+        top: 90px !important;
+        left: 154px !important;
+        transform: none !important;
+        width: calc(100vw - 200px) !important;
+        max-width: 1600px !important;
+        text-align: left !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+    .about-overlay-title {
+        margin-top: 0 !important;
+        line-height: 0.8 !important; /* Extremely tight to ensure top alignment */
+        margin-bottom: 16px !important;
     }
     .about-overlay-text {
         font-size: 1.4rem !important;
-        line-height: 1.4 !important; /* Removed line spacing */
+        line-height: 1.4 !important;
     }
 }
 @media (max-width: 768px) {
