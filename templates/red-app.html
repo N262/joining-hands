@@ -474,6 +474,25 @@
             animation: chakraSpinFade 3.5s cubic-bezier(0.1, 0.9, 0.2, 1) forwards 2.4s;
         }
 
+        .bharata-bg {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            height: 100svh;
+            width: auto;
+            object-fit: contain;
+            opacity: 0;
+            will-change: transform, opacity, filter;
+            pointer-events: none;
+            animation: slideUpBharata 4s cubic-bezier(0.1, 0.9, 0.2, 1) forwards 3.8s;
+        }
+
+        @keyframes slideUpBharata {
+            0% { opacity: 0; transform: translate(-50%, 50%); filter: blur(15px); }
+            40% { opacity: 0.8; filter: blur(5px); }
+            100% { opacity: 1; transform: translate(-50%, 0); filter: blur(0); }
+        }
+
         @keyframes smokeSlideLTR {
             0% { transform: translateX(-80%); opacity: 0; filter: blur(20px); }
             40% { opacity: 0.8; filter: blur(8px); }
@@ -498,6 +517,7 @@
                 <img src="https://upload.wikimedia.org/wikipedia/commons/1/17/Ashoka_Chakra.svg" alt="Ashoka Chakra" class="ashoka-chakra">
             </div>
             <div class="band band-green"></div>
+            <img src="/static/images/bharatamata_bg.png" class="bharata-bg" alt="Bharata Mata Divine Background">
         </div>
 
         
