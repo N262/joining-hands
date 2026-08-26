@@ -440,29 +440,53 @@
             flex-direction: column;
             z-index: -1;
             overflow: hidden;
+            background-color: #f8fafc;
         }
         .band {
             flex: 1;
             width: 100%;
-            will-change: transform;
+            will-change: transform, opacity, filter;
         }
         .band-saffron {
             background-color: #FF9933;
-            transform: translateX(-100%);
-            animation: slideInBand 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+            opacity: 0;
+            animation: smokeSlideLTR 3.5s cubic-bezier(0.1, 0.9, 0.2, 1) forwards 0s;
         }
         .band-white {
             background-color: #FFFFFF;
-            transform: translateX(100%);
-            animation: slideInBand 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards 0.4s;
+            opacity: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: smokeSlideRTL 3.5s cubic-bezier(0.1, 0.9, 0.2, 1) forwards 0.8s;
         }
         .band-green {
             background-color: #138808;
-            transform: translateX(100%);
-            animation: slideInBand 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards 0.8s;
+            opacity: 0;
+            animation: smokeSlideRTL 3.5s cubic-bezier(0.1, 0.9, 0.2, 1) forwards 1.6s;
         }
-        @keyframes slideInBand {
-            to { transform: translateX(0); }
+
+        .ashoka-chakra {
+            height: 75%;
+            max-height: 120px;
+            opacity: 0;
+            will-change: transform, opacity;
+            animation: chakraSpinFade 3.5s cubic-bezier(0.1, 0.9, 0.2, 1) forwards 2.4s;
+        }
+
+        @keyframes smokeSlideLTR {
+            0% { transform: translateX(-80%); opacity: 0; filter: blur(20px); }
+            40% { opacity: 0.8; filter: blur(8px); }
+            100% { transform: translateX(0); opacity: 1; filter: blur(0); }
+        }
+        @keyframes smokeSlideRTL {
+            0% { transform: translateX(80%); opacity: 0; filter: blur(20px); }
+            40% { opacity: 0.8; filter: blur(8px); }
+            100% { transform: translateX(0); opacity: 1; filter: blur(0); }
+        }
+        @keyframes chakraSpinFade {
+            0% { opacity: 0; transform: rotate(-180deg) scale(0.4); filter: blur(10px); }
+            100% { opacity: 1; transform: rotate(0) scale(1); filter: blur(0); }
         }
     </style>
 </head>
@@ -470,7 +494,9 @@
     <main class="portal" style="--pointer-x: 0; --pointer-y: 0;">
         <div class="tricolor-bg">
             <div class="band band-saffron"></div>
-            <div class="band band-white"></div>
+            <div class="band band-white">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/1/17/Ashoka_Chakra.svg" alt="Ashoka Chakra" class="ashoka-chakra">
+            </div>
             <div class="band band-green"></div>
         </div>
 
