@@ -146,7 +146,7 @@
             opacity: 0;
             will-change: transform, opacity;
             animation: procession 16s cubic-bezier(.45,0,.2,1) infinite;
-            animation-delay: calc(var(--portrait-index) * 2.28s - 1s);
+            animation-delay: calc(var(--portrait-index) * 1.77s - 1s);
         }
 
         .portrait-image-wrap {
@@ -216,6 +216,8 @@
         .portrait-mother-2 { top: 18%; left: 82%; --start-y: -4vh; --depth: 0.92; }
         .portrait-bose-2 { top: 48%; left: 12%; --start-y: 9vh; --depth: 0.81; }
         .portrait-mother-3 { top: 30%; left: 45%; --start-y: -1vh; --depth: 0.78; }
+        .portrait-mother-4 { top: 12%; left: 25%; --start-y: -8vh; --depth: 0.88; }
+        .portrait-tilak { top: 58%; left: 88%; --start-y: 5vh; --depth: 0.72; }
 
         .top-meta, .bottom-meta {
             position: absolute;
@@ -447,7 +449,7 @@
         </section>
         <div class="vignette"></div>
         <div class="top-meta">
-            <span class="number">01 / 07</span>
+            <span class="number">01 / 09</span>
             <span class="meta-line"></span>
             <span>REMEMBER THE COURAGE</span>
         </div>
@@ -496,7 +498,9 @@
           { name: "Subhash Chandra Bose", role: "Nationalist Leader", image: "https://commons.wikimedia.org/wiki/Special:FilePath/Subhas%20Chandra%20Bose.jpg?width=1200", className: "portrait-bose" },
           { name: "Bharata Mata", role: "Divine Mother", image: "https://upload.wikimedia.org/wikipedia/commons/4/4e/Bharat_Mata_by_Abanindranath_Tagore.jpg", className: "portrait-mother-2" },
           { name: "Netaji Bose", role: "Azad Hind Fauj", image: "https://upload.wikimedia.org/wikipedia/commons/4/44/Subhas_Chandra_Bose_NRB.jpg", className: "portrait-bose-2" },
-          { name: "Bharata Mata", role: "Vande Mataram", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Bharat_Mata_Temple_statue.jpg/800px-Bharat_Mata_Temple_statue.jpg", className: "portrait-mother-3" }
+          { name: "Bharata Mata", role: "Vande Mataram", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Bharat_Mata_Temple_statue.jpg/800px-Bharat_Mata_Temple_statue.jpg", className: "portrait-mother-3" },
+          { name: "Bharata Mata", role: "The Motherland", image: "static/images/bharatamata_lion.png", className: "portrait-mother-4" },
+          { name: "Bal Gangadhar Tilak", role: "Swaraj Pioneer", image: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Bal_Gangadhar_Tilak.jpg", className: "portrait-tilak" }
         ];
         const streamContainer = document.getElementById('portraits');
         portraitsData.forEach((p, index) => {
