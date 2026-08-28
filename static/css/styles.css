@@ -3860,7 +3860,7 @@ body.dark-theme .btn-outline-sm:hover {
         border-right: none !important;
         border-bottom: 1px solid var(--pro-border) !important;
         padding: 10px !important;
-        white-space: nowrap !important;
+        white-space: normal !important;
         gap: 8px !important;
     }
     
@@ -7957,15 +7957,15 @@ input:checked + .slider:before {
 
     /* 3. Scale down the Massive "Unified" Typography layout (Strictly ONE Line) */
     .hero-main-title.icon-title-wrapper {
-        flex-wrap: nowrap !important;
+        flex-wrap: wrap !important;
         gap: 4px !important;
-        white-space: nowrap !important;
+        white-space: normal !important;
         margin-top: 10px !important;
     }
     .unified-slogan-layout {
-        flex-wrap: nowrap !important;
+        flex-wrap: wrap !important;
         gap: 6px !important;
-        white-space: nowrap !important;
+        white-space: normal !important;
     }
     .hero-main-title .radium-word-icon,
     .hero-main-title .title-word-icon {
@@ -8500,4 +8500,14 @@ input:checked + .slider:before {
     }
 }
 
+
+
+@media (max-width: 650px) {
+    .pro-login-card {
+        padding: 24px !important;
+        margin-left: 16px !important;
+        margin-right: 16px !important;
+        width: calc(100% - 32px) !important;
+    }
+}
 

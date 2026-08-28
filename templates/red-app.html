@@ -255,6 +255,7 @@
         }
 
         .login-shell {
+            box-sizing: border-box;
             position: relative;
             z-index: 6;
             width: 280px;
@@ -427,6 +428,7 @@
 
         @media (max-width: 650px) {
             .login-shell {
+            box-sizing: border-box;
                 top: 100px;
                 right: 0;
                 left: 0;
@@ -444,7 +446,8 @@
         }
 
         @media (prefers-reduced-motion: reduce) {
-            .portrait, .mesh, .particle-field span, .login-shell { animation: none; }
+            .portrait, .mesh, .particle-field span, .login-shell {
+            box-sizing: border-box; animation: none; }
             .portrait { opacity: .45; }
         }
 
