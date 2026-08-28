@@ -1,4 +1,4 @@
-/* ==========================================
+﻿/* ==========================================
    THE GROUP OF JOINING HANDS - STYLESHEET
    ========================================== */
 
@@ -125,8 +125,13 @@ body {
     min-height: 100dvh;
 }
 
+@keyframes viewFadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
 .app-view.active {
     display: block;
+    animation: viewFadeIn 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
 }
 
 /* ==========================================================================
@@ -8494,4 +8499,5 @@ input:checked + .slider:before {
         box-shadow: none;
     }
 }
+
 
