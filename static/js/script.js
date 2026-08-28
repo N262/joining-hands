@@ -1,4 +1,4 @@
-﻿// Global App Access Controller
+// Global App Access Controller
 // SET "IS_WEBSITE_LOCKED = true" to lock ecosystem apps, and "false" to unlock.
 const IS_WEBSITE_LOCKED = false;
 
@@ -3391,7 +3391,6 @@ async function openRapidoClone() {
     const token = localStorage.getItem("pro_auth_token");
     if (!token) {
         intendedApp = "rapido";
-        showToast("Please log in to your account to access rides.");
         showView("pro-network-view");
         showProStage("pro-login-stage");
         return;
