@@ -1,4 +1,4 @@
-﻿/* ==========================================
+/* ==========================================
    THE GROUP OF JOINING HANDS - STYLESHEET
    ========================================== */
 
@@ -1763,18 +1763,21 @@ body {
                 inset 0 2px 3px rgba(255, 255, 255, 0.4);
 }
 
-/* 6. O TILE: Bright Electric Orange */
+/* 6. O TILE: White */
 .ecosystem-tile--o .tile-3d-body {
-    background: linear-gradient(145deg, #ffa000 0%, #ff6f00 45%, #e65100 100%);
-    box-shadow: 0 14px 28px rgba(255, 111, 0, 0.38),
-                0 6px 10px rgba(0, 0, 0, 0.18),
-                inset 0 2px 4px rgba(255, 255, 255, 0.5),
-                inset 0 -4px 6px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(145deg, #ffffff 0%, #f1f5f9 45%, #e2e8f0 100%);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.15),
+                0 6px 10px rgba(0, 0, 0, 0.1),
+                inset 0 2px 4px rgba(255, 255, 255, 0.9),
+                inset 0 -4px 6px rgba(0, 0, 0, 0.1);
 }
 .ecosystem-tile--o .tile-3d-raised {
-    background: linear-gradient(145deg, #ffb300 0%, #ff8f00 100%);
-    box-shadow: 0 5px 12px rgba(230, 81, 0, 0.5),
-                inset 0 2px 3px rgba(255, 255, 255, 0.4);
+    background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15),
+                inset 0 2px 3px rgba(255, 255, 255, 0.8);
+}
+.ecosystem-tile--o .tile-letter, .ecosystem-tile--o .tile-symbol-svg {
+    color: #0f172a;
 }
 
 /* ==========================================================================
@@ -1818,10 +1821,10 @@ body {
 }
 
 .ecosystem-tile--o:hover .tile-3d-body {
-    box-shadow: 0 22px 42px rgba(255, 111, 0, 0.55),
-                0 8px 14px rgba(0, 0, 0, 0.22),
-                inset 0 2px 5px rgba(255, 255, 255, 0.65),
-                inset 0 -4px 6px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 22px 42px rgba(0, 0, 0, 0.25),
+                0 8px 14px rgba(0, 0, 0, 0.15),
+                inset 0 2px 5px rgba(255, 255, 255, 1),
+                inset 0 -4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .ecosystem-tile:hover .tile-3d-raised {
