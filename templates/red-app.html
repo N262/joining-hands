@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -257,9 +257,9 @@
         .login-shell {
             position: relative;
             z-index: 6;
-            width: min(410px, calc(100% - 42px));
-            margin-left: 38%;
-            padding: 48px 44px 31px;
+            width: 280px;
+            position: absolute; top: 90px; right: 24px; margin: 0;
+            padding: 20px 24px;
             background: rgba(255, 255, 255, 0.95);
             border: 1px solid rgba(0,0,0,.08);
             box-shadow: 0 20px 50px rgba(0,0,0,.08);
@@ -425,11 +425,11 @@
             .portrait-bhagat { left: 17%; }
             .portrait-azad { left: 48%; }
             .portrait-bose { left: 70%; }
-            .login-shell { margin-left: 18%; width: min(390px, calc(100% - 32px)); }
+            
         }
 
         @media (max-width: 650px) {
-            .login-shell { margin-left: 0; width: min(390px, calc(100% - 28px)); padding: 35px 27px 27px; }
+            
             .cinematic-stream { opacity: 1; }
             .portrait { width: 160px; }
             .portrait-bhagat { left: 0; }
@@ -651,7 +651,7 @@
             
         </div>
         <section class="login-shell">
-            <div class="national-mark">✦</div>
+            <div class="national-mark">âœ¦</div>
             
             
             
@@ -667,14 +667,14 @@
                 </div>
                 <button type="submit">
                     <span>Login</span>
-                    <b>↗</b>
+                    <b>â†—</b>
                 </button>
-                <p class="demo-note" id="demoNote" style="display: none;">Demo mode — your details were not sent anywhere.</p>
+                <p class="demo-note" id="demoNote" style="display: none;">Demo mode â€” your details were not sent anywhere.</p>
             </form>
             <footer>
-                <span>सत्यमेव जयते</span>
+                <span>à¤¸à¤¤à¥à¤¯à¤®à¥‡à¤µ à¤œà¤¯à¤¤à¥‡</span>
                 <i></i>
-                <span>INDIA · 01</span>
+                <span>INDIA Â· 01</span>
             </footer>
         </section>
         
@@ -686,7 +686,7 @@
         <img src="/static/images/ganga.jpg" alt="Ganga">
     </div>
     <div id="profile-label">Ganga</div>
-    <div id="ganga-message">"Stay tuned - Ganga’s announcement is coming soon"</div>
+    <div id="ganga-message">"Stay tuned - Gangaâ€™s announcement is coming soon"</div>
 <script>
         // Setup Particles
         const particlesContainer = document.getElementById('particles');
@@ -806,7 +806,7 @@ let femaleVoice = null;
             if (isExpanding) {
                 window.speechSynthesis.cancel();
                 
-                const utterance = new SpeechSynthesisUtterance("Stay tuned - Ganga’s announcement is coming soon");
+                const utterance = new SpeechSynthesisUtterance("Stay tuned - Gangaâ€™s announcement is coming soon");
                 if (femaleVoice) {
                     utterance.voice = femaleVoice;
                 }
@@ -821,3 +821,4 @@ let femaleVoice = null;
 </script>
 </body>
 </html>
+
