@@ -1,0 +1,26 @@
+﻿name: Deploy to GoDaddy
+
+on:
+  push:
+    branches:
+      - Godaddy
+
+jobs:
+  deploy:
+    name: Deploy to cPanel
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: FTP Deploy
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+      with:
+        server: $\{{ secrets.FTP_SERVER }\}
+        username: $\{{ secrets.FTP_USERNAME }\}
+        password: $\{{ secrets.FTP_PASSWORD }\}
+        exclude: |
+          **/.git*
+          **/.git*/**
+          **/__pycache__/**
+          .env
