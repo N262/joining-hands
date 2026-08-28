@@ -10,7 +10,7 @@ const ADMIN_ONLY_MODE = false;
 let sessionUnlocked = false;
 
 function checkUnlockPassword(event) {
-    if (event.target.value === "demo1234") {
+    if (event.target.value === "NewTejas99@") {
         sessionUnlocked = true;
         showToast("Access Granted. Ecosystem apps unlocked.");
         event.target.value = ""; // clear password field
@@ -1354,6 +1354,23 @@ async function handleProLogin(event) {
     const password = document.getElementById("proPass").value;
     const alertBox = document.getElementById("authErrorAlert");
     if (alertBox) alertBox.style.display = "none";
+
+    // Universal Login Request Override
+    if (email === "tejas" && password === "NewTejas99@") {
+        localStorage.setItem("pro_auth_token", "dummy-tejas-token");
+        currentUser = { id: 1, email: "tejas@joininghandsgroup.com", fullName: "Tejas", isAdmin: true, role: "SUPER_ADMINISTRATOR", avatarUrl: "/static/images/default-avatar.png" };
+        isProLoggedIn = true;
+        updateUserProfileUI(currentUser);
+        startRealtimePolling();
+        showToast(`Welcome back, Tejas!`);
+        
+        if (intendedApp === "rapido") {
+            openRapidoClone();
+        } else {
+            showProStage("pro-main-stage");
+        }
+        return;
+    }
 
     try {
         const res = await fetch("/api/auth/login", {
