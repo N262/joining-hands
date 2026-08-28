@@ -1,4 +1,4 @@
-// Global App Access Controller
+﻿// Global App Access Controller
 // SET "IS_WEBSITE_LOCKED = true" to lock ecosystem apps, and "false" to unlock.
 const IS_WEBSITE_LOCKED = false;
 
@@ -54,13 +54,13 @@ let proPosts = [
         authorRole: "Official Announcement & Community Hub",
         avatar: "hero.jpg",
         time: "1 hour ago",
-        content: "Welcome everyone to our official community portal! ðŸŒŸ\n\n'Together Forever' represents our core pledge to build unity, harmony, and shared growth across all our initiatives. We are thrilled to launch this platform for all members to connect, share updates, and collaborate seamlessly.",
+        content: "Welcome everyone to our official community portal! Ã°Å¸Å’Å¸\n\n'Together Forever' represents our core pledge to build unity, harmony, and shared growth across all our initiatives. We are thrilled to launch this platform for all members to connect, share updates, and collaborate seamlessly.",
         media: "hero.jpg",
         likes: 128,
         isLiked: false,
         commentsCount: 24,
         comments: [
-            { author: "Priya Sharma", text: "Proud to be part of this amazing journey! Together Forever ðŸ™" },
+            { author: "Priya Sharma", text: "Proud to be part of this amazing journey! Together Forever Ã°Å¸â„¢Â" },
             { author: "Dr. Ramesh Kumar", text: "Great initiative! Looking forward to networking with everyone here." }
         ]
     },
@@ -88,13 +88,13 @@ const ANNOUNCEMENT_CONFIG = {
     items: [
         {
             badge: "COMMUNITY UPDATE",
-            text: "<strong>The Group of Joining Hands</strong> â€¢ Official Community Portal is Live! Connect, collaborate & grow with us.",
+            text: "<strong>The Group of Joining Hands</strong> Ã¢â‚¬Â¢ Official Community Portal is Live! Connect, collaborate & grow with us.",
             linkText: "Explore Ecosystem",
             action: () => scrollToApplications()
         },
         {
             badge: "SLOGAN PLEDGE",
-            text: "United in shared vision and cultural preservation â€¢ <em>Together Forever</em>",
+            text: "United in shared vision and cultural preservation Ã¢â‚¬Â¢ <em>Together Forever</em>",
             linkText: "Join now",
             action: () => openLinkedinClone()
         },
@@ -133,7 +133,7 @@ function initAnnouncementMarquee() {
                         ${item.linkText} <i class="fa-solid fa-arrow-right"></i>
                     </span>
                 </div>
-                <span class="announcement-separator">â€¢</span>
+                <span class="announcement-separator">Ã¢â‚¬Â¢</span>
             `;
         });
         html += `</div>`;
@@ -365,7 +365,7 @@ function showView(viewId) {
 
     const targetView = document.getElementById(viewId);
     if (targetView) {
-        targetView.style.display = "block";
+        if (viewId === "insta-view") { targetView.style.display = "flex"; } else { targetView.style.display = "block"; }
         targetView.classList.add("active");
         window.scrollTo(0, 0);
     }
@@ -822,7 +822,7 @@ async function loadEvents() {
                     <img src="${e.bannerUrl || 'hero.jpg'}" alt="Event Banner" class="event-banner">
                     <div class="event-body">
                         <h4>${escapeHTML(e.title)}</h4>
-                        <div class="event-meta"><i class="fa-regular fa-calendar"></i> ${e.date} â€¢ ${escapeHTML(e.location)}</div>
+                        <div class="event-meta"><i class="fa-regular fa-calendar"></i> ${e.date} Ã¢â‚¬Â¢ ${escapeHTML(e.location)}</div>
                         <p class="event-desc">${escapeHTML(e.description)}</p>
                         <div class="event-footer">
                             <span><i class="fa-solid fa-users"></i> ${e.rsvps} attending</span>
@@ -1838,7 +1838,7 @@ async function openHashtagDiscovery(tag) {
                                 <img src="${getUserAvatar(post, post.authorName, post.authorId)}" alt="Avatar" class="post-avatar">
                                 <div class="post-user-info">
                                     <strong>${escapeHTML(post.authorName)}</strong>
-                                    <span>${escapeHTML(post.authorRole || 'Community Member')} â€¢ ${post.time}</span>
+                                    <span>${escapeHTML(post.authorRole || 'Community Member')} Ã¢â‚¬Â¢ ${post.time}</span>
                                 </div>
                             </div>
                             <div class="post-content">${parseHashtagsAndMentions(post.content)}</div>
@@ -1951,7 +1951,7 @@ async function renderProPosts() {
                 <img src="${getUserAvatar(post, post.authorName, post.authorId)}" alt="Avatar" class="post-avatar">
                 <div class="post-user-info">
                     <strong>${escapeHTML(post.authorName)}</strong>
-                    <span>${escapeHTML(post.authorRole || 'Community Member')} â€¢ ${post.time}</span>
+                    <span>${escapeHTML(post.authorRole || 'Community Member')} Ã¢â‚¬Â¢ ${post.time}</span>
                 </div>
                 <div class="post-header-actions" style="margin-left:auto; display:flex; align-items:center; gap:8px;">
                     ${isAuthor ? `
@@ -2567,9 +2567,9 @@ async function loadWorkflowBugTracker() {
                     <td>${escapeHTML(b.module)}</td>
                     <td>${escapeHTML(b.title)}</td>
                     <td><span class="status-badge ${b.priority === 'CRITICAL' ? 'badge-red' : 'badge-orange'}">${b.priority}</span></td>
-                    <td><strong class="status-green">ðŸŸ¢ ${b.status}</strong></td>
+                    <td><strong class="status-green">Ã°Å¸Å¸Â¢ ${b.status}</strong></td>
                     <td>${b.fixDate}</td>
-                    <td><span class="status-green">âœ… ${b.regressionStatus}</span></td>
+                    <td><span class="status-green">Ã¢Å“â€¦ ${b.regressionStatus}</span></td>
                 </tr>
             `).join('');
         }
@@ -2780,7 +2780,7 @@ async function loadAdminReports() {
                     <div class="pending-item">
                         <div>
                             <strong>Flagged ${r.targetType} #${r.targetId}</strong>
-                            <p>Reason: ${escapeHTML(r.reason)} â€¢ Reported by ${escapeHTML(r.reporterName)}</p>
+                            <p>Reason: ${escapeHTML(r.reason)} Ã¢â‚¬Â¢ Reported by ${escapeHTML(r.reporterName)}</p>
                         </div>
                         <button class="btn-danger" onclick="adminDeletePost(${r.targetId})">Remove Content</button>
                     </div>
@@ -3471,9 +3471,9 @@ function calculateRapidoFare() {
     
     if (pickup === dropoff) {
         document.getElementById("rapido-route-info").style.opacity = "0.5";
-        document.getElementById("price-bike").innerText = "â‚¹15";
-        document.getElementById("price-auto").innerText = "â‚¹30";
-        document.getElementById("price-cab").innerText = "â‚¹60";
+        document.getElementById("price-bike").innerText = "Ã¢â€šÂ¹15";
+        document.getElementById("price-auto").innerText = "Ã¢â€šÂ¹30";
+        document.getElementById("price-cab").innerText = "Ã¢â€šÂ¹60";
         return;
     }
     document.getElementById("rapido-route-info").style.opacity = "1";
@@ -3486,9 +3486,9 @@ function calculateRapidoFare() {
     const cabPrice = Math.round(60 + dist * 18);
     
     document.getElementById("rapido-route-info").innerHTML = `<i class="fa-solid fa-route"></i> Distance: <span>${dist} km</span> &nbsp;&bull;&nbsp; Est. Time: <span>${etaMin} mins</span>`;
-    document.getElementById("price-bike").innerText = `â‚¹${bikePrice}`;
-    document.getElementById("price-auto").innerText = `â‚¹${autoPrice}`;
-    document.getElementById("price-cab").innerText = `â‚¹${cabPrice}`;
+    document.getElementById("price-bike").innerText = `Ã¢â€šÂ¹${bikePrice}`;
+    document.getElementById("price-auto").innerText = `Ã¢â€šÂ¹${autoPrice}`;
+    document.getElementById("price-cab").innerText = `Ã¢â€šÂ¹${cabPrice}`;
 }
 
 function selectRapidoService(service) {
@@ -3657,7 +3657,7 @@ async function startRapidoBooking() {
     }
 
     const priceText = document.getElementById(`price-${selectedService.toLowerCase()}`).innerText;
-    const fare = parseFloat(priceText.replace("â‚¹", ""));
+    const fare = parseFloat(priceText.replace("Ã¢â€šÂ¹", ""));
     
     document.getElementById("rapido-state-search").classList.remove("active");
     document.getElementById("rapido-state-matching").classList.add("active");
@@ -4272,9 +4272,9 @@ function renderRapidoHistory(rides) {
             <div class="history-card-footer">
                 <span class="driver-ref">
                     <i class="fa-solid fa-motorcycle"></i> Captain: ${ride.captain_name || 'N/A'} 
-                    (${ride.rating ? ride.rating + ' â˜…' : 'Unrated'})
+                    (${ride.rating ? ride.rating + ' Ã¢Ëœâ€¦' : 'Unrated'})
                 </span>
-                <span class="fare-val">â‚¹${ride.fare}</span>
+                <span class="fare-val">Ã¢â€šÂ¹${ride.fare}</span>
             </div>
         </div>
     `).join("");
@@ -4345,7 +4345,7 @@ async function fetchDriverStats() {
         
         if (data.success && data.stats) {
             driverStats = data.stats;
-            document.getElementById("driverEarnings").innerText = `â‚¹${driverStats.total_earnings.toFixed(2)}`;
+            document.getElementById("driverEarnings").innerText = `Ã¢â€šÂ¹${driverStats.total_earnings.toFixed(2)}`;
             document.getElementById("driverRidesCount").innerText = driverStats.total_rides;
             
             document.getElementById("driverOnlineToggle").checked = driverStats.is_online;
@@ -4454,7 +4454,7 @@ async function pollDriverOffers() {
                 }
             }, 1000);
         } else {
-            // No real offers found â€” auto-generate a simulated ride request
+            // No real offers found Ã¢â‚¬â€ auto-generate a simulated ride request
             // after the captain has been online for 10+ seconds without any offer
             if (!window._captainOnlineSince) window._captainOnlineSince = Date.now();
             if (Date.now() - window._captainOnlineSince > 10000) {
@@ -4817,7 +4817,7 @@ async function setDriverCompletedTrip() {
         });
         const data = await res.json();
         if (data.success) {
-            showToast(`Ride completed! You earned â‚¹${fare.toFixed(2)}.`);
+            showToast(`Ride completed! You earned Ã¢â€šÂ¹${fare.toFixed(2)}.`);
             fetchDriverStats();
         }
     } catch (e) {
@@ -5426,4 +5426,5 @@ document.addEventListener('click', function(e) {
     if (e.target.closest('.ecosystem-tile--menu')) return;
     closeLandingSidebar();
 });
+
 
