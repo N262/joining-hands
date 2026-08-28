@@ -131,19 +131,19 @@
             /* removed blur */
         }
 
-        .portrait {
+                .portrait {
             position: absolute;
             margin: 0;
-            width: clamp(210px, 20vw, 330px);
-            aspect-ratio: .72;
+            width: 220px;
+            height: 280px;
             overflow: hidden;
             border: 1px solid rgba(0,0,0,.08);
             background: transparent;
             box-shadow: 0 20px 40px rgba(0,0,0,.15);
             opacity: 0;
             will-change: transform, opacity;
-            animation: procession 16s cubic-bezier(.45,0,.2,1) infinite;
-            animation-delay: calc(var(--portrait-index) * 1.77s - 1s);
+            animation: procession 24s linear infinite;
+            animation-delay: calc(var(--portrait-index) * 2s - 1s);
         }
 
         .portrait-image-wrap {
@@ -203,18 +203,18 @@
             letter-spacing: .22em;
         }
 
-        .portrait-mother { top: 55%; left: 8%; --start-y: 0vh; --depth: 1; }
-        .portrait-bhagat { top: 60%; left: 28%; --start-y: 3vh; --depth: .86; }
-        .portrait-azad { top: 52%; left: 51%; --start-y: -2vh; --depth: .76; }
-        .portrait-bose { top: 65%; left: 67%; --start-y: 2vh; --depth: .67; }
-        .portrait-mother-2 { top: 58%; left: 82%; --start-y: -1vh; --depth: 0.92; }
-        .portrait-bose-2 { top: 62%; left: 12%; --start-y: 3vh; --depth: 0.81; }
-        .portrait-mother-3 { top: 56%; left: 45%; --start-y: -1vh; --depth: 0.78; }
-        .portrait-mother-4 { top: 50%; left: 25%; --start-y: -3vh; --depth: 0.88; }
-                .portrait-tilak { top: 64%; left: 88%; --start-y: 2vh; --depth: 0.72; }
-        .portrait-new-1 { top: 8%; left: 35%; --start-y: -1vh; --depth: 0.95; }
-        .portrait-new-2 { top: 15%; left: 60%; --start-y: 2vh; --depth: 0.82; }
-        .portrait-new-3 { top: 5%; left: 95%; --start-y: 0vh; --depth: 0.77; }
+        .portrait-mother { top: calc(83.33% - 140px); left: 8%; --start-y: 0; --depth: 1; }
+        .portrait-bhagat { top: calc(83.33% - 140px); left: 28%; --start-y: 0; --depth: 1; }
+        .portrait-azad { top: calc(83.33% - 140px); left: 51%; --start-y: 0; --depth: 1; }
+        .portrait-bose { top: calc(83.33% - 140px); left: 67%; --start-y: 0; --depth: 1; }
+        .portrait-mother-2 { top: calc(83.33% - 140px); left: 82%; --start-y: 0; --depth: 1; }
+        .portrait-bose-2 { top: calc(83.33% - 140px); left: 12%; --start-y: 0; --depth: 1; }
+        .portrait-mother-3 { top: calc(83.33% - 140px); left: 45%; --start-y: 0; --depth: 1; }
+        .portrait-mother-4 { top: calc(83.33% - 140px); left: 25%; --start-y: 0; --depth: 1; }
+                .portrait-tilak { top: calc(83.33% - 140px); left: 88%; --start-y: 0; --depth: 1; }
+        .portrait-new-1 { top: calc(50% - 140px); left: 35%; --start-y: 0; --depth: 1; }
+        .portrait-new-2 { top: calc(50% - 140px); left: 60%; --start-y: 0; --depth: 1; }
+        .portrait-new-3 { top: calc(50% - 140px); left: 95%; --start-y: 0; --depth: 1; }
         .portrait-new-1 figcaption,
         .portrait-new-2 figcaption,
         .portrait-new-3 figcaption,
@@ -393,14 +393,11 @@
         }
 
         @keyframes procession {
-            0% { opacity: 0; transform: translate3d(58vw, var(--start-y), 0) scale(calc(var(--depth) * .72)) rotate(-4deg); }
-            12% { opacity: 0.8; }
-            24% { opacity: 1; transform: translate3d(22vw, 0, 0) scale(calc(var(--depth) * .88)) rotate(-2deg); }
-            42% { opacity: 1; transform: translate3d(0, 0, 0) scale(var(--depth)) rotate(0deg); }
-            62% { opacity: 1; transform: translate3d(-25vw, -2vh, 0) scale(calc(var(--depth) * .92)) rotate(2deg); }
-            78% { opacity: 1; transform: translate3d(-54vw, -4vh, 0) scale(calc(var(--depth) * .78)) rotate(4deg); }
-            90% { opacity: 0.8; }
-            100% { opacity: 0; transform: translate3d(-80vw, -6vh, 0) scale(calc(var(--depth) * .66)) rotate(5deg); }
+            0% { opacity: 0; transform: translate3d(58vw, 0, 0); }
+            10% { opacity: 1; }
+            50% { opacity: 1; transform: translate3d(0, 0, 0); }
+            90% { opacity: 1; }
+            100% { opacity: 0; transform: translate3d(-80vw, 0, 0); }
         }
 
         @keyframes reveal {
@@ -420,21 +417,21 @@
 
         @media (max-width: 900px) {
             body { overflow: hidden; }
-            .portrait { width: 190px; }
-            .portrait-mother { left: -5%; }
-            .portrait-bhagat { left: 17%; }
-            .portrait-azad { left: 48%; }
-            .portrait-bose { left: 70%; }
+            .portrait { width: 190px; height: 241px; }
+            .portrait-mother { top: calc(83.33% - 140px); left: 8%; --start-y: 0; --depth: 1; }
+            .portrait-bhagat { top: calc(83.33% - 140px); left: 28%; --start-y: 0; --depth: 1; }
+            .portrait-azad { top: calc(83.33% - 140px); left: 51%; --start-y: 0; --depth: 1; }
+            .portrait-bose { top: calc(83.33% - 140px); left: 67%; --start-y: 0; --depth: 1; }
             
         }
 
         @media (max-width: 650px) {
             
             .cinematic-stream { opacity: 1; }
-            .portrait { width: 160px; }
-            .portrait-bhagat { left: 0; }
-            .portrait-azad { left: 58%; }
-            .portrait-bose { left: 76%; }
+            .portrait { width: 160px; height: 203px; }
+            .portrait-bhagat { top: calc(83.33% - 140px); left: 28%; --start-y: 0; --depth: 1; }
+            .portrait-azad { top: calc(83.33% - 140px); left: 51%; --start-y: 0; --depth: 1; }
+            .portrait-bose { top: calc(83.33% - 140px); left: 67%; --start-y: 0; --depth: 1; }
             .top-meta { left: 20px; top: 20px; }
             .bottom-meta { right: 20px; bottom: 20px; }
         }
