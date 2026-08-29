@@ -21,13 +21,13 @@
 ## 3. The Ecosystem Applications (Modules)
 The main landing page features interactive 3D tiles that launch individual single-page applications (SPAs) dynamically via JavaScript (`showView()`):
 
-1. **D Tile (Ride Application):** A ride-sharing interface clone featuring a live map canvas.
-2. **H Tile (Blank App):** Reserved for future architectural expansion.
-3. **I Tile (India / Red App):** A cinematic cultural showcase featuring infinitely flowing historical portraits perfectly aligned within a White and Green CSS band structure. It includes a voice-synthesized AI assistant ("Ganga") and an Admin Login shell.
-4. **P Tile (Pro Connect):** A professional networking portal (LinkedIn clone) featuring a user feed, profile management, and modular layout that adapts cleanly to mobile.
-5. **E Tile (GramConnect):** A visual story portal (Instagram clone), currently protected by an Admin Login module.
-6. **O Tile (Orange Portal):** The Orange Initiative portal (in development).
-7. **AI / Menu Tiles:** Dedicated corner floating triggers for backdrop themes, navigation, and the upcoming "Natural Intelligent Machine".
+1. **Purple Mobility Tile:** A dynamic transit and mobility interface featuring live geospatial mapping and location tracking.
+2. **White Foundation Tile:** A clean, reserved architectural space designed for future ecosystem expansion.
+3. **Saffron Cultural Tile:** A cinematic cultural showcase featuring infinitely flowing historical portraits perfectly aligned within a structured color band layout. It includes a voice-synthesized AI assistant and a secure administrative shell.
+4. **Blue Professional Tile:** A comprehensive professional networking portal featuring a community feed, personalized profile management, and a modular layout that adapts cleanly to mobile.
+5. **Gradient Story Tile:** A visual media and story-sharing portal focused on community moments, currently protected by an administrative login module.
+6. **Orange Initiative Tile:** A dedicated portal for the Orange Initiative community programs (in development).
+7. **Floating Control Tiles:** Dedicated corner interactive triggers for backdrop themes, system navigation, and the upcoming Natural Intelligent Machine.
 
 ---
 
